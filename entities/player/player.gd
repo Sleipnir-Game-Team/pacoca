@@ -23,6 +23,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		kick.trigger(attack_direction)
 
+func handle_kick(object_hit: Variant, attack_direction: Variant):
+	pass
+
+func handle_grab():
+	pass
+
+
 func _on_life_defeat_signal() -> void:
 	# TODO Maybe play death animation, wait a few seconds, and then actually call game_over().
 	GameManager.game_over()

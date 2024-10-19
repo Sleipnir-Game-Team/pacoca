@@ -1,12 +1,17 @@
 class_name Kick
 extends Area2D
 
+
+var last_direction: Vector2 = Vector2(0,0)
+
 @export var cooldown_seconds: float = 1
 @export var radius: int = 15
 
 @onready var collision_shape: CollisionShape2D = %CollisionShape
 @onready var cooldown_timer: Timer = %CooldownTimer
 @onready var duration_timer: Timer = %DurationTimer
+
+signal hit(object_hit, attack_direction)
 
 func _ready() -> void:
 	# Adjust cooldown time according to exported property
@@ -16,6 +21,8 @@ func _ready() -> void:
 	duration_timer.timeout.connect(collision_shape.set_deferred.bind('disabled', 'false'))
 
 func trigger(direction: Vector2) -> void:
+	last_direction = direction
+	
 	cooldown_timer.start()
 	
 	rotation = atan2(direction.y, direction.x) + (PI / 2)
@@ -26,3 +33,6 @@ func trigger(direction: Vector2) -> void:
 
 func can_kick() -> bool:
 	return cooldown_timer.is_stopped()
+
+func _on_body_entered(body: Node2D) -> void:
+	hit.emit(body, last_direction)

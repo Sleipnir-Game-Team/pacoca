@@ -1,3 +1,4 @@
+class_name ContactArea
 extends Area2D
 
 #coloque o Ball_body para a collision layer 2

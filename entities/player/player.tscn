@@ -21,4 +21,5 @@ position = Vector2(0, -15)
 unique_name_in_owner = true
 script = ExtResource("3_po3r7")
 
+[connection signal="hit" from="Kick" to="." method="handle_kick"]
 [connection signal="defeat_signal" from="Life" to="." method="_on_life_defeat_signal"]
