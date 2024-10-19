@@ -1,11 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://q7r31yidg88g"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_s5awy"]
+[ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick.tscn" id="2_lqefg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xbaix"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lg44p"]
-size = Vector2(20, 3)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_s5awy")
@@ -14,21 +12,6 @@ kick_cooldown_seconds = 0.1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xbaix")
 
-[node name="KickCooldownTimer" type="Timer" parent="."]
+[node name="Kick" parent="." instance=ExtResource("2_lqefg")]
 unique_name_in_owner = true
-one_shot = true
-
-[node name="KickDurationTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 0.2
-one_shot = true
-
-[node name="KickHitbox" type="Area2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -14)
-input_pickable = false
-
-[node name="KickCollision" type="CollisionShape2D" parent="KickHitbox"]
-unique_name_in_owner = true
-shape = SubResource("RectangleShape2D_lg44p")
-disabled = true
+position = Vector2(0, -15)
