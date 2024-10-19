@@ -2,24 +2,19 @@ class_name Ball
 extends CharacterBody2D
 
 
-var SPEED: int = 15
-var direction: Vector2 = Vector2(200, 150).normalized()
+var SPEED = 150
+var direction = 30
 var bounce: Vector2
 
-@onready var contact_area: ContactArea = %ContactArea
+@onready var contact_area: ContactArea = $ContactArea
 
-func _ready() -> void:
-	contact_area.bounce_vector_calculated.connect(_on_bounce_vector_calculated)
+func _ready():
+	velocity = Vector2(sin(deg_to_rad(direction)) * SPEED, cos(deg_to_rad(direction)) * SPEED)
 
-func _on_bounce_vector_calculated(vetor_bounce: Vector2) -> void:
-	bounce = (vetor_bounce)
-	print("Vetor de bounce recebido:", vetor_bounce)
-	
-	for body in contact_area.get_overlapping_bodies():
-		direction = direction.bounce(bounce.normalized())
-	
-	bounce = Vector2.ZERO
+
+func flip(normal):
+	velocity = velocity.bounce(normal)
+	direction = rad_to_deg(velocity.angle())
 
 func _physics_process(_delta: float) -> void:
-	velocity = direction * SPEED * SPEED # lol, lmao even
 	move_and_slide()

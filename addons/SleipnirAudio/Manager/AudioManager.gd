@@ -37,6 +37,16 @@ func stop_sfx(audio_player) -> void:
 	else: # se n for nenhum dos acima vai dar erro
 		push_error(audio_player ," Not SoundQueue nor AudioStreamPlayer")
 
+## Método para mudar o volume dos buses de audio
+func bus_volume(bus_name:String,value:float)->void:
+	var bus_idx : int = AudioServer.get_bus_index(bus_name)
+	AudioServer.set_bus_volume_db(bus_idx,value)
+	
+	if value == -30:
+		AudioServer.set_bus_mute(bus_idx,true)
+	else:
+		AudioServer.set_bus_mute(bus_idx,false)
+
 ## @experimental
 ## Método para criar AudioBus [br]
 ## feature sem uso por agora, mas que vai se fazer util no futuro
