@@ -432,7 +432,7 @@ func _data_handling(song_data:Resource,change_to_default_first:bool=true) -> voi
 		is_silent = true
 		AudioPlayer.set_stream(_load_mp3())
 		AudioPlayer.name = "NO_AUDIO"
-		AudioPlayer.bus = &"Music"
+		AudioPlayer.bus = &"music"
 	
 	MainPlayer.add_child(AudioPlayer)      # adiciona o node ao player
 	_current_song_node = AudioPlayer
@@ -488,7 +488,7 @@ func _trigger_populate(triggers:Array):
 		var trigger_node = AudioStreamPlayer.new() # cria audiostreamplayer
 		trigger_node.volume_db = 1
 		trigger_node.pitch_scale = 1              
-		trigger_node.bus = &"Music"
+		trigger_node.bus = &"music"
 		# setup do node
 		trigger_node.set_stream(triggers[i])       # seta a stream dele pro clip de trigger
 		trigger_node.name = triggers[i].resource_path.get_file().get_basename()  # seta o nome do node pro nome do clip

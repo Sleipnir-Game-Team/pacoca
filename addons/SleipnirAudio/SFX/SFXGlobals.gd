@@ -13,7 +13,6 @@ func _ready() -> void:
 	child_search.clear()
 	child_nodes = _get_all(self)
 	Logger.info("SFX Globais são:"+str(child_search))
-
 ## Método para tocar um SFX Global
 func play_global(sfx_name: String) -> void: AudioManager.play_sfx(child_nodes[child_search.find(sfx_name)], 4)
 
