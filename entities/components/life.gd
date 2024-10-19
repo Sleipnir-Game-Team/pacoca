@@ -1,3 +1,4 @@
+class_name Life
 extends Node
 
 @export var max_life: int = 3

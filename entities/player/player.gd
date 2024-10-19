@@ -16,6 +16,7 @@ var held_object: Ball = null
 
 @onready var kick: AreaTrigger = %Kick
 @onready var grab: AreaTrigger = %Grab
+@onready var life: Life = %Life
 
 func _physics_process(_delta: float) -> void:
 	velocity.x = 0
@@ -29,12 +30,29 @@ func _physics_process(_delta: float) -> void:
 		var click_position: Vector2 = get_global_mouse_position()
 		var holding_direction: Vector2 = global_position.direction_to(click_position)
 		held_object.position = position + (holding_direction * holding_distance)
+	
+	
+	var aim_direction = global_position.direction_to(get_global_mouse_position())
+	var aim_angle = aim_direction.angle()
+	
+	kick.rotation = aim_angle
+	kick.position = kick.distance * aim_direction
+	
+	kick.position.x += kick.offset * -sin(kick.rotation)
+	kick.position.y += kick.offset * cos(kick.rotation)
+	
+	kick.rotation += PI / 2
+	
+	grab.rotation = aim_angle
+	grab.position = kick.distance * aim_direction
+	grab.position.x += -(kick.distance / 2) * (-sin(rotation))
+	grab.rotation += PI / 2
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_hit") and held_object == null and kick.can_kick():
 		var click_position: Vector2 = get_global_mouse_position()
 		var attack_direction: Vector2 = global_position.direction_to(click_position)
-		
+	
 		kick.trigger(attack_direction)
 	elif event.is_action_pressed("player_special") and grab.can_kick():
 		var click_position: Vector2 = get_global_mouse_position()
@@ -62,3 +80,8 @@ func handle_grab(direction: Vector2, data: Dictionary) -> void:
 func _on_life_defeat_signal() -> void:
 	# TODO Maybe play death animation, wait a few seconds, and then actually call game_over().
 	GameManager.game_over()
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	# TODO Maybe play hurt animation, give some invincibility frames and then back to normal
+	life.damage()
