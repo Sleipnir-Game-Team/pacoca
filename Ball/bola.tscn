@@ -7,12 +7,13 @@
 radius = 17.2627
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v86q5"]
-radius = 20.0
+radius = 19.0
 
 [node name="Ball" type="Node2D"]
 
 [node name="Ball_Body" type="CharacterBody2D" parent="."]
 collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_j8osr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball_Body"]
