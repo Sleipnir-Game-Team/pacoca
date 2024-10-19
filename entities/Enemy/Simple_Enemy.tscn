@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqkidmy2reqv7"]
 
-[ext_resource type="Script" path="res://entities/Enemy/simple_enemy_Movement.gd" id="1_8rw2w"]
+[ext_resource type="Script" path="res://entities/enemy/simple_enemy_Movement.gd" id="1_8rw2w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ww7nc"]
 

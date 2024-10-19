@@ -1,4 +1,4 @@
-class_name Kick
+class_name AreaTrigger
 extends ShapeCast2D
 
 

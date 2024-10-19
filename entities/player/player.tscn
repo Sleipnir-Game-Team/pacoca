@@ -23,9 +23,15 @@ unique_name_in_owner = true
 position = Vector2(-8, -15)
 shape = SubResource("CircleShape2D_hqasc")
 
+[node name="Grab" parent="." instance=ExtResource("2_lqefg")]
+unique_name_in_owner = true
+position = Vector2(-8, -15)
+shape = SubResource("CircleShape2D_hqasc")
+
 [node name="Life" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_po3r7")
 
 [connection signal="hit" from="Kick" to="." method="handle_kick"]
+[connection signal="hit" from="Grab" to="." method="handle_grab"]
 [connection signal="defeat_signal" from="Life" to="." method="_on_life_defeat_signal"]
