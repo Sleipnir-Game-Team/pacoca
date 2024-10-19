@@ -5,6 +5,9 @@ var held_object: Ball = null
 ## Distance in pixels between the player's center and the held object's origin
 @export var holding_distance: int = 15
 
+## Speed at which to launch held objects
+@export var launch_velocity: int = 30
+
 @export_group('Movement', 'movement')
 @export var movement_speed: int = 200
 
@@ -28,12 +31,12 @@ func _physics_process(_delta: float) -> void:
 		held_object.position = position + (holding_direction * holding_distance)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("player_hit") and kick.can_kick():
+	if event.is_action_pressed("player_hit") and held_object == null and kick.can_kick():
 		var click_position: Vector2 = get_global_mouse_position()
 		var attack_direction: Vector2 = global_position.direction_to(click_position)
 		
 		kick.trigger(attack_direction)
-	elif event.is_action_pressed("player_special") and kick.can_kick():
+	elif event.is_action_pressed("player_special") and grab.can_kick():
 		var click_position: Vector2 = get_global_mouse_position()
 		var attack_direction: Vector2 = global_position.direction_to(click_position)
 		
@@ -49,9 +52,9 @@ func handle_grab(direction: Vector2, data: Dictionary) -> void:
 	
 	if held_object != null:
 		held_object = null
-		ball.direction = direction
+		ball.direction = rad_to_deg(direction.angle())
 	else:
-		ball.direction = Vector2.ZERO
+		ball.direction = 0
 		held_object = ball
 
 

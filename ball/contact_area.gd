@@ -10,17 +10,22 @@ func _ready() -> void:
 func _on_Area2D_Body_entered(body: Node2D) -> void:
 	print("_on_Area2D_Body_entered")
 	
+	var flip_direction: Vector2
+	
 	if body.is_in_group("Left Wall"):
-		get_parent().flip(Vector2(-1,0))
+		flip_direction = Vector2(-1, 0)
 	elif body.is_in_group("Top Wall"):
-		get_parent().flip(Vector2(0,1))
+		flip_direction = Vector2(0, 1)
 	elif body.is_in_group("Right Wall"):
-		get_parent().flip(Vector2(1,0))
+		flip_direction = Vector2(1, 0)
 	elif body.is_in_group("Down Wall"):
-		get_parent().flip(Vector2(0,-1))
+		flip_direction = Vector2(0,-1)
+	
+	if flip_direction:
+		get_parent().flip(flip_direction)
 	
 	
-func _on_Area2D_area_entered(area):
+func _on_Area2D_area_entered(area: Area2D) -> void:
 	# Verifica se a área que entrou é a "kick"
 	if area.name == "kick":
 		print("Colidiu com a área 'kick'!")
