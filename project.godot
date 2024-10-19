@@ -14,9 +14,20 @@ config/name="Game Jam Plus 24 25"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Logger="*res://addons/LogAndError/Logger.gd"
+SfxGlobals="*res://addons/SleipnirAudio/SFX/SFXGlobals.tscn"
+AudioManager="*res://addons/SleipnirAudio/Manager/AudioManager.gd"
+SleipnirMaestro="*res://addons/SleipnirAudio/Music/SleipnirMaestro.tscn"
+
 [dotnet]
 
 project/assembly_name="Game Jam Plus 24 25"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/LogAndError/plugin.cfg", "res://addons/SleipnirAudio/plugin.cfg")
 
 [rendering]
 
