@@ -8,27 +8,27 @@ extends CharacterBody2D
 
 @onready var kick: Kick = %Kick
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity.x = 0
 	
-	var movement_direction = int(Input.is_action_pressed("player_right")) - int(Input.is_action_pressed("player_left"))
+	var movement_direction: int = int(Input.is_action_pressed("player_right")) - int(Input.is_action_pressed("player_left"))
 	velocity.x = movement_speed * movement_direction
 	
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_hit") and kick.can_kick():
-		var click_position = get_global_mouse_position()
-		var attack_direction = global_position.direction_to(click_position)
+		var click_position: Vector2 = get_global_mouse_position()
+		var attack_direction: Vector2 = global_position.direction_to(click_position)
 		
 		kick.trigger(attack_direction)
 
-func handle_kick(object_hit: Variant, attack_direction: Variant):
-	pass
+func handle_kick(direction: Vector2, data: Dictionary) -> void:
+	var ball = data.collider as Ball
+	ball.direction = direction
 
-func handle_grab():
+func handle_grab() -> void:
 	pass
-
 
 func _on_life_defeat_signal() -> void:
 	# TODO Maybe play death animation, wait a few seconds, and then actually call game_over().
