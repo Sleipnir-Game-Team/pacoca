@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://fum0l3hil4ye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lg44p"]
+size = Vector2(20, 3)
+
+[node name="Kick" type="Area2D"]
+input_pickable = false
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_lg44p")
+disabled = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="DurationTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
