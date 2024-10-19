@@ -42,7 +42,7 @@ func bus_volume(bus_name:String,value:float)->void:
 	var bus_idx : int = AudioServer.get_bus_index(bus_name)
 	AudioServer.set_bus_volume_db(bus_idx,value)
 	
-	if value == -30:
+	if value <= -30:
 		AudioServer.set_bus_mute(bus_idx,true)
 	else:
 		AudioServer.set_bus_mute(bus_idx,false)
