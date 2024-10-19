@@ -22,3 +22,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var attack_direction = global_position.direction_to(click_position)
 		
 		kick.trigger(attack_direction)
+
+func _on_life_defeat_signal() -> void:
+	# TODO Maybe play death animation, wait a few seconds, and then actually call game_over().
+	GameManager.game_over()

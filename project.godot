@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameManager="*res://globals/game_manager.gd"
 Logger="*res://addons/LogAndError/Logger.gd"
 SfxGlobals="*res://addons/SleipnirAudio/SFX/SFXGlobals.tscn"
 AudioManager="*res://addons/SleipnirAudio/Manager/AudioManager.gd"

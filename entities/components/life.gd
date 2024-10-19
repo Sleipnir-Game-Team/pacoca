@@ -1,7 +1,7 @@
 extends Node
 
-@export var max_life := 3
-var entity_life 
+@export var max_life: int = 3
+var entity_life: int
 
 signal defeat_signal
 
@@ -9,17 +9,13 @@ signal defeat_signal
 func _ready() -> void:
 	entity_life = max_life
 
-func damage():
+func damage() -> void:
 	if entity_life > 0:
 		entity_life -= 1
 		
 	if entity_life == 0:
 		defeat_signal.emit()
 
-func recover():
+func recover() -> void:
 	if entity_life < max_life and entity_life > 0:
 		entity_life += 1
-	elif entity_life >= max_life:
-		print("vida cheia")
-	elif entity_life <= 0:
-		print("Já perdeu")
