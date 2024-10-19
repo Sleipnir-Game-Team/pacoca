@@ -45,16 +45,17 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func handle_kick(direction: Vector2, data: Dictionary) -> void:
 	var ball = data.collider as Ball
-	ball.direction = direction
+	ball.change_angle(rad_to_deg(direction.angle()))
 
 func handle_grab(direction: Vector2, data: Dictionary) -> void:
 	var ball = data.collider as Ball
 	
 	if held_object != null:
 		held_object = null
-		ball.direction = rad_to_deg(direction.angle())
+		var angle_deg = rad_to_deg(direction.angle())
+		print('ANGULO DE ARREMESSO: %sº' % angle_deg)
+		ball.change_angle(angle_deg)
 	else:
-		ball.direction = 0
 		held_object = ball
 
 
