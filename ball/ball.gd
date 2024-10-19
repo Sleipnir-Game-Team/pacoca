@@ -11,6 +11,9 @@ var bounce: Vector2
 func _ready():
 	velocity = Vector2(sin(deg_to_rad(direction)) * SPEED, cos(deg_to_rad(direction)) * SPEED)
 
+func change_angle(angle):
+	direction = angle
+	velocity = Vector2(sin(deg_to_rad(direction)) * SPEED, cos(deg_to_rad(direction)) * SPEED)
 
 func flip(normal):
 	velocity = velocity.bounce(normal)
