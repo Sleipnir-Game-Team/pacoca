@@ -21,5 +21,5 @@ func _on_bounce_vector_calculated(vetor_bounce: Vector2) -> void:
 	bounce = Vector2.ZERO
 
 func _physics_process(_delta: float) -> void:
-	velocity = direction * SPEED * SPEED
+	velocity = direction * SPEED * SPEED # lol, lmao even
 	move_and_slide()
