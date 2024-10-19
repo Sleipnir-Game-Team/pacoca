@@ -1,28 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://lg6kuv3fkktu"]
+[gd_scene load_steps=2 format=3 uid="uid://lg6kuv3fkktu"]
 
 [ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SFXGlobals.gd" id="1_p5jl5"]
-[ext_resource type="AudioStream" uid="uid://cost46escwcso" path="res://TestingEnviroment/Assets/Test Ui Sounds/Swaggas Stanzaut.mp3" id="2_ohi2u"]
-[ext_resource type="AudioStream" uid="uid://dmyrkuasjawhl" path="res://TestingEnviroment/Assets/Test Ui Sounds/002 Hype Vocal 2 (170BPM).wav" id="3_1tstb"]
-[ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SoundQueue.gd" id="3_0164i"]
 
 [node name="SfxGlobals" type="Node"]
 script = ExtResource("1_p5jl5")
 
-[node name="EuToFora" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_1tstb")
-
 [node name="PlaceHolder" type="Node" parent="."]
 
-[node name="SwaggazStanzaut" type="Node" parent="PlaceHolder"]
-script = ExtResource("3_0164i")
-Count = 4
-
-[node name="SwaggasStnzout" type="AudioStreamPlayer" parent="PlaceHolder/SwaggazStanzaut"]
-stream = ExtResource("2_ohi2u")
-bus = &"SFX"
-
 [node name="UI" type="Node" parent="."]
-
-[node name="HypeVocal" type="AudioStreamPlayer" parent="UI"]
-stream = ExtResource("3_1tstb")
-max_polyphony = 4
