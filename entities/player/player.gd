@@ -20,8 +20,8 @@ var invincibility: bool = false
 @onready var kick: Kick = %Kick
 @onready var grab: Grab = %Grab
 @onready var life: Life = %Life
-@onready var kick_animation = $kick_animation as AnimatedSprite2D
-@onready var default_animation = $default_animation as AnimatedSprite2D
+@onready var kick_animation: AnimatedSprite2D = $kick_animation
+@onready var default_animation: AnimatedSprite2D = $default_animation
 
 func _physics_process(_delta: float) -> void:
 	velocity.x = 0

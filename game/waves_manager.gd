@@ -8,7 +8,7 @@ func _ready() -> void:
 	var wave: Array = Waves.return_list()
 	run_wave(wave)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Waves.has_pass == true:
 		var waves: Array = Waves.return_list()
 		if waves.size() > 0:
