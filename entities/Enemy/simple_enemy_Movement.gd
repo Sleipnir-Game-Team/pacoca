@@ -30,8 +30,8 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
+	print("dano")
 	life.damage()
-
 
 func _on_life_defeat_signal() -> void:
 	queue_free()
