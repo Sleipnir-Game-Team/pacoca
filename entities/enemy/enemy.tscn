@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://cliqjjqk4ixhd"]
+
+[ext_resource type="Script" path="res://entities/enemy/simple_enemy_Movement.gd" id="1_vjf2v"]
+[ext_resource type="Texture2D" uid="uid://2j74uc8bvtrr" path="res://assets/alien A.png" id="2_k3aqr"]
+[ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="3_aqvr3"]
+[ext_resource type="Script" path="res://entities/Enemy/enemy_intelligence.gd" id="4_vtkva"]
+[ext_resource type="Script" path="res://entities/enemy/ia_movement_horizontal.gd" id="5_k15of"]
+[ext_resource type="Script" path="res://entities/enemy/movement_top_down.gd" id="6_5adav"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ww7nc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ktvbd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnl3t"]
+radius = 4.0
+height = 22.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_vjf2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(8.08, 8.08)
+shape = SubResource("CircleShape2D_ww7nc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_k3aqr")
+
+[node name="Kick" parent="." instance=ExtResource("3_aqvr3")]
+unique_name_in_owner = true
+position = Vector2(-7.40741, -9.72222)
+scale = Vector2(2.435, 2.435)
+shape = SubResource("CircleShape2D_ktvbd")
+target_position = Vector2(42.049, 0)
+distance = 100
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
+position = Vector2(-0.027, -9.717)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xnl3t")
+
+[node name="actio_manager" type="Node" parent="."]
+script = ExtResource("4_vtkva")
+
+[node name="IA_Movement_Horizontal" type="Node2D" parent="."]
+script = ExtResource("5_k15of")
+movement_length = 150.0
+
+[node name="Movement" type="Node2D" parent="."]
+script = ExtResource("6_5adav")
+speed = 150.0
+
+[connection signal="hit" from="Kick" to="actio_manager" method="_on_kick_hit"]
+[connection signal="area_entered" from="Area2D" to="actio_manager" method="_on_area_2d_area_entered"]
+[connection signal="move" from="IA_Movement_Horizontal" to="Movement" method="move"]
