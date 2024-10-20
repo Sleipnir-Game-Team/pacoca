@@ -48,7 +48,6 @@ func changeScreen(screen_path: String, parent: Node) -> void:
 func freeScreen() -> Node:
 	return stack.pop()
 
-
 func managePauseMenu() -> void:
 	if !pause_menu_on:
 		pause_menu_on = true

@@ -29,7 +29,7 @@ func flip(normal: Vector2) -> void:
 	heat.cool_down()
 	
 	normal = normal.normalized()
-	var dot_product = velocity.dot(normal)
+	var dot_product: float = velocity.dot(normal)
 	var reflection_angle: float = rad_to_deg((velocity - 2 * dot_product * normal).angle())
 	direction = reflection_angle
 	var base_velocity: Vector2 = Vector2(cos(deg_to_rad(direction)), sin(deg_to_rad(direction)))
