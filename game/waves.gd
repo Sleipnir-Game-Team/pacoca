@@ -1,30 +1,22 @@
-extends Node
+class_name Waves
 
-var enemies_waves_lists = []
+var waves: Array[Array] = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func add_list(wave: Array) -> void:
+	waves.append(wave)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func add_list(enemies_list):
-	enemies_waves_lists.append(enemies_list)
-
-func add_enemy(enemie_path, position, enemies_list):
-	var enemy = [enemie_path, position]
-	enemies_list.append(enemy)
+func add_enemy(enemy_path: String, position: Vector2, wave: Array) -> void:
+	var enemy = [enemy_path, position]
+	wave.append(enemy)
 	
-func pop_enemy():
-	enemies_waves_lists[0].remove_at(0)
-	if enemies_waves_lists[0].size() == 0:
+func pop_enemy() -> void:
+	waves[0].remove_at(0)
+	if waves[0].size() == 0:
 		pass_list()
 
-func pass_list():
-	if enemies_waves_lists.size() > 0:
-		enemies_waves_lists.remove_at(0)
+func pass_list() -> void:
+	if waves.size() > 0:
+		waves.remove_at(0)
 		
-func return_list():
-	return enemies_waves_lists[0]
+func return_list() -> Array:
+	return waves[0]
