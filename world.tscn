@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmvk3h52rrel0"]
+[gd_scene load_steps=10 format=3 uid="uid://dmvk3h52rrel0"]
 
 [ext_resource type="PackedScene" uid="uid://q7r31yidg88g" path="res://entities/player/player.tscn" id="1_lklov"]
 [ext_resource type="PackedScene" uid="uid://c424f240qxo4m" path="res://game/waves_scene.tscn" id="1_vrmhi"]
 [ext_resource type="PackedScene" uid="uid://gchihnv3vpvw" path="res://ball/ball.tscn" id="2_y5g5q"]
 [ext_resource type="PackedScene" uid="uid://bqkidmy2reqv7" path="res://entities/enemy/Simple_Enemy.tscn" id="3_qh0ea"]
-[ext_resource type="Texture2D" uid="uid://qkkp62wee3he" path="res://assets/Background.jpg" id="4_wi1h0"]
+[ext_resource type="Texture2D" uid="uid://cploosi6yg5k" path="res://assets/Background.jpg" id="4_wi1h0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1wdxc"]
 normal = Vector2(1, 0)
@@ -58,8 +58,7 @@ position = Vector2(152, 588)
 position = Vector2(439, 266)
 rotation = 3.14159
 
-[node name="actio_manager" parent="Enemy/CharacterBody2D" index="4" node_paths=PackedStringArray("player", "ball")]
-player = NodePath("../../../Player")
+[node name="actio_manager" parent="Enemy/CharacterBody2D" index="4" node_paths=PackedStringArray("ball")]
 ball = NodePath("../../../Ball")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
