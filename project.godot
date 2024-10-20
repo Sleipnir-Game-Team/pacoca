@@ -24,6 +24,7 @@ AudioManager="*res://addons/SleipnirAudio/Manager/AudioManager.gd"
 SleipnirMaestro="*res://addons/SleipnirAudio/Music/SleipnirMaestro.tscn"
 UI_Controller="*res://ui/controller/ui_controller.gd"
 Game_Manager="*res://globals/game_manager.gd"
+Config_File_Handler="*res://globals/config_file_handler.gd"
 
 [debug]
 

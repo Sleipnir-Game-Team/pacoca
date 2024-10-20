@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://lg6kuv3fkktu"]
+[gd_scene load_steps=3 format=3 uid="uid://lg6kuv3fkktu"]
 
 [ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SFXGlobals.gd" id="1_p5jl5"]
+[ext_resource type="AudioStream" uid="uid://cdm0ume0k7kmh" path="res://assets/Level [LOOP].wav" id="2_f5tej"]
 
 [node name="SfxGlobals" type="Node"]
 script = ExtResource("1_p5jl5")
 
 [node name="PlaceHolder" type="Node" parent="."]
+
+[node name="teste_som" type="AudioStreamPlayer" parent="PlaceHolder"]
+stream = ExtResource("2_f5tej")
+bus = &"sfx"
 
 [node name="UI" type="Node" parent="."]
