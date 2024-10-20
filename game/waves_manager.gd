@@ -12,6 +12,8 @@ func _process(delta: float) -> void:
 	if Waves.has_pass == true:
 		var waves: Array = Waves.return_list()
 		if waves.size() > 0:
+			print("Nova wave")
+			print(waves[0])
 			run_wave(waves)
 		else:
 			GameManager.game_over()
