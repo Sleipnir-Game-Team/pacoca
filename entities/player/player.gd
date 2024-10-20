@@ -79,6 +79,9 @@ func _on_hurt_box_body_entered(_body: Node2D) -> void:
 func _on_kick_animation_animation_finished() -> void:
 	head_animation.play("default")
 
+func show_global():
+	return global_position
+
 func invencibility_frames():
 	invecibility_time.start()
 	hurt_animation.play("hurt")

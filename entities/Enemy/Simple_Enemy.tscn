@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bqkidmy2reqv7"]
 
 [ext_resource type="Script" path="res://entities/enemy/simple_enemy.gd" id="1_2r8d8"]
-[ext_resource type="Texture2D" uid="uid://rteii2vwuub2" path="res://assets/alien A.png" id="2_cdh1q"]
+[ext_resource type="Texture2D" uid="uid://sno1m812hfkg" path="res://assets/alien A.png" id="2_cdh1q"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="3_ympxd"]
 [ext_resource type="Script" path="res://entities/enemy/behaviours/enemy_intelligence.gd" id="4_ytfbf"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="5_ct3r7"]

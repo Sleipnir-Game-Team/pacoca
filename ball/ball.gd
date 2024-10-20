@@ -13,7 +13,7 @@ var atual_rotation: float
 @onready var contact_area: ContactArea = $ContactArea
 @onready var heat: Heat = %Heat
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var player: Player = $"../Player"
+@onready var player = $"../Player"
 
 func _ready() -> void:
 	var base_velocity: Vector2 = Vector2(sin(deg_to_rad(direction)), cos(deg_to_rad(direction))) 
