@@ -9,13 +9,23 @@ var speed_bonus: int:
 	get():
 		return max(1, heat * per_heat_bonus)
 
+var is_burning: bool:
+	get():
+		if heat >= burning_trashold:
+			return true
+		else:
+			return false
+
 @export var maximum_heat: int = 10
-@export var per_heat_bonus: float = 0
+@export var per_heat_bonus: float = 1.10
+@export var heat_loss: float = 1
+@export var heat_gain: float = 1.5
+@export var burning_trashold: int = 7
+
 
 func heat_up() -> void:
-	heat += 2
-	print('heat subiu para: ', heat)
+	heat = heat + heat_gain
+
 
 func cool_down() -> void:
-	heat -= 1
-	print('heat desceu para: ', heat)
+	heat = heat - heat_gain
