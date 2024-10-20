@@ -1,19 +1,25 @@
 class_name Heat
 extends Node
 
-var heat: int = 0:
-	set(value):
-		heat = clamp(value, 0, maximum_heat)
+@export var heat := 0
+@export var speed := 0
+var add_speed
 
-var speed_bonus: int:
-	get():
-		return max(1, heat * per_heat_bonus)
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	add_speed = speed
 
-@export var maximum_heat: int = 10
-@export var per_heat_bonus: float = 0
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
 
-func heat_up() -> void:
+func increment_heat():
 	heat += 1
+	
+func speed_up():
+	add_speed = heat * speed
 
-func cool_down() -> void:
-	heat -= 1
+func decresse_heat():
+	if heat > 0:
+		heat -= 1
+		print("esfriando para: ", heat)
