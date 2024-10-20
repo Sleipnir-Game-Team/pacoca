@@ -1,8 +1,6 @@
 extends Node
 
-var enemies_list: Array[Array] = []
-
-## Called when the node enters the scene tree for the first time.
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enemies_list = [
 		["res://entities/enemy/simple_enemy.tscn", Vector2(566, 422)],
@@ -11,7 +9,12 @@ func _ready() -> void:
 	
 	read_lists(enemies_list)
 
-func read_lists(enemies: Array[Array]) -> void:
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func read_lists():
+	var enemies = Waves.return_list()
 	for enemy in enemies:
 		spawn_enemy(enemy[0], enemy[1])
 
