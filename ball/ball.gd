@@ -23,11 +23,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
-	if grabbed == false:
-		sprite.rotation += velocity.length() * rotation_speed_factor * delta
-	elif grabbed == true:
-		print("era pra estar funcionando")
+	if grabbed:
 		sprite.rotation = velocity.length() * rotation_speed_factor
+	else:
+		sprite.rotation += velocity.length() * rotation_speed_factor * delta
 
 
 
