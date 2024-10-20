@@ -227,6 +227,10 @@ func change_song(song_name:String, stay_playing:bool=false, transition_type:Stri
 	# carrega o resource da musica
 	var song_data = load(_song_path+"/"+song_name+".tres")
 	
+	if song_data == null or song_data is not SongData:
+		Logger.error("Could not load song \""+song_name+"\"")
+		return ERR_FILE_NOT_FOUND
+	
 	if MainPlayer.get_child_count() == 0:
 		_data_handling(song_data) # distribui os dados onde precisa
 	else:

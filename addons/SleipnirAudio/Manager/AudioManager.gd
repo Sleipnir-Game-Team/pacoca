@@ -50,7 +50,7 @@ func bus_volume(bus_name:String,value:float)->void:
 ## @experimental
 ## Método para criar AudioBus [br]
 ## feature sem uso por agora, mas que vai se fazer util no futuro
-func create_bus(bus_name:String) -> Error: 
+func create_bus(bus_name:StringName) -> Error: 
 	match _check_bus_dont_exist(bus_name):
 		OK:
 			AudioServer.add_bus()

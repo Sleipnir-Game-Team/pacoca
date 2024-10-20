@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SongData" load_steps=5 format=3 uid="uid://bxu70n3046635"]
+
+[ext_resource type="Script" path="res://addons/SleipnirAudio/Music/MaestroCore/SongData.gd" id="1_6mjda"]
+[ext_resource type="AudioStream" uid="uid://uwcnwwpolrmu" path="res://assets/Music/Main Menu [START].ogg" id="1_50xs6"]
+[ext_resource type="AudioStream" uid="uid://cypjkw508vt0e" path="res://assets/Music/Main Menu [LOOP].ogg" id="2_iuvll"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_h0aap"]
+clip_count = 2
+clip_0/name = &"start"
+clip_0/stream = ExtResource("1_50xs6")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"loop"
+clip_1/stream = ExtResource("2_iuvll")
+clip_1/auto_advance = 0
+
+[resource]
+script = ExtResource("1_6mjda")
+BPM = 90
+BeatsPerBar = 4
+MainClips = SubResource("AudioStreamInteractive_h0aap")
+TriggerClips = Array[Resource]([])
+default_first_section = "start"
+default_track_transition = 3
+fade_mode = 0
+fade_beats = 0
