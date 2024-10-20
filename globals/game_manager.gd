@@ -24,13 +24,4 @@ func resume() -> void:
 
 
 func game_over() -> void:
-	# TODO ISSO AQUI TÁ MEIO BOSTA, ACHO QUE ERA MELHOR SEMPRE EXISTIR UM MAIN E GAME_OVER SER PARTE INTERNA DELE
-	# DO QUE A GENTE REMOVER E RECRIAR A MAIN QUANDO A PESSOA REJOGASSE
-	var main: Control = get_node_or_null('../Main')
-	
-	get_tree().root.remove_child.call_deferred(main)
-	main.queue_free()
-	
-	var ending_scene: PackedScene = load("res://ui/game_over.tscn")
-	
-	get_tree().root.add_child(ending_scene.instantiate())
+	UI_Controller.changeScreen("res://ui/menu/game_over_menu.tscn", get_tree().root)
