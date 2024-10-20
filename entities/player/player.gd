@@ -20,8 +20,6 @@ var invincibility: bool = false
 @onready var kick: Kick = %Kick
 @onready var grab: Grab = %Grab
 @onready var life: Life = %Life
-@onready var kick_animation = $kick_animation as AnimatedSprite2D
-@onready var default_animation = $default_animation as AnimatedSprite2D
 
 func _physics_process(_delta: float) -> void:
 	velocity.x = 0
@@ -54,8 +52,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		var click_position: Vector2 = get_global_mouse_position()
 		var attack_direction: Vector2 = global_position.direction_to(click_position)
 		kick.trigger(attack_direction)
-		kick_animation.visible = true
-		kick_animation.play()
 	elif event.is_action_pressed("player_special") and grab.can_trigger():
 		invincibility = false
 		var click_position: Vector2 = get_global_mouse_position()
@@ -71,7 +67,3 @@ func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	# TODO Maybe play hurt animation, give some invincibility frames and then back to normal
 	if not invincibility:
 		life.damage()
-
-
-func _on_kick_animation_animation_finished() -> void:
-	kick_animation.visible = false
