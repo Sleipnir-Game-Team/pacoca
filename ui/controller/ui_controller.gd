@@ -20,7 +20,7 @@ class ScreenStack:
 			push_error('deu ruim')
 		
 		## FIXME OU QUE MEDO ISSO AQUI MANO, tá retornando o bagulho que foi queue_freed, pode dar ruim isso aqui
-		var screen = screens.pop_back()
+		var screen: Node = screens.pop_back()
 		screen.queue_free()
 		return screen
 
@@ -55,7 +55,7 @@ func managePauseMenu() -> void:
 		pause_menu_on = true
 		Game_Manager.pause()
 		openScreen("res://ui/menu/pause_menu.tscn", get_tree().root)
-	elif(freeScreen().name == "PauseMenu"):
+	elif freeScreen().name == "PauseMenu":
 		pause_menu_on = false
 		Game_Manager.resume()
 		
