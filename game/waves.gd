@@ -1,13 +1,13 @@
 extends Node
 
 var waves: Array[Array] = []
-var has_pass = false
+var has_pass: bool = false
 
 func add_list(wave: Array) -> void:
 	waves.append(wave)
 
 func add_enemy(enemy_path: String, position: Vector2, wave: Array) -> void:
-	var enemy = [enemy_path, position]
+	var enemy: Array = [enemy_path, position]
 	wave.append(enemy)
 	
 func pop_enemy() -> void:

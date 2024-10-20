@@ -59,11 +59,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		grab.trigger(attack_direction)
 
 func _on_life_defeat_signal() -> void:
-	# TODO Maybe play death animation, wait a few seconds, and then actually call game_over().
+	# NOTE Maybe play death animation, wait a few seconds, and then actually call game_over().
 	GameManager.game_over()
 
 
 func _on_hurt_box_body_entered(_body: Node2D) -> void:
-	# TODO Maybe play hurt animation, give some invincibility frames and then back to normal
+	# NOTE Maybe play hurt animation, give some invincibility frames and then back to normal
 	if not invincibility:
 		life.damage()
