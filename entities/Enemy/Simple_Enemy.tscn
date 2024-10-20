@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqkidmy2reqv7"]
+[gd_scene load_steps=10 format=3 uid="uid://bqkidmy2reqv7"]
 
 [ext_resource type="Script" path="res://entities/enemy/simple_enemy_movement.gd" id="1_2r8d8"]
-[ext_resource type="Texture2D" uid="uid://2j74uc8bvtrr" path="res://Assets/alien A.png" id="2_cdh1q"]
+[ext_resource type="Texture2D" uid="uid://dewq75p4ofxpe" path="res://assets/alien A.png" id="2_cdh1q"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="3_ympxd"]
 [ext_resource type="Script" path="res://entities/enemy/enemy_intelligence.gd" id="4_ytfbf"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="5_ct3r7"]
-[ext_resource type="Script" path="res://entities/enemy/movement_top_down.gd" id="6_cs0e3"]
-[ext_resource type="Script" path="res://entities/enemy/ia_movement_horizontal.gd" id="7_u2wfq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ww7nc"]
 radius = 44.1022
@@ -17,6 +15,9 @@ radius = 14.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnl3t"]
 radius = 14.0
 height = 142.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pibal"]
+radius = 43.0465
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_2r8d8")
@@ -49,14 +50,15 @@ unique_name_in_owner = true
 script = ExtResource("5_ct3r7")
 max_life = 1
 
-[node name="Movement" type="Node2D" parent="."]
-script = ExtResource("6_cs0e3")
-speed = 150.0
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
 
-[node name="IA_Movement_Horizontal" type="Node2D" parent="."]
-script = ExtResource("7_u2wfq")
-movement_length = 150.0
+[node name="HitBox_Collision" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_pibal")
+debug_color = Color(0.948399, 0, 0.200685, 0.42)
 
 [connection signal="hit" from="Kick" to="ActionManagers" method="_on_kick_hit"]
 [connection signal="area_entered" from="Area2D" to="ActionManagers" method="_on_area_2d_area_entered"]
-[connection signal="move" from="IA_Movement_Horizontal" to="Movement" method="move"]
+[connection signal="defeat_signal" from="Life" to="." method="_on_life_defeat_signal"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

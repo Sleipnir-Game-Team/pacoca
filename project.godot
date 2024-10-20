@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Waves="*res://game/waves.gd"
 GameManager="*res://globals/game_manager.gd"
 Logger="*res://addons/log_and_error/logger.gd"
 SfxGlobals="*res://addons/SleipnirAudio/SFX/SFXGlobals.tscn"
