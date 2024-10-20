@@ -15,6 +15,10 @@ var invincibility: bool = false
 
 @export_group('Kick', 'kick')
 @export var kick_cooldown_seconds: float = 1
+@export var kick_buffering_duration_seconds: float = 0.1
+
+@export_group('Grab', 'grab')
+@export var grab_buffering_duration_seconds: float = 0.1
 
 @onready var tongue: Marker2D = %Tongue
 @onready var kick: Kick = %Kick
@@ -26,8 +30,32 @@ var invincibility: bool = false
 @onready var invecibility_time = $invencibility_time as Timer
 @onready var hurt_animation = $hurt_animation as AnimationPlayer
 
+var kick_buffering = false
+var kick_buffering_duration = 0
+var attack_direction: Vector2
+
+var grab_buffering = false
+var grab_buffering_duration = 0
+var grab_direction: Vector2
+
 func _physics_process(_delta: float) -> void:
 	velocity.x = 0
+	
+	if kick_buffering:
+		if kick_buffering_duration < kick_buffering_duration_seconds:
+			kick_buffering_duration += _delta
+			kick.trigger(attack_direction)
+		else:
+			kick_buffering = false
+			kick_buffering_duration = 0
+	
+	if grab_buffering:
+		if grab_buffering_duration < grab_buffering_duration_seconds:
+			grab_buffering_duration += _delta
+			grab.trigger(grab_direction)
+		else:
+			grab_buffering = false
+			grab_buffering_duration = 0
 	
 	var movement_direction: int = int(Input.is_action_pressed("player_right")) - int(Input.is_action_pressed("player_left"))
 	velocity.x = movement_speed * movement_direction
@@ -55,15 +83,15 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_hit") and not grab.is_holding() and kick.can_trigger():
 		var click_position: Vector2 = get_global_mouse_position()
-		var attack_direction: Vector2 = global_position.direction_to(click_position)
-		kick.trigger(attack_direction)
+		attack_direction = global_position.direction_to(click_position)
+		kick_buffering = true
 		head_animation.play("kick")
 	elif event.is_action_pressed("player_special") and grab.can_trigger():
 		head_animation.play("bite")
 		invincibility = false
 		var click_position: Vector2 = get_global_mouse_position()
-		var attack_direction: Vector2 = global_position.direction_to(click_position)
-		grab.trigger(attack_direction)
+		grab_direction = global_position.direction_to(click_position)
+		grab_buffering = true
 
 func _on_life_defeat_signal() -> void:
 	# NOTE Maybe play death animation, wait a few seconds, and then actually call game_over().
@@ -89,3 +117,10 @@ func invencibility_frames():
 
 func _on_invencibility_time_timeout() -> void:
 	invincibility = false
+
+
+func _on_kick_hit(direction, data):
+	kick_buffering = false
+
+func _on_grab_hit(direction, data):
+	grab_buffering = false
