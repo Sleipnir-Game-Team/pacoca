@@ -22,6 +22,7 @@ var invincibility: bool = false
 @onready var life: Life = %Life
 @onready var head_animation = $head_animation as AnimatedSprite2D
 @onready var tail_animation = $tail_animation as AnimatedSprite2D
+@onready var hurtbox = $HurtBox as Area2D
 
 func _physics_process(_delta: float) -> void:
 	velocity.x = 0
@@ -71,6 +72,9 @@ func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	if not invincibility:
 		life.damage()
 
-
 func _on_kick_animation_animation_finished() -> void:
 	head_animation.play("default")
+
+func invencibility_frames():
+	
+	pass

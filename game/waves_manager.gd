@@ -4,6 +4,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Waves.restart()
 	wave_lists.start_lists()
 	var wave: Array = Waves.return_list()
 	run_wave(wave)

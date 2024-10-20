@@ -30,3 +30,6 @@ func return_list() -> Array:
 		return waves[0]
 	else:
 		return waves
+		
+func restart():
+	waves = []
