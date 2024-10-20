@@ -2,7 +2,7 @@ class_name Ball
 extends CharacterBody2D
 
 
-var speed: int = 200
+@export var speed: int = 200
 var direction: float = 30
 var bounce: Vector2
 var burning: bool

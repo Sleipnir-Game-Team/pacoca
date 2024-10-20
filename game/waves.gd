@@ -1,4 +1,5 @@
 extends Node
+
 var waves: Array[Array] = []
 var has_pass = false
 
