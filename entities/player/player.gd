@@ -20,10 +20,11 @@ var invincibility: bool = false
 @onready var kick: Kick = %Kick
 @onready var grab: Grab = %Grab
 @onready var life: Life = %Life
-
-@onready var head_animation: AnimatedSprite2D = $head_animation
-@onready var tail_animation: AnimatedSprite2D = $tail_animation
-@onready var hurtbox: Area2D = $HurtBox
+@onready var head_animation = $head_animation as AnimatedSprite2D
+@onready var tail_animation = $tail_animation as AnimatedSprite2D
+@onready var hurtbox = $HurtBox as Area2D
+@onready var invecibility_time = $invencibility_time as Timer
+@onready var hurt_animation = $hurt_animation as AnimationPlayer
 
 func _physics_process(_delta: float) -> void:
 	velocity.x = 0
@@ -72,13 +73,15 @@ func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	# NOTE Maybe play hurt animation, give some invincibility frames and then back to normal
 	if not invincibility:
 		life.damage()
+		invencibility_frames()
 
 func _on_kick_animation_animation_finished() -> void:
 	head_animation.play("default")
 
-func _on_kickable_area_body_entered(body: Node2D) -> void:
-	if body is Ball:
-		body.set_outline(true)
+func invencibility_frames():
+	invecibility_time.start()
+	hurt_animation.play("hurt")
+	invincibility = true
 
-func invencibility_frames() -> void:
-	pass
+func _on_invencibility_time_timeout() -> void:
+	invincibility = false
