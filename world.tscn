@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://q7r31yidg88g" path="res://entities/player/player.tscn" id="1_lklov"]
 [ext_resource type="PackedScene" uid="uid://c424f240qxo4m" path="res://game/waves_scene.tscn" id="1_vrmhi"]
 [ext_resource type="PackedScene" uid="uid://gchihnv3vpvw" path="res://ball/ball.tscn" id="2_y5g5q"]
-[ext_resource type="Texture2D" uid="uid://cploosi6yg5k" path="res://assets/Background.jpg" id="4_wi1h0"]
+[ext_resource type="Texture2D" uid="uid://bla73xg4227ec" path="res://assets/Background.jpg" id="4_wi1h0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1wdxc"]
 normal = Vector2(1, 0)
