@@ -6,7 +6,7 @@ extends CharacterBody2D
 var direction: float = 30
 var bounce: Vector2
 var burning: bool
-var grabed: bool = false
+var grabbed: bool = false
 
 @export var rotation_speed_factor: float = 0.02
 @onready var contact_area: ContactArea = $ContactArea
@@ -22,25 +22,24 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
-	if grabed == false:
+	if grabbed == false:
 		sprite.rotation += velocity.length() * rotation_speed_factor * delta
-	elif grabed == true:
+	elif grabbed == true:
 		print("era pra estar funcionando")
 		sprite.rotation = velocity.length() * rotation_speed_factor
 
 
 
 func change_angle(angle: float) -> void:
+	# NOTE SOM AQUI DA BOLA BATENDO - INIMIGO/JOGADOR BATENDO
 	direction = angle
 	var base_velocity: Vector2 = Vector2(cos(deg_to_rad(direction)), sin(deg_to_rad(direction)))
 	velocity = base_velocity * speed * heat.speed_bonus
 	velocity = Vector2(cos(deg_to_rad(direction)) * speed * heat.speed_bonus, sin(deg_to_rad(direction)) * speed * heat.speed_bonus)
-	grabed = false
-	
-	#som de bola kikando, colocar if burning para saber se está quente
-	
+	grabbed = false
 
 func flip(normal: Vector2) -> void:
+	# NOTE SOM AQUI DA BOLA BATENDO - PAREDE
 	heat.cool_down()
 	
 	normal = normal.normalized()
@@ -50,11 +49,7 @@ func flip(normal: Vector2) -> void:
 	var base_velocity: Vector2 = Vector2(cos(deg_to_rad(direction)), sin(deg_to_rad(direction)))
 	
 	velocity = base_velocity * speed * heat.speed_bonus
-	
-	#som de bola kikando, colocar if burning para saber se está quente
 
 
-func _on_grab_hold_to_stop() -> void: #som de bola mordida
-	print("mordido")
-	grabed = true
-	print(grabed)
+func _on_grab_hold_to_stop() -> void: # NOTE SOM AQUI DA BOLA MORDIDA
+	grabbed = true
