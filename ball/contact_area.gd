@@ -1,12 +1,10 @@
 class_name ContactArea
 extends Area2D
 
-signal wall_collision(counter_clockwise)
-
 func _ready() -> void:
 	area_entered.connect(_on_Area2D_area_entered)
 	body_entered.connect(_on_Area2D_Body_entered)
-	
+
 func _on_Area2D_Body_entered(body: Node2D) -> void:
 	print("_on_Area2D_Body_entered")
 	

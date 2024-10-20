@@ -38,7 +38,7 @@ func trigger(direction: Vector2) -> void:
 			hit.emit(direction, data)
 	enabled = false
 
-func _handler(direction: Vector2, data: Dictionary) -> void:
+func _handler(_direction: Vector2, _data: Dictionary) -> void:
 	push_error("MUST OVERRIDE _HANDLER")
 
 

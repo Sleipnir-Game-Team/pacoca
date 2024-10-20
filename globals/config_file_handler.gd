@@ -1,9 +1,9 @@
 extends Node
 
-var config = ConfigFile.new()
+var config: ConfigFile = ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini"
 
-func _ready():
+func _ready() -> void:
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
 		config.set_value("keybinding", "player_up", "W")
 		config.set_value("keybinding", "player_down", "S")
@@ -24,28 +24,26 @@ func _ready():
 		config.load(SETTINGS_FILE_PATH)
 
 
-func save_all_video_settings(key:String, value):
+func save_all_video_settings(key: String, value: Variant) -> void:
 	config.set_value("video", key, value)
 	config.save(SETTINGS_FILE_PATH)
-	
-	
-func load_all_video_settings():
-	var video_settings = {}
+
+func load_all_video_settings() -> Dictionary:
+	var video_settings: Dictionary = {}
 	for key in config.get_section_keys("video"):
 		video_settings[key] = config.get_value("video", key)
 	return video_settings
-	
 
-func save_all_audio_settings(key:String, value):
-		config.set_value("audio", key, value)
-		config.save(SETTINGS_FILE_PATH)
-		
 
-func load_all_audio_settings():
-	var audio_settings = {}
+func save_all_audio_settings(key: String, value: Variant) -> void:
+	config.set_value("audio", key, value)
+	config.save(SETTINGS_FILE_PATH)
+
+func load_all_audio_settings() -> Dictionary:
+	var audio_settings: Dictionary = {}
 	for key in config.get_section_keys("audio"):
 		audio_settings[key] = config.get_value("audio", key)
 	return audio_settings
-	
-func get_setting(category, key):
+
+func get_setting(category: String, key: String) -> void:
 	config.get_value(category, key)

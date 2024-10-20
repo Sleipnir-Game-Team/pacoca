@@ -4,7 +4,7 @@ var SPEED: int = 150
 var max_distance: int = 85  
 var radius: int
 
-@onready var life: Life = %life
+@onready var life: Life = %Life
 @onready var initial_position: Vector2 = global_position
 @onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
 
@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
 		
 	move_and_slide()
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
+func _on_hitbox_body_entered(_body: Node2D) -> void:
 	print("dano")
 	life.damage()
 

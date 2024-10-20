@@ -20,7 +20,7 @@ class_name Player
 @onready var grab: Grab = %Grab
 @onready var life: Life = %Life
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity.x = 0
 	
 	var movement_direction: int = int(Input.is_action_pressed("player_right")) - int(Input.is_action_pressed("player_left"))
