@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ball/ball.gd" id="1_og6ph"]
 [ext_resource type="Script" path="res://ball/contact_area.gd" id="2_62eaa"]
 [ext_resource type="PackedScene" uid="uid://cnx4on7v40uad" path="res://ball/heat.tscn" id="2_ukovj"]
-[ext_resource type="Texture2D" uid="uid://5kmsfk1xuncf" path="res://assets/Ball.png" id="3_ae5up"]
+[ext_resource type="Texture2D" uid="uid://d1m1sgplbbng6" path="res://assets/Ball.png" id="3_ae5up"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njqvl"]
 radius = 17.2627

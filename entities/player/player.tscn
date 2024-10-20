@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_s5awy"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick.tscn" id="2_lqefg"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="3_po3r7"]
-[ext_resource type="Texture2D" uid="uid://dg5seuhxf10nv" path="res://assets/Dog.png" id="4_8r362"]
+[ext_resource type="Texture2D" uid="uid://dntqx7lobswj4" path="res://assets/Dog.png" id="4_8r362"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7abv1"]
 radius = 53.0

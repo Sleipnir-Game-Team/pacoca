@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmvk3h52rrel0"]
+[gd_scene load_steps=9 format=3 uid="uid://dmvk3h52rrel0"]
 
 [ext_resource type="PackedScene" uid="uid://q7r31yidg88g" path="res://entities/player/player.tscn" id="1_lklov"]
 [ext_resource type="PackedScene" uid="uid://gchihnv3vpvw" path="res://ball/ball.tscn" id="2_y5g5q"]
 [ext_resource type="PackedScene" uid="uid://bqkidmy2reqv7" path="res://entities/enemy/Simple_Enemy.tscn" id="3_qh0ea"]
+[ext_resource type="Texture2D" uid="uid://cploosi6yg5k" path="res://assets/Background.jpg" id="4_wi1h0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1wdxc"]
 normal = Vector2(1, 0)
@@ -51,3 +52,13 @@ position = Vector2(61, 647)
 
 [node name="Enemy" parent="." instance=ExtResource("3_qh0ea")]
 position = Vector2(366, 212)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -1
+scroll_offset = Vector2(405, 1080)
+repeat_size = Vector2(0, 1080)
+autoscroll = Vector2(0, 200)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("4_wi1h0")
