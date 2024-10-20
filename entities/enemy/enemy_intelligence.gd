@@ -5,18 +5,17 @@ var rng = RandomNumberGenerator.new()
 @export var min_attack_player_chance = 25
 @export var min_trow_chance = 40
 @export var min_trow_to_enemie_chance = 35
-@export var player: Player
 @export var ball: Ball
 @export_group('Kick', 'kick')
 
-#var player = preload("res://entities/player/player.tscn")
+var player: Player
 
 @onready var kick = %Kick
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	player = get_tree().get_first_node_in_group("Player")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
