@@ -9,7 +9,6 @@ MainPlayer = NodePath("Main")
 TriggerPlayer = NodePath("Triggers")
 Clock = NodePath("Conductor")
 _song_path = "res://addons/SleipnirAudio/song_res"
-log_level = 0
 
 [node name="Main" type="Node" parent="."]
 
