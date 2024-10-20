@@ -13,7 +13,9 @@ var speed_bonus: int:
 @export var per_heat_bonus: float = 0
 
 func heat_up() -> void:
-	heat += 1
+	heat += 2
+	print('heat subiu para: ', heat)
 
 func cool_down() -> void:
 	heat -= 1
+	print('heat desceu para: ', heat)
