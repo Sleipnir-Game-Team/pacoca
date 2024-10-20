@@ -1,10 +1,12 @@
 extends Control
 
-func _enter_tree() -> void:
-	SleipnirMaestro.change_song("miwa_menu")
-
 func _ready() -> void:
-	SleipnirMaestro.play()
+	if SleipnirMaestro._current_song_node != null and SleipnirMaestro._current_song_node.is_playing():
+		SleipnirMaestro.change_song("main_menu",true,"CUT")
+	else:
+		SleipnirMaestro.change_song("main_menu")
+		SleipnirMaestro.play()
+	
 	UI_Controller.stack.screens.append(self)
 
 ## Função que roda quando você aperta o botão de "jogar"
@@ -21,6 +23,3 @@ func _on_options_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	SfxGlobals.play_global("click")
 	get_tree().quit() # Fecha a aplicação
-
-func _exit_tree() -> void:
-	SleipnirMaestro.stop()
