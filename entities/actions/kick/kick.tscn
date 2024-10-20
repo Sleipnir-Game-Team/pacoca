@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://fum0l3hil4ye"]
 
-[ext_resource type="Script" path="res://entities/actions/kick.gd" id="1_qtwlo"]
+[ext_resource type="Script" path="res://entities/actions/kick/kick.gd" id="1_qtwlo"]
 
 [node name="Kick" type="ShapeCast2D"]
 enabled = false

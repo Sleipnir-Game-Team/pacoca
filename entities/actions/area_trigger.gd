@@ -25,18 +25,6 @@ func _ready() -> void:
 	# Adjust cooldown time according to exported property
 	cooldown_timer.wait_time = cooldown_seconds
 
-#func _physics_process(delta: float) -> void:
-	#var aim_direction = get_parent().global_position.direction_to(get_global_mouse_position())
-	#var aim_angle = aim_direction.angle()
-	#
-	#rotation = aim_angle
-	#position = distance * aim_direction
-	#
-	#position.x += offset * -sin(rotation)
-	#position.y += offset * cos(rotation)
-	#
-	#rotation += PI / 2
-
 func trigger(direction: Vector2) -> void:
 	last_direction = direction
 	
@@ -46,8 +34,13 @@ func trigger(direction: Vector2) -> void:
 	force_shapecast_update()
 	match collision_result:
 		[var data]:
+			_handler.call(direction, data)
 			hit.emit(direction, data)
 	enabled = false
 
-func can_kick() -> bool:
+func _handler(_direction: Vector2, _data: Dictionary) -> void:
+	push_error("MUST OVERRIDE _HANDLER")
+
+
+func can_trigger() -> bool:
 	return cooldown_timer.is_stopped()

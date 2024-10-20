@@ -6,6 +6,6 @@ extends MarginContainer
 	#if event.is_action_pressed("game_resume"):
 		#get_tree().paused = false
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		UI_Controller.managePauseMenu()
