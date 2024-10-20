@@ -14,3 +14,4 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 func _on_life_defeat_signal() -> void:
 	# NOTE Maybe play a death sound, or a death animation, then run a timer and finally actually die lmao
 	queue_free()
+	Waves.pop_enemy()

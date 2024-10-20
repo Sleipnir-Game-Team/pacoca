@@ -5,7 +5,7 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	wave_lists.start_lists()
-	var wave:  = Waves.return_list()
+	var wave: Array = Waves.return_list()
 	run_wave(wave)
 
 func _process(delta: float) -> void:
@@ -13,6 +13,8 @@ func _process(delta: float) -> void:
 		var waves: Array = Waves.return_list()
 		if waves.size() > 0:
 			run_wave(waves)
+		else:
+			GameManager.game_over()
 		Waves.has_pass = false
 
 func run_wave(wave: Array) -> void:
