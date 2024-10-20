@@ -22,6 +22,9 @@ func decision() -> void:
 		throw_ball_away()
 
 func attack_player() -> void:
+	if not is_instance_valid(player):
+		player = get_tree().get_first_node_in_group("Player")
+		
 	var enemy_position: Vector2 = get_parent().global_position
 	kick.trigger(enemy_position.direction_to(player.global_position))
 

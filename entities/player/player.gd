@@ -20,8 +20,8 @@ var invincibility: bool = false
 @onready var kick: Kick = %Kick
 @onready var grab: Grab = %Grab
 @onready var life: Life = %Life
-@onready var head_animation = $head_animation as AnimatedSprite2D
-@onready var tail_animation = $tail_animation as AnimatedSprite2D
+@onready var head_animation: AnimatedSprite2D = $head_animation
+@onready var tail_animation: AnimatedSprite2D = $tail_animation
 
 func _physics_process(_delta: float) -> void:
 	velocity.x = 0
@@ -74,3 +74,8 @@ func _on_hurt_box_body_entered(_body: Node2D) -> void:
 
 func _on_kick_animation_animation_finished() -> void:
 	head_animation.play("default")
+
+
+func _on_kickable_area_body_entered(body: Node2D) -> void:
+	if body is Ball:
+		body.set_outline(true)

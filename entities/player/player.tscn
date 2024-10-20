@@ -334,4 +334,5 @@ autoplay = "default"
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="hit" from="Kick" to="." method="handle_kick"]
 [connection signal="defeat_signal" from="Life" to="." method="_on_life_defeat_signal"]
+[connection signal="body_entered" from="KickableArea" to="." method="_on_kickable_area_body_entered"]
 [connection signal="animation_finished" from="head_animation" to="." method="_on_kick_animation_animation_finished"]
