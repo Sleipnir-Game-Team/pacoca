@@ -1,32 +1,53 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqkidmy2reqv7"]
+[gd_scene load_steps=10 format=3 uid="uid://bqkidmy2reqv7"]
 
-[ext_resource type="Script" path="res://entities/enemy/simple_enemy_movement.gd" id="1_2r8d8"]
-[ext_resource type="Texture2D" uid="uid://2j74uc8bvtrr" path="res://Assets/alien A.png" id="2_cdh1q"]
+[ext_resource type="Texture2D" uid="uid://rteii2vwuub2" path="res://assets/alien A.png" id="2_cdh1q"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="3_ympxd"]
-[ext_resource type="Script" path="res://entities/enemy/enemy_intelligence.gd" id="4_ytfbf"]
+[ext_resource type="Script" path="res://entities/enemy/behaviours/enemy_intelligence.gd" id="4_ytfbf"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="5_ct3r7"]
-[ext_resource type="Script" path="res://entities/enemy/movement_top_down.gd" id="6_cs0e3"]
-[ext_resource type="Script" path="res://entities/enemy/ia_movement_horizontal.gd" id="7_u2wfq"]
+[ext_resource type="Script" path="res://entities/enemy/behaviours/movement_top_down.gd" id="6_cs0e3"]
+[ext_resource type="Script" path="res://entities/enemy/behaviours/ia_movement_horizontal.gd" id="7_u2wfq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ww7nc"]
 radius = 44.1022
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnl3t"]
+radius = 12.0
+height = 138.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktvbd"]
 radius = 14.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnl3t"]
-radius = 14.0
-height = 142.0
-
 [node name="Enemy" type="CharacterBody2D"]
-script = ExtResource("1_2r8d8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-unique_name_in_owner = true
-shape = SubResource("CircleShape2D_ww7nc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_cdh1q")
+
+[node name="HurtBox" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_ww7nc")
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(0, 82)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xnl3t")
+
+[node name="Life" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_ct3r7")
+max_life = 1
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("6_cs0e3")
+speed = 150.0
+
+[node name="IAMovementHorizontal" type="Node" parent="."]
+script = ExtResource("7_u2wfq")
+movement_length = 150.0
+
+[node name="ActionManagers" type="Node" parent="."]
+script = ExtResource("4_ytfbf")
 
 [node name="Kick" parent="." instance=ExtResource("3_ympxd")]
 unique_name_in_owner = true
@@ -34,29 +55,5 @@ position = Vector2(-57, 82)
 shape = SubResource("CircleShape2D_ktvbd")
 target_position = Vector2(114, 0)
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0, 82)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_xnl3t")
-
-[node name="ActionManagers" type="Node" parent="."]
-script = ExtResource("4_ytfbf")
-
-[node name="Life" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("5_ct3r7")
-max_life = 1
-
-[node name="Movement" type="Node2D" parent="."]
-script = ExtResource("6_cs0e3")
-speed = 150.0
-
-[node name="IA_Movement_Horizontal" type="Node2D" parent="."]
-script = ExtResource("7_u2wfq")
-movement_length = 150.0
-
-[connection signal="hit" from="Kick" to="ActionManagers" method="_on_kick_hit"]
-[connection signal="area_entered" from="Area2D" to="ActionManagers" method="_on_area_2d_area_entered"]
-[connection signal="move" from="IA_Movement_Horizontal" to="Movement" method="move"]
+[connection signal="area_entered" from="AttackArea" to="ActionManagers" method="_on_area_2d_area_entered"]
+[connection signal="move" from="IAMovementHorizontal" to="Movement" method="move"]
