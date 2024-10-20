@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3wob6r2y6gom"]
+
+[ext_resource type="Script" path="res://entities/boss/boss.gd" id="1_n8o6t"]
+[ext_resource type="Texture2D" uid="uid://niyvrnccmdpa" path="res://assets/boss A.png" id="2_346jb"]
+[ext_resource type="Script" path="res://entities/components/life.gd" id="3_piw0h"]
+[ext_resource type="Script" path="res://entities/enemy/behaviours/enemy_intelligence.gd" id="4_w6tsh"]
+[ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="5_iaom8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p8oxy"]
+radius = 12.0
+height = 138.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7lno"]
+radius = 77.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_26q73"]
+radius = 75.1665
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mfxm7"]
+radius = 14.0
+
+[node name="boss" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_n8o6t")
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(0, 82)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-1, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_p8oxy")
+
+[node name="boss_collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a7lno")
+
+[node name="boss_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_346jb")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="hurt_collision" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_26q73")
+debug_color = Color(0.934147, 0.226615, 0.316402, 0.42)
+
+[node name="life" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_piw0h")
+
+[node name="ActionManagers" type="Node" parent="."]
+script = ExtResource("4_w6tsh")
+
+[node name="Kick" parent="." instance=ExtResource("5_iaom8")]
+unique_name_in_owner = true
+position = Vector2(-58, 94)
+shape = SubResource("CircleShape2D_mfxm7")
+target_position = Vector2(114, 0)
+
+[connection signal="area_entered" from="AttackArea" to="ActionManagers" method="_on_attack_area_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="defeat_signal" from="life" to="." method="_on_life_defeat_signal"]
