@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://bqkidmy2reqv7"]
 
-[ext_resource type="Script" path="res://entities/enemy/simple_enemy_Movement.gd" id="1_8rw2w"]
-[ext_resource type="Texture2D" uid="uid://2j74uc8bvtrr" path="res://assets/alien A.png" id="2_wtec1"]
+[ext_resource type="Script" path="res://entities/enemy/simple_enemy_Movement.gd" id="1_ak4p7"]
+[ext_resource type="Texture2D" uid="uid://dewq75p4ofxpe" path="res://assets/alien A.png" id="2_wscs5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ww7nc"]
 
 [node name="Enemy" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_8rw2w")
+script = ExtResource("1_ak4p7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_ww7nc")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("2_wtec1")
+texture = ExtResource("2_wscs5")
