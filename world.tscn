@@ -50,6 +50,9 @@ shape = SubResource("WorldBoundaryShape2D_5y33w")
 position = Vector2(401, 957)
 movement_speed = 400
 
+[node name="head_animation" parent="Player" index="9"]
+frame_progress = 0.0
+
 [node name="Ball" parent="." instance=ExtResource("2_y5g5q")]
 position = Vector2(152, 588)
 

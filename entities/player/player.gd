@@ -59,6 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		kick.trigger(attack_direction)
 		head_animation.play("kick")
 	elif event.is_action_pressed("player_special") and grab.can_trigger():
+		head_animation.play("bite")
 		invincibility = false
 		var click_position: Vector2 = get_global_mouse_position()
 		var attack_direction: Vector2 = global_position.direction_to(click_position)
