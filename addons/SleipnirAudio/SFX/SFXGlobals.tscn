@@ -1,15 +1,104 @@
-[gd_scene load_steps=3 format=3 uid="uid://lg6kuv3fkktu"]
+[gd_scene load_steps=19 format=3 uid="uid://lg6kuv3fkktu"]
 
 [ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SFXGlobals.gd" id="1_p5jl5"]
-[ext_resource type="AudioStream" uid="uid://7dev0vx25k0b" path="res://assets/Level [LOOP].wav" id="2_f5tej"]
+[ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SoundQueue.gd" id="3_gcjy4"]
+[ext_resource type="AudioStream" uid="uid://oo7mokhl8vbg" path="res://assets/Sounds/UI/UI_Click1.mp3" id="4_tbr05"]
+[ext_resource type="AudioStream" uid="uid://d4ho1rsof5xvw" path="res://assets/Sounds/UI/UI_Click2.mp3" id="5_rmtfi"]
+[ext_resource type="AudioStream" uid="uid://cbjpdw613fraj" path="res://assets/Sounds/UI/UI_Click3.mp3" id="6_hq6ue"]
+[ext_resource type="AudioStream" uid="uid://bkp0qbuhhq7kr" path="res://assets/Sounds/UI/UI_Click4.mp3" id="7_4bf1c"]
+[ext_resource type="AudioStream" uid="uid://xemvh0ev4kvq" path="res://assets/Sounds/UI/UI_Back.mp3" id="8_48j84"]
+[ext_resource type="AudioStream" uid="uid://b4n133lkybmvu" path="res://assets/Sounds/UI/UI_Hover1.mp3" id="9_kti0m"]
+[ext_resource type="AudioStream" uid="uid://ca464i75yhwwn" path="res://assets/Sounds/UI/UI_Hover2.mp3" id="10_qgkfh"]
+[ext_resource type="AudioStream" uid="uid://c7qadgaa053w7" path="res://assets/Sounds/UI/UI_Hover3.mp3" id="11_yhi0g"]
+[ext_resource type="AudioStream" uid="uid://cnrwjldlt23vm" path="res://assets/Sounds/UI/UI_Hover4.mp3" id="12_ljk5r"]
+[ext_resource type="AudioStream" uid="uid://qux376478aje" path="res://assets/Sounds/UI/UI_Pause.mp3" id="13_spnc2"]
+[ext_resource type="AudioStream" uid="uid://b7scsxa7t77r" path="res://assets/Sounds/UI/UI_Resume.mp3" id="14_vl2ws"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_62u7i"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("4_tbr05")
+stream_1/stream = ExtResource("5_rmtfi")
+stream_2/stream = ExtResource("6_hq6ue")
+stream_3/stream = ExtResource("7_4bf1c")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k846e"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_48j84")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3h3jl"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("9_kti0m")
+stream_1/stream = ExtResource("10_qgkfh")
+stream_2/stream = ExtResource("11_yhi0g")
+stream_3/stream = ExtResource("12_ljk5r")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_10o18"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("13_spnc2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xh0td"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("14_vl2ws")
 
 [node name="SfxGlobals" type="Node"]
 script = ExtResource("1_p5jl5")
 
 [node name="PlaceHolder" type="Node" parent="."]
 
-[node name="teste_som" type="AudioStreamPlayer" parent="PlaceHolder"]
-stream = ExtResource("2_f5tej")
+[node name="UI" type="Node" parent="."]
+
+[node name="click" type="Node" parent="UI"]
+script = ExtResource("3_gcjy4")
+Count = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/click"]
+stream = SubResource("AudioStreamRandomizer_62u7i")
 bus = &"sfx"
 
-[node name="UI" type="Node" parent="."]
+[node name="play" type="Node" parent="UI"]
+script = ExtResource("3_gcjy4")
+Count = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/play"]
+stream = SubResource("AudioStreamRandomizer_k846e")
+pitch_scale = 1.5
+bus = &"sfx"
+
+[node name="back" type="Node" parent="UI"]
+script = ExtResource("3_gcjy4")
+Count = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/back"]
+stream = SubResource("AudioStreamRandomizer_k846e")
+pitch_scale = 1.5
+bus = &"sfx"
+
+[node name="hover" type="Node" parent="UI"]
+script = ExtResource("3_gcjy4")
+Count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/hover"]
+stream = SubResource("AudioStreamRandomizer_3h3jl")
+bus = &"sfx"
+
+[node name="pause" type="Node" parent="UI"]
+script = ExtResource("3_gcjy4")
+Count = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/pause"]
+stream = SubResource("AudioStreamRandomizer_10o18")
+pitch_scale = 1.5
+bus = &"sfx"
+
+[node name="resume" type="Node" parent="UI"]
+script = ExtResource("3_gcjy4")
+Count = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/resume"]
+stream = SubResource("AudioStreamRandomizer_xh0td")
+bus = &"sfx"

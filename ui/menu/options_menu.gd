@@ -89,6 +89,7 @@ func _on_volume_sfx_slider_drag_ended(value_changed):
 	
 	
 func _on_mute_checkbox_toggled(toggled_on):
+	SfxGlobals.play_global("click")
 	Config_File_Handler.save_all_audio_settings("muted", toggled_on)
 	if toggled_on:
 		volume_value = -30
@@ -98,8 +99,9 @@ func _on_mute_checkbox_toggled(toggled_on):
 		
 		
 func _on_button_pressed():
-	SfxGlobals.play_global("teste_som")
+	SfxGlobals.play_global("click")
 
 
 func _on_back_button_pressed():
+	SfxGlobals.play_global("back")
 	UI_Controller.freeScreen()
