@@ -1,13 +1,21 @@
 extends Node
 
+@onready var wave_lists = $Wave_list as Node
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var wave: Array[Array] = [
-		["res://entities/enemy/simple_enemy.tscn", Vector2(566, 422)],
-		["res://entities/enemy/simple_enemy.tscn", Vector2(665, 622)]
-	]
-	
+	wave_lists.start_lists()
+	var wave = Waves.return_list()
 	run_wave(wave)
+
+func _process(delta: float) -> void:
+	if Waves.has_pass == true:
+		var waves = Waves.return_list()
+		if waves.size() > 0:
+			run_wave(waves)
+		else:
+			GameManager.game_over()
+		Waves.has_pass = false
 
 func run_wave(wave: Array) -> void:
 	for enemy: Array in wave:

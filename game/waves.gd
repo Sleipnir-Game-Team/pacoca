@@ -1,6 +1,6 @@
-class_name Waves
-
+extends Node
 var waves: Array[Array] = []
+var has_pass = false
 
 func add_list(wave: Array) -> void:
 	waves.append(wave)
@@ -15,8 +15,14 @@ func pop_enemy() -> void:
 		pass_list()
 
 func pass_list() -> void:
+	has_pass = true
 	if waves.size() > 0:
 		waves.remove_at(0)
+	else:
+		pass
 		
 func return_list() -> Array:
-	return waves[0]
+	if waves.size() > 0:
+		return waves[0]
+	else:
+		return waves

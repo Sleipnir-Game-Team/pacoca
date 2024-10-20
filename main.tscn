@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dmvk3h52rrel0" path="res://world.tscn" id="1_45oy0"]
 [ext_resource type="Script" path="res://main.gd" id="1_cxumw"]
 [ext_resource type="Script" path="res://world.gd" id="2_nsl35"]
-[ext_resource type="Texture2D" uid="uid://v7yvdrrektn7" path="res://assets/Alien Dog 1.jpg" id="4_mcjaf"]
-[ext_resource type="Texture2D" uid="uid://11ue2q3cyaoc" path="res://assets/Alien Dog 2.jpg" id="5_cntkf"]
+[ext_resource type="Texture2D" uid="uid://bwhyrh2vt15d7" path="res://assets/Alien Dog 1.jpg" id="4_mcjaf"]
+[ext_resource type="Texture2D" uid="uid://ca3uwrmq0vu2v" path="res://assets/Alien Dog 2.jpg" id="5_cntkf"]
 
 [node name="Main" type="MarginContainer"]
 process_mode = 3
