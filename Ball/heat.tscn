@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnx4on7v40uad"]
+[gd_scene load_steps=2 format=3 uid="uid://de8vseig5n84b"]
 
-[ext_resource type="Script" path="res://scripts/ball_heat.gd" id="1_l1d4g"]
+[ext_resource type="Script" path="res://ball/heat.gd" id="1_onllm"]
 
-[node name="Heat" type="Node2D"]
-script = ExtResource("1_l1d4g")
+[node name="Heat" type="Node"]
+script = ExtResource("1_onllm")

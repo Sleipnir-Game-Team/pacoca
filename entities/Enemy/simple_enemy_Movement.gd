@@ -14,4 +14,3 @@ func _ready() -> void:
 	var shape: Shape2D = collision_shape_2d.shape
 	if shape is CircleShape2D:
 		radius = shape.radius  # Pega o raio do círculo
-		print("Raio do círculo: ", radius)

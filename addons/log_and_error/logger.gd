@@ -112,7 +112,7 @@ func _get_script_name(stack_info:String):
 ## cria uma tela de erro
 ## Ainda bem arcaica, se quiser usar está disponivel, porém mudanças serão feitas
 func load_error_screen(message:String="Unexpected Error Happened") -> void:
-	var errorscene = preload("ErrorScreen/ErrorScreen.tscn")
+	var errorscene = preload("error_screen/error_screen.tscn")
 	var Error = errorscene.instantiate() as ErrorScreen
 	get_tree().root.add_child(Error)
 	Error.ErrorMessage.text = message

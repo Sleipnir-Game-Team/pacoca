@@ -45,7 +45,6 @@ func changeScreen(screen_path: String, parent: Node) -> void:
 	
 	stack.add(newScreen, parent)
 
-
 func freeScreen() -> Node:
 	return stack.pop()
 

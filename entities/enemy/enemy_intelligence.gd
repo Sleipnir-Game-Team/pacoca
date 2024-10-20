@@ -39,9 +39,7 @@ func throw_ball_to_ally() -> void:
 	pass
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("Área entrou:", area.name)
 	if area.name == "ContactArea":
-		print("encotrou algo")
 		decision()
 
 func _on_kick_hit(direction: Vector2, data: Dictionary) -> void:

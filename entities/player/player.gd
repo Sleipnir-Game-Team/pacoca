@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
+var invincibility: bool = false
 
 ## Distance in pixels between the player's center and the held object's origin
 @export var holding_distance: int = 78
@@ -19,8 +20,6 @@ class_name Player
 @onready var kick: Kick = %Kick
 @onready var grab: Grab = %Grab
 @onready var life: Life = %Life
-
-var imortal = false
 
 func _physics_process(_delta: float) -> void:
 	velocity.x = 0
@@ -44,7 +43,7 @@ func _physics_process(_delta: float) -> void:
 		rotation = rotate_toward(rotation, side, 0.1)
 	
 	if grab.is_holding():
-		imortal = true
+		invincibility = true
 		grab.held_object.global_position = tongue.global_position
 
 
@@ -54,7 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var attack_direction: Vector2 = global_position.direction_to(click_position)
 		kick.trigger(attack_direction)
 	elif event.is_action_pressed("player_special") and grab.can_trigger():
-		imortal = false
+		invincibility = false
 		var click_position: Vector2 = get_global_mouse_position()
 		var attack_direction: Vector2 = global_position.direction_to(click_position)
 		grab.trigger(attack_direction)
@@ -66,5 +65,5 @@ func _on_life_defeat_signal() -> void:
 
 func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	# TODO Maybe play hurt animation, give some invincibility frames and then back to normal
-	if not imortal:
+	if not invincibility:
 		life.damage()

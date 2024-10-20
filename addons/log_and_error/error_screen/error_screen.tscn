@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://uq03ic7vohb"]
 
-[ext_resource type="Script" path="res://addons/LogAndError/ErrorScreen/ErrorScreen.gd" id="1_u0xfi"]
+[ext_resource type="Script" path="res://addons/log_and_error/error_screen/error_screen.gd" id="1_u0xfi"]
 
 [node name="ErrorScreen" type="Node2D" node_paths=PackedStringArray("ErrorMessage")]
 process_mode = 3
