@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 var held_object: Ball = null
 
 ## Distance in pixels between the player's center and the held object's origin
