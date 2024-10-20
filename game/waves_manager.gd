@@ -5,8 +5,8 @@ var enemies_list = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enemies_list = [
-		["res://entities/enemy/Simple_Enemy.tscn", Vector2(566, 422)],
-		["res://entities/enemy/Simple_Enemy.tscn", Vector2(665, 622)]]
+		["res://entities/enemy/enemy.tscn", Vector2(566, 422)],
+		["res://entities/enemy/enemy.tscn", Vector2(665, 622)]]
 	read_lists(enemies_list)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
