@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://addons/SleipnirAudio/Music/SleipnirMaestro.gd" id="1_w4j76"]
 
 [node name="SleipnirMaestro" type="Node" node_paths=PackedStringArray("MainPlayer", "TriggerPlayer", "Clock")]
-process_mode = 3
 script = ExtResource("1_w4j76")
 MainPlayer = NodePath("Main")
 TriggerPlayer = NodePath("Triggers")

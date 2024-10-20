@@ -45,5 +45,5 @@ func load_all_audio_settings() -> Dictionary:
 		audio_settings[key] = config.get_value("audio", key)
 	return audio_settings
 
-func get_setting(category: String, key: String) -> Variant:
+func get_setting(category: String, key: String) -> String:
 	return config.get_value(category, key)
