@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqkidmy2reqv7"]
+[gd_scene load_steps=12 format=3 uid="uid://bqkidmy2reqv7"]
 
 [ext_resource type="Script" path="res://entities/enemy/simple_enemy.gd" id="1_2r8d8"]
 [ext_resource type="Texture2D" uid="uid://rteii2vwuub2" path="res://assets/alien A.png" id="2_cdh1q"]
@@ -12,10 +12,7 @@
 radius = 44.1022
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcc70"]
-radius = 41.1947
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6defd"]
-radius = 31.0
+radius = 74.0608
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnl3t"]
 radius = 12.0
@@ -41,11 +38,6 @@ input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_fcc70")
-debug_color = Color(0.941572, 0.209211, 0.319502, 0.42)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, 34)
-shape = SubResource("CircleShape2D_6defd")
 debug_color = Color(0.941572, 0.209211, 0.319502, 0.42)
 
 [node name="AttackArea" type="Area2D" parent="."]
