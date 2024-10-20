@@ -10,8 +10,6 @@ var rng = RandomNumberGenerator.new()
 
 var player: Player
 
-#var player = preload("res://entities/player/player.tscn")
-
 @onready var kick = %Kick
 
 

@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bdxqixydfueyy" path="res://assets/Dog.png" id="4_8r362"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7abv1"]
-radius = 53.0
-height = 188.0
+radius = 25.0
+height = 156.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xbaix"]
 
