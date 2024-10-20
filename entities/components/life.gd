@@ -1,7 +1,6 @@
 class_name Life
 extends Node
 
-
 @export var max_life: int = 3
 @onready var entity_life: int = max_life
 

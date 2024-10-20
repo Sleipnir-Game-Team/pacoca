@@ -1,7 +1,6 @@
 class_name Ball
 extends CharacterBody2D
 
-
 var speed: int = 150
 var direction: float = 30
 var bounce: Vector2
@@ -22,27 +21,14 @@ func change_angle(angle: float) -> void:
 	var base_velocity: Vector2 = Vector2(cos(deg_to_rad(direction)), sin(deg_to_rad(direction)))
 	velocity = base_velocity * speed * heat.speed_bonus
 	velocity = Vector2(cos(deg_to_rad(direction)) * speed * heat.speed_bonus, sin(deg_to_rad(direction)) * speed * heat.speed_bonus)
-	
-
 
 func flip(normal: Vector2) -> void:
 	heat.cool_down()
 	
-
 	normal = normal.normalized()
-
 	var dot_product = velocity.dot(normal)
 	var reflection_angle: float = rad_to_deg((velocity - 2 * dot_product * normal).angle())
 	direction = reflection_angle
 	var base_velocity: Vector2 = Vector2(cos(deg_to_rad(direction)), sin(deg_to_rad(direction)))
 	
 	velocity = base_velocity * speed * heat.speed_bonus
-	
-	#normal = normal.normalized()
-	#var dot_product = velocity.dot(normal)
-	#velocity = velocity - 2 * dot_product * normal
-	#direction = rad_to_deg(velocity.angle())
-	
-	
-	#velocity = velocity.bounce(normal)
-	#direction = rad_to_deg(velocity.angle())

@@ -14,8 +14,6 @@ var speed_bonus: int:
 
 func heat_up() -> void:
 	heat += 2
-	print('heat subiu para: ', heat)
 
 func cool_down() -> void:
 	heat -= 1
-	print('heat desceu para: ', heat)
