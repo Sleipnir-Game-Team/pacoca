@@ -64,6 +64,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func handle_kick(direction: Vector2, data: Dictionary) -> void:
 	var ball = data.collider as Ball
 	ball.change_angle(rad_to_deg(direction.angle()))
+	ball.add_heat()
 
 func handle_grab(direction: Vector2, data: Dictionary) -> void:
 	var ball = data.collider as Ball

@@ -41,7 +41,7 @@ project/assembly_name="Game Jam Plus 24 25"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/LogAndError/plugin.cfg", "res://addons/SleipnirAudio/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

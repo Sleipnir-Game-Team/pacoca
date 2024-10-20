@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_s5awy"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick.tscn" id="2_lqefg"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="3_po3r7"]
+[ext_resource type="Texture2D" uid="uid://dntqx7lobswj4" path="res://assets/Dog.png" id="4_8r362"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ww1b"]
 radius = 12.0
@@ -49,6 +50,9 @@ unique_name_in_owner = true
 script = ExtResource("3_po3r7")
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_8r362")
+
 [connection signal="hit" from="Kick" to="." method="handle_kick"]
 [connection signal="hit" from="Grab" to="." method="handle_grab"]
 [connection signal="defeat_signal" from="Life" to="." method="_on_life_defeat_signal"]
