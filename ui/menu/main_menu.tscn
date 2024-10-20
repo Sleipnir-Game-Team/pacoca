@@ -1,14 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5cwvqaharjej"]
+[gd_scene load_steps=4 format=3 uid="uid://c5cwvqaharjej"]
 
 [ext_resource type="Script" path="res://ui/menu/main_menu.gd" id="1_5p82l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_533pj"]
-font_size = 45
+font_size = 80
 font_color = Color(0, 0, 0, 1)
 outline_size = 12
-outline_color = Color(1, 1, 1, 0.67451)
+outline_color = Color(1, 1, 1, 0.745098)
 shadow_size = 14
-shadow_color = Color(0, 0, 0, 0.447059)
+shadow_color = Color(0, 0, 0, 0.431373)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wb5qx"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+outline_size = 12
+outline_color = Color(1, 1, 1, 0.54902)
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 0.431373)
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -46,29 +54,46 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="GridContainer/content_container/label_container"]
+[node name="title" type="Label" parent="GridContainer/content_container/label_container"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Slepi Gamin"
+text = "Paçoca"
 label_settings = SubResource("LabelSettings_533pj")
 horizontal_alignment = 1
 
-[node name="button_container" type="VBoxContainer" parent="GridContainer/content_container"]
+[node name="subtitle" type="Label" parent="GridContainer/content_container/label_container"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "contra as 
+forças do mal"
+label_settings = SubResource("LabelSettings_wb5qx")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/content_container"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="button_container" type="VBoxContainer" parent="GridContainer/content_container/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="play_button" type="Button" parent="GridContainer/content_container/button_container"]
+[node name="play_button" type="Button" parent="GridContainer/content_container/MarginContainer/button_container"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Jogar"
 
-[node name="options_button" type="Button" parent="GridContainer/content_container/button_container"]
+[node name="options_button" type="Button" parent="GridContainer/content_container/MarginContainer/button_container"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Opções"
 
-[node name="quit_button" type="Button" parent="GridContainer/content_container/button_container"]
+[node name="quit_button" type="Button" parent="GridContainer/content_container/MarginContainer/button_container"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Sair"
 
 [node name="mid_down_blank_space" type="Control" parent="GridContainer/content_container"]
@@ -83,6 +108,6 @@ size_flags_vertical = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[connection signal="pressed" from="GridContainer/content_container/button_container/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="GridContainer/content_container/button_container/options_button" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="GridContainer/content_container/button_container/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="GridContainer/content_container/MarginContainer/button_container/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="GridContainer/content_container/MarginContainer/button_container/options_button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="GridContainer/content_container/MarginContainer/button_container/quit_button" to="." method="_on_quit_button_pressed"]

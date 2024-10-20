@@ -53,21 +53,26 @@ A PAÇOQUITA FELIZ!"
 label_settings = SubResource("LabelSettings_cwspd")
 horizontal_alignment = 1
 
-[node name="button_container" type="VBoxContainer" parent="GridContainer/content_container"]
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/content_container"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+
+[node name="button_container" type="VBoxContainer" parent="GridContainer/content_container/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="restart_button" type="Button" parent="GridContainer/content_container/button_container"]
+[node name="restart_button" type="Button" parent="GridContainer/content_container/MarginContainer/button_container"]
 layout_mode = 2
 text = "Tentar de novo"
 
-[node name="main_menu_button" type="Button" parent="GridContainer/content_container/button_container"]
+[node name="main_menu_button" type="Button" parent="GridContainer/content_container/MarginContainer/button_container"]
 layout_mode = 2
 text = "Voltar ao menu principal"
 
-[node name="quit_button" type="Button" parent="GridContainer/content_container/button_container"]
+[node name="quit_button" type="Button" parent="GridContainer/content_container/MarginContainer/button_container"]
 layout_mode = 2
 text = "Sair"
 
@@ -80,7 +85,3 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[connection signal="pressed" from="GridContainer/content_container/button_container/restart_button" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="GridContainer/content_container/button_container/main_menu_button" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="GridContainer/content_container/button_container/quit_button" to="." method="_on_quit_button_pressed"]

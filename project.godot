@@ -49,6 +49,10 @@ enabled=PackedStringArray("res://addons/SleipnirAudio/plugin.cfg", "res://addons
 
 Ball="Holds the ball lmao"
 
+[gui]
+
+theme/custom_font="res://assets/Text_Fonts/ModernDOS9x16.ttf"
+
 [input]
 
 player_up={
