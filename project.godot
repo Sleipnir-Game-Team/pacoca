@@ -86,6 +86,8 @@ pause={
 2d_physics/layer_1="WALLS"
 2d_physics/layer_2="BALL"
 2d_physics/layer_3="PLAYER"
+2d_physics/layer_7="GOLD_LIGHT"
+2d_physics/layer_8="RED_LIGHT"
 
 [rendering]
 

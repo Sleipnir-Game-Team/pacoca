@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
+
 ## Distance in pixels between the player's center and the held object's origin
 @export var holding_distance: int = 78
 
@@ -34,6 +35,11 @@ func _physics_process(delta: float) -> void:
 		rotation = rotate_toward(rotation, 0, 0.1)
 	elif mouse_position.y < global_position.y:
 		rotation = rotate_toward(rotation, clampf(aim_direction.angle() + PI/2, -PI/2, PI/2), 0.1)
+	elif mouse_position.y > global_position.y:
+		var side: float = PI/2
+		if mouse_position.x <= global_position.x:
+			side = -side
+		rotation = rotate_toward(rotation, side, 0.1)
 	
 	if grab.is_holding():
 		grab.held_object.global_position = tongue.global_position
@@ -43,12 +49,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_hit") and not grab.is_holding() and kick.can_trigger():
 		var click_position: Vector2 = get_global_mouse_position()
 		var attack_direction: Vector2 = global_position.direction_to(click_position)
-	
 		kick.trigger(attack_direction)
 	elif event.is_action_pressed("player_special") and grab.can_trigger():
 		var click_position: Vector2 = get_global_mouse_position()
 		var attack_direction: Vector2 = global_position.direction_to(click_position)
-		
 		grab.trigger(attack_direction)
 
 func _on_life_defeat_signal() -> void:

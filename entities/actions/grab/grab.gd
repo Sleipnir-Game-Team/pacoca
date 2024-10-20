@@ -9,7 +9,7 @@ func _ready() -> void:
 func _handler(direction: Vector2, data: Dictionary) -> void:
 	var ball: Ball = data.collider 
 	
-	if held_object != null: # THROWING
+	if held_object != null and (16 < ball.position.x and ball.position.x < 794): # THROWING
 		held_object = null
 		var angle_deg: float = rad_to_deg(direction.angle())
 		print('ANGULO DE ARREMESSO: %sº' % angle_deg)
