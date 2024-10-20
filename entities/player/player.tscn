@@ -1,42 +1,62 @@
-[gd_scene load_steps=47 format=3 uid="uid://q7r31yidg88g"]
+[gd_scene load_steps=66 format=3 uid="uid://q7r31yidg88g"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_s5awy"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="2_lqefg"]
 [ext_resource type="PackedScene" uid="uid://um7g1axvk4nx" path="res://entities/actions/grab/grab.tscn" id="3_18o26"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="3_po3r7"]
-[ext_resource type="Texture2D" uid="uid://b5vycb3jvjdgk" path="res://assets/dog animations/Dog fly_0001.png" id="5_timuc"]
-[ext_resource type="Texture2D" uid="uid://bjy2uc85w01gg" path="res://assets/dog animations/Dog fly_0002.png" id="6_8hth4"]
-[ext_resource type="Texture2D" uid="uid://yt6aian04qg8" path="res://assets/dog animations/Dog fly_0003.png" id="7_muc70"]
-[ext_resource type="Texture2D" uid="uid://bpk8raqwk6swr" path="res://assets/dog animations/Dog fly_0004.png" id="8_xat34"]
-[ext_resource type="Texture2D" uid="uid://b4sxgndekv3hy" path="res://assets/dog animations/Dog fly_0005.png" id="9_15d2k"]
-[ext_resource type="Texture2D" uid="uid://b2ueqtsomw8nw" path="res://assets/dog animations/Dog fly_0006.png" id="10_r3dkm"]
-[ext_resource type="Texture2D" uid="uid://dy1hg6krwjjy5" path="res://assets/dog animations/Dog fly_0007.png" id="11_l4yjk"]
-[ext_resource type="Texture2D" uid="uid://dteih8y5h725o" path="res://assets/dog animations/Dog fly_0008.png" id="12_twa0m"]
-[ext_resource type="Texture2D" uid="uid://cpk7y1oqj7l7r" path="res://assets/dog animations/Dog fly_0009.png" id="13_lmrbw"]
-[ext_resource type="Texture2D" uid="uid://dewnbgf8gbngu" path="res://assets/dog animations/Dog fly_0010.png" id="14_fxsb8"]
-[ext_resource type="Texture2D" uid="uid://ddqdktpalsfc0" path="res://assets/dog animations/Dog fly_0011.png" id="15_62j83"]
-[ext_resource type="Texture2D" uid="uid://emneq10ph6bj" path="res://assets/dog animations/Dog fly_0012.png" id="16_34cxc"]
-[ext_resource type="Texture2D" uid="uid://ddtp80pffjo4q" path="res://assets/dog animations/Dog fly_0013.png" id="17_47ntr"]
-[ext_resource type="Texture2D" uid="uid://cqcwe4lp6l0cd" path="res://assets/dog animations/Dog fly_0014.png" id="18_nyg41"]
-[ext_resource type="Texture2D" uid="uid://l13amg5oxe23" path="res://assets/dog animations/Dog fly_0015.png" id="19_4fsxq"]
-[ext_resource type="Texture2D" uid="uid://dcxwhf1qrgukp" path="res://assets/dog animations/Dog fly_0016.png" id="20_tl015"]
-[ext_resource type="Texture2D" uid="uid://byp3qjwffwqvg" path="res://assets/dog animations/Dog fly_0017.png" id="21_vx41b"]
-[ext_resource type="Texture2D" uid="uid://b17liieci2uie" path="res://assets/dog animations/Dog fly_0018.png" id="22_125si"]
-[ext_resource type="Texture2D" uid="uid://cwqbyhwj5yhso" path="res://assets/dog animations/Dog fly_0019.png" id="23_ef1s1"]
-[ext_resource type="Texture2D" uid="uid://bmqntonudv5ft" path="res://assets/dog animations/Dog fly_0020.png" id="24_2ie8x"]
-[ext_resource type="Texture2D" uid="uid://bjhe7ojccygve" path="res://assets/dog animations/Dog fly_0021.png" id="25_yclli"]
-[ext_resource type="Texture2D" uid="uid://f7q5rs4284el" path="res://assets/dog animations/Dog fly_0022.png" id="26_1qe1x"]
-[ext_resource type="Texture2D" uid="uid://y8k2deooee2d" path="res://assets/dog animations/Dog fly_0023.png" id="27_1xp4c"]
-[ext_resource type="Texture2D" uid="uid://bq64cqpedxe0w" path="res://assets/dog animations/Dog fly_0024.png" id="28_fpnlj"]
-[ext_resource type="Texture2D" uid="uid://bpbrkqw354ajn" path="res://assets/dog animations/Dog lick_0000.png" id="29_7rkim"]
-[ext_resource type="Texture2D" uid="uid://cm3sk1acxo2ak" path="res://assets/dog animations/Dog lick_0001.png" id="30_3y2jy"]
-[ext_resource type="Texture2D" uid="uid://cdnl5tsgwr3sn" path="res://assets/dog animations/Dog lick_0002.png" id="31_8tup5"]
-[ext_resource type="Texture2D" uid="uid://nj52mltt8rec" path="res://assets/dog animations/Dog lick_0003.png" id="32_h4vec"]
-[ext_resource type="Texture2D" uid="uid://18wmsnltnah8" path="res://assets/dog animations/Dog lick_0004.png" id="33_uf7fs"]
-[ext_resource type="Texture2D" uid="uid://cnpo8kbxpqqp7" path="res://assets/dog animations/Dog lick_0005.png" id="34_pk468"]
-[ext_resource type="Texture2D" uid="uid://cg0p1kyh1p6yy" path="res://assets/dog animations/Dog lick_0006.png" id="35_6y4gy"]
-[ext_resource type="Texture2D" uid="uid://buygtuyosgpwk" path="res://assets/dog animations/Dog lick_0007.png" id="36_2wasc"]
-[ext_resource type="Texture2D" uid="uid://cidduukqr3kdw" path="res://assets/dog animations/Dog lick_0008.png" id="37_vrrh7"]
+[ext_resource type="Texture2D" uid="uid://7ohu6uao2yw0" path="res://assets/dog animations/Dog fly_0002.png" id="6_8hth4"]
+[ext_resource type="Texture2D" uid="uid://dgr6bn433pqgv" path="res://assets/dog animations/Dog fly_0003.png" id="7_muc70"]
+[ext_resource type="Texture2D" uid="uid://nsdhun0x2h3d" path="res://assets/dog animations/Dog fly_0004.png" id="8_xat34"]
+[ext_resource type="Texture2D" uid="uid://dx5mk365sxcw6" path="res://assets/dog animations/Dog fly_0005.png" id="9_15d2k"]
+[ext_resource type="Texture2D" uid="uid://diltd0li3eqlt" path="res://assets/dog animations/Dog fly_0006.png" id="10_r3dkm"]
+[ext_resource type="Texture2D" uid="uid://yb4t01wqp2md" path="res://assets/dog animations/Dog fly_0007.png" id="11_l4yjk"]
+[ext_resource type="Texture2D" uid="uid://cjdyjl7xno0qq" path="res://assets/dog animations/Dog fly_0008.png" id="12_twa0m"]
+[ext_resource type="Texture2D" uid="uid://bmgxoj88hgrle" path="res://assets/dog animations/Dog fly_0009.png" id="13_lmrbw"]
+[ext_resource type="Texture2D" uid="uid://bcwhbql0oxclk" path="res://assets/dog animations/Dog fly_0010.png" id="14_fxsb8"]
+[ext_resource type="Texture2D" uid="uid://c3t115potst3n" path="res://assets/dog animations/Dog fly_0011.png" id="15_62j83"]
+[ext_resource type="Texture2D" uid="uid://c03v4tensfm5c" path="res://assets/dog animations/Dog fly_0012.png" id="16_34cxc"]
+[ext_resource type="Texture2D" uid="uid://bsnro6fo2iliy" path="res://assets/dog animations/Dog fly_0013.png" id="17_47ntr"]
+[ext_resource type="Texture2D" uid="uid://dly8cluqhkstj" path="res://assets/dog animations/Dog fly_0014.png" id="18_nyg41"]
+[ext_resource type="Texture2D" uid="uid://cs1ro8dsv6u7x" path="res://assets/dog animations/Dog fly_0015.png" id="19_4fsxq"]
+[ext_resource type="Texture2D" uid="uid://ncr3g43g4jc5" path="res://assets/dog animations/Dog fly_0016.png" id="20_tl015"]
+[ext_resource type="Texture2D" uid="uid://dmpcdxh6osktk" path="res://assets/dog animations/Dog fly_0017.png" id="21_vx41b"]
+[ext_resource type="Texture2D" uid="uid://ch17v73uqp10g" path="res://assets/dog animations/Dog fly_0018.png" id="22_125si"]
+[ext_resource type="Texture2D" uid="uid://84611dsnxgtd" path="res://assets/dog animations/Dog fly_0019.png" id="23_ef1s1"]
+[ext_resource type="Texture2D" uid="uid://cd8x4dn0bpni7" path="res://assets/dog animations/Dog fly_0020.png" id="24_2ie8x"]
+[ext_resource type="Texture2D" uid="uid://8hvsxgaq8xoc" path="res://assets/dog animations/Dog fly_0021.png" id="25_yclli"]
+[ext_resource type="Texture2D" uid="uid://dlm6j2h2xr07w" path="res://assets/dog animations/Dog fly_0022.png" id="26_1qe1x"]
+[ext_resource type="Texture2D" uid="uid://cddsnml7is6mn" path="res://assets/dog animations/Dog fly_0023.png" id="27_1xp4c"]
+[ext_resource type="Texture2D" uid="uid://c0p23tnp3222t" path="res://assets/dog animations/Dog body_0000.png" id="27_hofvc"]
+[ext_resource type="Texture2D" uid="uid://c8k6ubff2so3a" path="res://assets/dog animations/Dog body_0001.png" id="28_6dpkp"]
+[ext_resource type="Texture2D" uid="uid://bhwga4n7trxsb" path="res://assets/dog animations/Dog lick_0000.png" id="29_7rkim"]
+[ext_resource type="Texture2D" uid="uid://sgypjbld2tex" path="res://assets/dog animations/Dog body_0002.png" id="29_telo5"]
+[ext_resource type="Texture2D" uid="uid://dkwgwxbjjtuac" path="res://assets/dog animations/Dog lick_0001.png" id="30_3y2jy"]
+[ext_resource type="Texture2D" uid="uid://gkmw0mq6a5px" path="res://assets/dog animations/Dog body_0003.png" id="30_vt80k"]
+[ext_resource type="Texture2D" uid="uid://dovhrj1myuijw" path="res://assets/dog animations/Dog body_0004.png" id="31_1pad1"]
+[ext_resource type="Texture2D" uid="uid://f03lblnl6eiu" path="res://assets/dog animations/Dog lick_0002.png" id="31_8tup5"]
+[ext_resource type="Texture2D" uid="uid://3sn8bytb0bml" path="res://assets/dog animations/Dog body_0005.png" id="32_4sgi6"]
+[ext_resource type="Texture2D" uid="uid://b1glslbik1yqn" path="res://assets/dog animations/Dog lick_0003.png" id="32_h4vec"]
+[ext_resource type="Texture2D" uid="uid://bj2hiip50fy0x" path="res://assets/dog animations/Dog body_0006.png" id="33_nua4y"]
+[ext_resource type="Texture2D" uid="uid://b1xh00yldi756" path="res://assets/dog animations/Dog lick_0004.png" id="33_uf7fs"]
+[ext_resource type="Texture2D" uid="uid://d4jxxc1flteu3" path="res://assets/dog animations/Dog body_0007.png" id="34_bdr3a"]
+[ext_resource type="Texture2D" uid="uid://d1vqg4sil06q0" path="res://assets/dog animations/Dog lick_0005.png" id="34_pk468"]
+[ext_resource type="Texture2D" uid="uid://nwtj5fdj8hiq" path="res://assets/dog animations/Dog lick_0006.png" id="35_6y4gy"]
+[ext_resource type="Texture2D" uid="uid://h1gjcr7rxshh" path="res://assets/dog animations/Dog body_0008.png" id="35_uck55"]
+[ext_resource type="Texture2D" uid="uid://diqi7hi5y823c" path="res://assets/dog animations/Dog lick_0007.png" id="36_2wasc"]
+[ext_resource type="Texture2D" uid="uid://m6myrdxk2e8h" path="res://assets/dog animations/Dog body_0009.png" id="36_e8uft"]
+[ext_resource type="Texture2D" uid="uid://q8vxn1bss24t" path="res://assets/dog animations/Dog body_0011.png" id="37_01iyp"]
+[ext_resource type="Texture2D" uid="uid://caasdlhoo77vg" path="res://assets/dog animations/Dog lick_0008.png" id="37_vrrh7"]
+[ext_resource type="Texture2D" uid="uid://cexchwfhdtp6f" path="res://assets/dog animations/Dog body_0012.png" id="38_i307g"]
+[ext_resource type="Texture2D" uid="uid://unx042kevpi5" path="res://assets/dog animations/Dog body_0013.png" id="39_rjr7c"]
+[ext_resource type="Texture2D" uid="uid://cveneu7pw337d" path="res://assets/dog animations/Dog body_0014.png" id="40_ejnlh"]
+[ext_resource type="Texture2D" uid="uid://xhkrwxumrag8" path="res://assets/dog animations/Dog body_0015.png" id="41_7nlk3"]
+[ext_resource type="Texture2D" uid="uid://drhj6dk3wp0cx" path="res://assets/dog animations/Dog body_0016.png" id="42_4hete"]
+[ext_resource type="Texture2D" uid="uid://bvd4yhnbclkm2" path="res://assets/dog animations/Dog body_0017.png" id="43_fx3q4"]
+[ext_resource type="Texture2D" uid="uid://cagtxptssw63u" path="res://assets/dog animations/Dog body_0018.png" id="44_3gobu"]
+[ext_resource type="Texture2D" uid="uid://b635nx8m6a5eg" path="res://assets/dog animations/Dog body_0019.png" id="45_bqnm7"]
+[ext_resource type="Texture2D" uid="uid://qjl7ts61odwr" path="res://assets/dog animations/Dog body_0020.png" id="46_ucqdu"]
+[ext_resource type="Texture2D" uid="uid://cjd2knsapi0sx" path="res://assets/dog animations/Dog body_0021.png" id="47_40bd4"]
+[ext_resource type="Texture2D" uid="uid://brenq4ot0htvi" path="res://assets/dog animations/Dog body_0022.png" id="48_p7do5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7abv1"]
 radius = 25.0
@@ -58,16 +78,9 @@ height = 160.0
 radius = 30.0
 height = 126.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aokjm"]
-atlas = ExtResource("5_timuc")
-region = Rect2(0, 0, 128, 256)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7tvr"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aokjm")
-}, {
 "duration": 1.0,
 "texture": ExtResource("6_8hth4")
 }, {
@@ -133,17 +146,85 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("27_1xp4c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_fpnlj")
 }],
 "loop": true,
 "name": &"default",
-"speed": 24.0
+"speed": 22.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7pab3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_hofvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_6dpkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_telo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_vt80k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_1pad1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_4sgi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_nua4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_bdr3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_uck55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_e8uft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_01iyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_i307g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_rjr7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ejnlh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_7nlk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_4hete")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_fx3q4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_3gobu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_bqnm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_ucqdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_40bd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_p7do5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 22.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("29_7rkim")
@@ -173,7 +254,7 @@ animations = [{
 "texture": ExtResource("37_vrrh7")
 }],
 "loop": false,
-"name": &"default",
+"name": &"kick",
 "speed": 16.0
 }]
 
@@ -238,17 +319,19 @@ position = Vector2(0, -104)
 shape = SubResource("CapsuleShape2D_dx7bl")
 debug_color = Color(0.862474, 0.33491, 0.350799, 0.42)
 
-[node name="default_animation" type="AnimatedSprite2D" parent="."]
+[node name="tail_animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 70)
 sprite_frames = SubResource("SpriteFrames_u7tvr")
 autoplay = "default"
-frame_progress = 0.52187
+frame_progress = 0.328506
 
-[node name="kick_animation" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(1, -53)
+[node name="head_animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -57)
 sprite_frames = SubResource("SpriteFrames_7pab3")
+animation = &"kick"
+autoplay = "default"
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="hit" from="Kick" to="." method="handle_kick"]
 [connection signal="defeat_signal" from="Life" to="." method="_on_life_defeat_signal"]
-[connection signal="animation_finished" from="kick_animation" to="." method="_on_kick_animation_animation_finished"]
+[connection signal="animation_finished" from="head_animation" to="." method="_on_kick_animation_animation_finished"]
