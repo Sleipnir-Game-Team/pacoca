@@ -12,7 +12,6 @@ var grabed: bool = false
 @onready var contact_area: ContactArea = $ContactArea
 @onready var heat: Heat = %Heat
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var grab: Grab = %Grab
 
 func _ready() -> void:
 	var base_velocity: Vector2 = Vector2(sin(deg_to_rad(direction)), cos(deg_to_rad(direction))) 
