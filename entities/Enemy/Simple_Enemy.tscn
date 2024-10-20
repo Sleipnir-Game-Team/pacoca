@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqkidmy2reqv7"]
+[gd_scene load_steps=10 format=3 uid="uid://bqkidmy2reqv7"]
 
 [ext_resource type="Script" path="res://entities/enemy/simple_enemy_movement.gd" id="1_8rw2w"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="2_mogiv"]
 [ext_resource type="Texture2D" uid="uid://rteii2vwuub2" path="res://Assets/alien A.png" id="2_wtec1"]
 [ext_resource type="Script" path="res://entities/Enemy/enemy_intelligence.gd" id="3_0va7o"]
+[ext_resource type="Script" path="res://entities/components/life.gd" id="5_p2i4v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_testy"]
+radius = 21.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ww7nc"]
 radius = 44.1022
@@ -20,6 +24,16 @@ script = ExtResource("1_8rw2w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+[node name="hitbox" type="Area2D" parent="CharacterBody2D"]
+scale = Vector2(0.462963, 0.462963)
+collision_layer = 16
+collision_mask = 2
+
+[node name="collision_hitbox" type="CollisionShape2D" parent="CharacterBody2D/hitbox"]
+shape = SubResource("CircleShape2D_testy")
+debug_color = Color(0.991566, 0, 0.263881, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_ww7nc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -44,5 +58,12 @@ min_attack_player_chance = 100
 min_trow_chance = 0
 min_trow_to_enemie_chance = 0
 
+[node name="life" type="Node" parent="CharacterBody2D"]
+unique_name_in_owner = true
+script = ExtResource("5_p2i4v")
+max_life = 1
+
 [connection signal="hit" from="Kick" to="actio_manager" method="_on_kick_hit"]
 [connection signal="area_entered" from="Area2D" to="actio_manager" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="hitbox" to="CharacterBody2D" method="_on_hitbox_body_entered"]
+[connection signal="defeat_signal" from="life" to="CharacterBody2D" method="_on_life_defeat_signal"]

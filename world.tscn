@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmvk3h52rrel0"]
+[gd_scene load_steps=9 format=3 uid="uid://dmvk3h52rrel0"]
 
 [ext_resource type="PackedScene" uid="uid://q7r31yidg88g" path="res://entities/player/player.tscn" id="1_lklov"]
 [ext_resource type="PackedScene" uid="uid://c424f240qxo4m" path="res://game/waves_scene.tscn" id="1_vrmhi"]
 [ext_resource type="PackedScene" uid="uid://gchihnv3vpvw" path="res://ball/ball.tscn" id="2_y5g5q"]
-[ext_resource type="PackedScene" uid="uid://bqkidmy2reqv7" path="res://entities/enemy/simple_enemy.tscn" id="3_qh0ea"]
-[ext_resource type="Texture2D" uid="uid://dfp1jqr2k7s1w" path="res://Assets/Background.jpg" id="4_wi1h0"]
+[ext_resource type="Texture2D" uid="uid://dhxdervk1gjjr" path="res://assets/Background.jpg" id="4_wi1h0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1wdxc"]
 normal = Vector2(1, 0)
@@ -53,9 +52,6 @@ movement_speed = 400
 
 [node name="Ball" parent="." instance=ExtResource("2_y5g5q")]
 position = Vector2(152, 588)
-
-[node name="Enemy" parent="." instance=ExtResource("3_qh0ea")]
-position = Vector2(439, 266)
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 z_index = -1
