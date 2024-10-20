@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://beo8088eeuvfy"]
 
 [ext_resource type="FontFile" uid="uid://la8m3mlxp7ua" path="res://assets/Text_Fonts/ModernDOS9x16.ttf" id="1_dad5q"]
-[ext_resource type="Script" path="res://ui/menu/game_end.gd" id="1_ps2gm"]
+[ext_resource type="Script" path="res://ui/menu/game_over_menu.gd" id="1_ps2gm"]
 
 [sub_resource type="Theme" id="Theme_fsuem"]
 default_font = ExtResource("1_dad5q")
