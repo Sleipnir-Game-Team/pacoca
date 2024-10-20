@@ -24,9 +24,6 @@ func flip(normal: Vector2) -> void:
 	velocity = velocity.bounce(normal)
 	direction = rad_to_deg(velocity.angle())
 
-func _physics_process(_delta: float) -> void:
-	move_and_slide()
-	
 func add_heat():
 	heat.increment_heat()
 	print(heat.heat)
