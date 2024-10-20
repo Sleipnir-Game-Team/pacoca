@@ -39,7 +39,7 @@ position = Vector2(0, 82)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xnl3t")
 
-[node name="actio_manager" type="Node" parent="."]
+[node name="ActionManagers" type="Node" parent="."]
 script = ExtResource("4_ytfbf")
 
 [node name="Life" type="Node" parent="."]
@@ -47,5 +47,5 @@ unique_name_in_owner = true
 script = ExtResource("5_ct3r7")
 max_life = 1
 
-[connection signal="hit" from="Kick" to="actio_manager" method="_on_kick_hit"]
-[connection signal="area_entered" from="Area2D" to="actio_manager" method="_on_area_2d_area_entered"]
+[connection signal="hit" from="Kick" to="ActionManagers" method="_on_kick_hit"]
+[connection signal="area_entered" from="Area2D" to="ActionManagers" method="_on_area_2d_area_entered"]
