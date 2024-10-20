@@ -31,5 +31,5 @@ func return_list() -> Array:
 	else:
 		return waves
 		
-func restart():
+func restart() -> void:
 	waves = []

@@ -80,5 +80,5 @@ func _on_kickable_area_body_entered(body: Node2D) -> void:
 	if body is Ball:
 		body.set_outline(true)
 
-func invencibility_frames():
+func invencibility_frames() -> void:
 	pass
