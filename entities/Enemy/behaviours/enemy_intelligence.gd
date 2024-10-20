@@ -6,14 +6,16 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @export var attack_player_chance: int = 40
 @export var throw_away_chance: int = 60
 
-@export var ball: Ball
 
-@export_group('Kick', 'kick')
 @onready var kick: Kick = %Kick
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
+@onready var ball: Ball = get_tree().get_first_node_in_group("Ball")
 
 ## Quando a bola está em range de uma ação essa função é executada
 func decision() -> void:
+	if ball.heat.is_burning: # Comportamento quando a bola está pegando fogo - no momento o inimigo fica incapaz de reagir
+		return
+	
 	var decision_number: int = rng.randi_range(0, 99)
 	
 	if decision_number < attack_player_chance:

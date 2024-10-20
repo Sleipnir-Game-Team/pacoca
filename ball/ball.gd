@@ -6,7 +6,6 @@ const yellow_outline: ShaderMaterial = preload("res://ball/outline.tres")
 @export var speed: int = 200
 var direction: float = 30
 var bounce: Vector2
-var burning: bool
 var grabbed: bool = false
 var atual_rotation: float
 
@@ -20,7 +19,6 @@ func _ready() -> void:
 	var base_velocity: Vector2 = Vector2(sin(deg_to_rad(direction)), cos(deg_to_rad(direction))) 
 	velocity = base_velocity * speed * heat.speed_bonus
 	velocity = Vector2(sin(deg_to_rad(direction)) * speed * heat.speed_bonus, cos(deg_to_rad(direction)) * speed * heat.speed_bonus)
-	burning = heat.is_burning
 
 
 func _physics_process(delta: float) -> void:

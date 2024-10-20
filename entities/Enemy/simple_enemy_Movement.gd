@@ -15,11 +15,8 @@ func _ready() -> void:
 	if shape is CircleShape2D:
 		radius = shape.radius  # Pega o raio do círculo
 
-
-
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	life.damage()
-
 
 func _on_life_defeat_signal() -> void:
 	queue_free()
