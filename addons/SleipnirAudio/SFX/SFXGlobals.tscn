@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://lg6kuv3fkktu"]
 
 [ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SFXGlobals.gd" id="1_p5jl5"]
-[ext_resource type="AudioStream" uid="uid://cdm0ume0k7kmh" path="res://assets/Level [LOOP].wav" id="2_f5tej"]
+[ext_resource type="AudioStream" uid="uid://7dev0vx25k0b" path="res://assets/Level [LOOP].wav" id="2_f5tej"]
 
 [node name="SfxGlobals" type="Node"]
 script = ExtResource("1_p5jl5")

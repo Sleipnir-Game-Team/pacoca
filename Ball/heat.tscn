@@ -4,3 +4,4 @@
 
 [node name="Heat" type="Node"]
 script = ExtResource("1_onllm")
+per_heat_bonus = 1.3
