@@ -3,6 +3,9 @@ extends CharacterBody2D
 @onready var hurt_box: Area2D = %HurtBox
 @onready var life: Life = %Life
 
+func _physics_process(delta: float) -> void:
+	rotate_toward(rotation, , 0.001)
+
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Ball:
 		life.damage()
