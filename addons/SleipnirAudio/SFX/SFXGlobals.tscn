@@ -87,6 +87,7 @@ stream = SubResource("AudioStreamRandomizer_3h3jl")
 bus = &"sfx"
 
 [node name="pause" type="Node" parent="UI"]
+process_mode = 3
 script = ExtResource("3_gcjy4")
 Count = 2
 
