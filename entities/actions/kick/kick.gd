@@ -6,5 +6,5 @@ func _ready() -> void:
 
 func _handler(direction: Vector2, data: Dictionary) -> void:
 	var ball: Ball = data.collider
-	ball.change_angle(rad_to_deg(direction.angle()))
 	ball.heat.heat_up()
+	ball.change_angle(rad_to_deg(direction.angle()))

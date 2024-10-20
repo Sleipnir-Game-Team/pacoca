@@ -241,14 +241,12 @@ debug_color = Color(0.862474, 0.33491, 0.350799, 0.42)
 [node name="default_animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u7tvr")
 autoplay = "default"
-frame_progress = 0.00524047
+frame_progress = 0.52187
 
 [node name="kick_animation" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(1, -53)
 sprite_frames = SubResource("SpriteFrames_7pab3")
-frame = 8
-frame_progress = 1.0
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="hit" from="Kick" to="." method="handle_kick"]
