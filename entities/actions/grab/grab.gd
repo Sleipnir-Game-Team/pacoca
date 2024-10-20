@@ -3,9 +3,7 @@ extends AreaTrigger
 
 var held_object: Ball = null
 
-
 signal hold_to_stop
-
 
 func _ready() -> void:
 	super._ready()

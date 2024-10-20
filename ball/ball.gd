@@ -8,11 +8,13 @@ var direction: float = 30
 var bounce: Vector2
 var burning: bool
 var grabbed: bool = false
+var atual_rotation: float
 
 @export var rotation_speed_factor: float = 0.02
 @onready var contact_area: ContactArea = $ContactArea
 @onready var heat: Heat = %Heat
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var player: Player = $"../Player"
 
 func _ready() -> void:
 	var base_velocity: Vector2 = Vector2(sin(deg_to_rad(direction)), cos(deg_to_rad(direction))) 
@@ -20,14 +22,18 @@ func _ready() -> void:
 	velocity = Vector2(sin(deg_to_rad(direction)) * speed * heat.speed_bonus, cos(deg_to_rad(direction)) * speed * heat.speed_bonus)
 	burning = heat.is_burning
 
+
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
-	if grabbed:
-		sprite.rotation = velocity.length() * rotation_speed_factor
-	else:
+	#sprite da bola girar e parar de girar quando grabbed
+	var direction_to_player: Vector2 = player.global_position - global_position
+	var angle_to_player: float = direction_to_player.angle()
+	
+	if grabbed == false: #gira
 		sprite.rotation += velocity.length() * rotation_speed_factor * delta
-
+	elif grabbed == true:#desgira
+		sprite.rotation = angle_to_player + atual_rotation + PI
 
 
 func change_angle(angle: float) -> void:
@@ -58,3 +64,4 @@ func set_outline(value: bool) -> void:
 
 func _on_grab_hold_to_stop() -> void: # NOTE SOM AQUI DA BOLA MORDIDA
 	grabbed = true
+	atual_rotation = sprite.rotation

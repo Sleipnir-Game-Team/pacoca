@@ -34,4 +34,3 @@ texture = ExtResource("3_ae5up")
 
 [node name="Heat" parent="." instance=ExtResource("4_ieycs")]
 unique_name_in_owner = true
-per_heat_bonus = 1.25
