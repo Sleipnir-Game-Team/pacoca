@@ -30,7 +30,9 @@ func _physics_process(_delta: float) -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var aim_direction: Vector2 = global_position.direction_to(mouse_position).clamp(Vector2(-INF, -INF), Vector2(INF, 0))
 	
-	if mouse_position.y < global_position.y:
+	if  (mouse_position.x < 0 or mouse_position.x > 810):
+		rotation = 0 # FIXME Meio feio isso aqui, era melhor interpolado
+	elif mouse_position.y < global_position.y:
 		rotation = clampf(aim_direction.angle() + PI/2, -PI/2, PI/2)
 	
 	if held_object != null:

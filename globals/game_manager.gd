@@ -28,7 +28,7 @@ func game_over() -> void:
 	# DO QUE A GENTE REMOVER E RECRIAR A MAIN QUANDO A PESSOA REJOGASSE
 	var main: Control = get_node_or_null('../Main')
 	
-	get_tree().root.remove_child(main)
+	get_tree().root.remove_child.call_deferred(main)
 	main.queue_free()
 	
 	var ending_scene: PackedScene = load("res://ui/game_over.tscn")
