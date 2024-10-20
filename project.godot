@@ -87,6 +87,7 @@ player_special={
 2d_physics/layer_1="WALLS"
 2d_physics/layer_2="BALL"
 2d_physics/layer_3="PLAYER"
+2d_physics/layer_4="ENEMIES"
 
 [rendering]
 

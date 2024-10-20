@@ -4,6 +4,8 @@ var initial_position: Vector2
 var SPEED = 150
 var max_distance = 85  
 var radius
+@onready var life: Life = %life
+
 
 
 func _ready() -> void:
@@ -24,6 +26,12 @@ func _process(delta: float) -> void:
 		velocity.x = SPEED  
 	elif global_position.x >= initial_position.x + max_distance or global_position.x >= 810 - radius - 5:
 		velocity.x = -SPEED  
-	
-	
+		
 	move_and_slide()
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	life.damage()
+
+
+func _on_life_defeat_signal() -> void:
+	queue_free()
