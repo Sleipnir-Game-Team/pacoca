@@ -35,7 +35,10 @@ func _physics_process(delta: float) -> void:
 
 
 func change_angle(angle: float) -> void:
-	# NOTE SOM AQUI DA BOLA BATENDO - INIMIGO/JOGADOR BATENDO
+	
+	if heat.is_burning == true: AudioManager.play_sfx($kikaquente)
+	else: AudioManager.play_sfx($kikafrio)
+	
 	direction = angle
 	var base_velocity: Vector2 = Vector2(cos(deg_to_rad(direction)), sin(deg_to_rad(direction)))
 	velocity = base_velocity * speed * heat.speed_bonus
@@ -43,7 +46,10 @@ func change_angle(angle: float) -> void:
 	grabbed = false
 
 func flip(normal: Vector2) -> void:
-	# NOTE SOM AQUI DA BOLA BATENDO - PAREDE
+	
+	if heat.is_burning == true: AudioManager.play_sfx($kikaquente)
+	else: AudioManager.play_sfx($kikafrio)
+	
 	heat.cool_down()
 	
 	normal = normal.normalized()
@@ -60,6 +66,6 @@ func set_outline(value: bool) -> void:
 	else:
 		sprite.material = null
 
-func _on_grab_hold_to_stop() -> void: # NOTE SOM AQUI DA BOLA MORDIDA
+func _on_grab_hold_to_stop() -> void:
 	grabbed = true
 	atual_rotation = sprite.rotation
