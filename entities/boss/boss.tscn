@@ -1,30 +1,43 @@
-[gd_scene load_steps=33 format=3 uid="uid://c3wob6r2y6gom"]
+[gd_scene load_steps=49 format=3 uid="uid://c3wob6r2y6gom"]
 
 [ext_resource type="Script" path="res://entities/boss/boss.gd" id="1_n8o6t"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="3_piw0h"]
 [ext_resource type="Script" path="res://entities/enemy/behaviours/enemy_intelligence.gd" id="4_w6tsh"]
 [ext_resource type="PackedScene" uid="uid://um7g1axvk4nx" path="res://entities/actions/grab/grab.tscn" id="5_edhoy"]
-[ext_resource type="Texture2D" uid="uid://cjm16dmidtj76" path="res://assets/boss A .png" id="5_s2xt6"]
-[ext_resource type="Texture2D" uid="uid://c3owei1a50ua6" path="res://assets/Boss float_0001.png" id="6_scfx5"]
-[ext_resource type="Texture2D" uid="uid://dp3vqvi0kdc2h" path="res://assets/Boss float_0002.png" id="7_8a5wj"]
-[ext_resource type="Texture2D" uid="uid://b4heop5npyh5m" path="res://assets/Boss float_0003.png" id="8_qrmsm"]
-[ext_resource type="Texture2D" uid="uid://cc787148xfrqu" path="res://assets/Boss float_0004.png" id="9_4lqhn"]
-[ext_resource type="Texture2D" uid="uid://b7rcy4tc41atu" path="res://assets/Boss float_0005.png" id="10_o8tbx"]
-[ext_resource type="Texture2D" uid="uid://b378bfhprf1lw" path="res://assets/Boss float_0006.png" id="11_e2187"]
-[ext_resource type="Texture2D" uid="uid://bgqnnka2y0eqc" path="res://assets/Boss float_0007.png" id="12_xpoma"]
-[ext_resource type="Texture2D" uid="uid://d3qe7jkf5m2u7" path="res://assets/Boss float_0008.png" id="13_1mdc3"]
-[ext_resource type="Texture2D" uid="uid://b23o6o2iplwli" path="res://assets/Boss float_0009.png" id="14_vul8k"]
-[ext_resource type="Texture2D" uid="uid://c1s6odvlrxvqm" path="res://assets/Boss float_0010.png" id="15_1tlke"]
-[ext_resource type="Texture2D" uid="uid://dd3ph63lubr3l" path="res://assets/Boss float_0011.png" id="16_fxrvb"]
-[ext_resource type="Texture2D" uid="uid://bpeh6xma37pid" path="res://assets/Boss float_0012.png" id="17_2nbfp"]
-[ext_resource type="Texture2D" uid="uid://toi0l3o4g6uf" path="res://assets/Boss float_0013.png" id="18_fnddt"]
-[ext_resource type="Texture2D" uid="uid://dr7aedb66qx28" path="res://assets/Boss float_0014.png" id="19_gkb6m"]
-[ext_resource type="Texture2D" uid="uid://cctmtr6suj3wg" path="res://assets/Boss float_0015.png" id="20_hjlb8"]
-[ext_resource type="Texture2D" uid="uid://c575ddv5o2ry2" path="res://assets/Boss float_0016.png" id="21_4mp1r"]
-[ext_resource type="Texture2D" uid="uid://ch4qo4a205lwh" path="res://assets/Boss float_0017.png" id="22_omowc"]
-[ext_resource type="Texture2D" uid="uid://dvxe4pujj6w2f" path="res://assets/Boss float_0018.png" id="23_kj6u4"]
-[ext_resource type="Texture2D" uid="uid://ckayvrl8g07iq" path="res://assets/Boss float_0019.png" id="24_skjk4"]
-[ext_resource type="Texture2D" uid="uid://b3obtcadwqgci" path="res://assets/Boss float_0020.png" id="25_8xcxy"]
+[ext_resource type="Texture2D" uid="uid://oc08mbvlikb7" path="res://assets/boss A .png" id="5_s2xt6"]
+[ext_resource type="Texture2D" uid="uid://cx6qila5mjhgd" path="res://assets/Boss float_0001.png" id="6_scfx5"]
+[ext_resource type="Texture2D" uid="uid://bgk1fr2r0w12q" path="res://assets/Boss float_0002.png" id="7_8a5wj"]
+[ext_resource type="Texture2D" uid="uid://rumq614ayblv" path="res://assets/Boss float_0003.png" id="8_qrmsm"]
+[ext_resource type="Texture2D" uid="uid://bmjknxujnb673" path="res://assets/Boss float_0004.png" id="9_4lqhn"]
+[ext_resource type="Texture2D" uid="uid://bf4j7jk18wjvo" path="res://assets/Boss float_0005.png" id="10_o8tbx"]
+[ext_resource type="Texture2D" uid="uid://bjbqwefbu6nwp" path="res://assets/Boss float_0006.png" id="11_e2187"]
+[ext_resource type="Texture2D" uid="uid://cs6ttdcb01cm6" path="res://assets/Boss float_0007.png" id="12_xpoma"]
+[ext_resource type="Texture2D" uid="uid://djoexudonrepc" path="res://assets/Boss float_0008.png" id="13_1mdc3"]
+[ext_resource type="Texture2D" uid="uid://bq3p3ung5nhlw" path="res://assets/Boss float_0009.png" id="14_vul8k"]
+[ext_resource type="Texture2D" uid="uid://cb68v2u5gpros" path="res://assets/Boss float_0010.png" id="15_1tlke"]
+[ext_resource type="Texture2D" uid="uid://bhod4usi3hi0k" path="res://assets/Boss float_0011.png" id="16_fxrvb"]
+[ext_resource type="Texture2D" uid="uid://coh1dqqqgpq3e" path="res://assets/Boss float_0012.png" id="17_2nbfp"]
+[ext_resource type="Texture2D" uid="uid://ce1v768ooeh48" path="res://assets/Boss float_0013.png" id="18_fnddt"]
+[ext_resource type="Texture2D" uid="uid://nitxu42eqp1p" path="res://assets/Boss float_0014.png" id="19_gkb6m"]
+[ext_resource type="Texture2D" uid="uid://3djrigglgmy3" path="res://assets/Boss float_0015.png" id="20_hjlb8"]
+[ext_resource type="Texture2D" uid="uid://d3a0hrsnteryg" path="res://assets/Boss float_0016.png" id="21_4mp1r"]
+[ext_resource type="Texture2D" uid="uid://7k81j7q2wmiu" path="res://assets/Boss float_0017.png" id="22_omowc"]
+[ext_resource type="Texture2D" uid="uid://b6jrkv17qtw8o" path="res://assets/Boss float_0018.png" id="23_kj6u4"]
+[ext_resource type="Texture2D" uid="uid://dlej5gp56en8j" path="res://assets/Boss float_0019.png" id="24_skjk4"]
+[ext_resource type="Texture2D" uid="uid://57hsbrn2kdf5" path="res://assets/Boss float_0020.png" id="25_8xcxy"]
+[ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SoundQueue.gd" id="26_cq43q"]
+[ext_resource type="AudioStream" uid="uid://dm4157k5swaa6" path="res://assets/Sounds/Enemy/Carangueijo_Ataque1.mp3" id="27_3chrh"]
+[ext_resource type="AudioStream" uid="uid://cgk5rf0e15mc5" path="res://assets/Sounds/Enemy/Carangueijo_Dano1.mp3" id="27_csvdd"]
+[ext_resource type="AudioStream" uid="uid://ddartbf44t2w0" path="res://assets/Sounds/Enemy/Carangueijo_Dano2.mp3" id="28_k1pj3"]
+[ext_resource type="AudioStream" uid="uid://j2j4kib7358t" path="res://assets/Sounds/Enemy/Carangueijo_Ataque2.mp3" id="28_onu85"]
+[ext_resource type="AudioStream" uid="uid://bm54oeknb02w8" path="res://assets/Sounds/Enemy/Carangueijo_Dano3.mp3" id="29_b1asw"]
+[ext_resource type="AudioStream" uid="uid://rxwh7ouf5b4h" path="res://assets/Sounds/Enemy/Carangueijo_Ataque3.mp3" id="29_lomr1"]
+[ext_resource type="AudioStream" uid="uid://cba2k52tdeber" path="res://assets/Sounds/Enemy/Carangueijo_Dano4.mp3" id="30_6wpuv"]
+[ext_resource type="AudioStream" uid="uid://c6gurf6dt6im0" path="res://assets/Sounds/Enemy/Carangueijo_Ataque4.mp3" id="30_ftei6"]
+[ext_resource type="AudioStream" uid="uid://u7fk608577b7" path="res://assets/Sounds/Enemy/Carangueijo_Morte1.mp3" id="31_qf6vf"]
+[ext_resource type="AudioStream" uid="uid://bmoxmik3616a4" path="res://assets/Sounds/Enemy/Carangueijo_Morte2.mp3" id="32_pyx6h"]
+[ext_resource type="AudioStream" uid="uid://c6g2qcdrjse46" path="res://assets/Sounds/Enemy/Carangueijo_Morte3.mp3" id="33_tbgpt"]
+[ext_resource type="AudioStream" uid="uid://cukc8b5t61jvb" path="res://assets/Sounds/Enemy/Carangueijo_Morte4.mp3" id="34_80gbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uv78e"]
 radius = 138.073
@@ -139,6 +152,30 @@ _data = {
 "hurt_animation": SubResource("Animation_5eut6")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mwfa8"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("27_3chrh")
+stream_1/stream = ExtResource("28_onu85")
+stream_2/stream = ExtResource("29_lomr1")
+stream_3/stream = ExtResource("30_ftei6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lnq44"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("27_csvdd")
+stream_1/stream = ExtResource("28_k1pj3")
+stream_2/stream = ExtResource("29_b1asw")
+stream_3/stream = ExtResource("30_6wpuv")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v3h7p"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("31_qf6vf")
+stream_1/stream = ExtResource("32_pyx6h")
+stream_2/stream = ExtResource("33_tbgpt")
+stream_3/stream = ExtResource("34_80gbx")
+
 [node name="boss" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_n8o6t")
@@ -195,6 +232,27 @@ frame_progress = 0.430062
 libraries = {
 "": SubResource("AnimationLibrary_5syhw")
 }
+
+[node name="Ataque" type="Node" parent="."]
+script = ExtResource("26_cq43q")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ataque"]
+stream = SubResource("AudioStreamRandomizer_mwfa8")
+bus = &"sfx"
+
+[node name="Dano" type="Node" parent="."]
+script = ExtResource("26_cq43q")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dano"]
+stream = SubResource("AudioStreamRandomizer_lnq44")
+bus = &"sfx"
+
+[node name="Morte" type="Node" parent="."]
+script = ExtResource("26_cq43q")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Morte"]
+stream = SubResource("AudioStreamRandomizer_v3h7p")
+bus = &"sfx"
 
 [connection signal="area_entered" from="GrabableArea" to="." method="_on_grabable_area_area_entered"]
 [connection signal="defeat_signal" from="life" to="." method="_on_life_defeat_signal"]

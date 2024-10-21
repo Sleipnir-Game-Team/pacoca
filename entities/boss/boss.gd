@@ -32,9 +32,11 @@ func _process(delta: float) -> void:
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Ball:
+		AudioManager.play_sfx($Dano)
 		life.damage()
 
 func _on_life_defeat_signal() -> void:
+	AudioManager.play_sfx($Morte)
 	queue_free()
 	Waves.pop_enemy()
 
@@ -50,6 +52,7 @@ func _on_grabable_area_area_entered(area: Area2D) -> void:
 		grab_ball()
 	elif !invincibility:
 		print("boss levou dano")
+		AudioManager.play_sfx($Dano)
 		life.damage()
 		dizzy_time.stop()
 		invincibility_frame()
@@ -64,7 +67,7 @@ func _on_hold_time_timeout() -> void:
 	elif grab_count == 1:
 		grab.held_object.set("heat",1)
 		
-	
+	AudioManager.play_sfx($Ataque)
 	grab.trigger(Vector2(x, y))
 	grab_count -= 1
 	sprite_manage()
