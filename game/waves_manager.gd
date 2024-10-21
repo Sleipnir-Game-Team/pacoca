@@ -14,6 +14,7 @@ func _process(_delta: float) -> void:
 		var waves: Array = Waves.return_list()
 		if waves.size() > 0:
 			print("Nova wave")
+			UI_Controller.wave_counter.emit(1)
 			print(waves[0])
 			run_wave(waves)
 		else:

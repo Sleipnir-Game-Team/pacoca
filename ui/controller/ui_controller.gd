@@ -3,6 +3,8 @@ extends Node
 var stack: ScreenStack = ScreenStack.new()
 var pause_menu_on: bool = false
 
+signal wave_counter
+
 class ScreenStack:
 	var screens: Array[Node]  = []
 	

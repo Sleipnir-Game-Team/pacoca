@@ -9,7 +9,6 @@ signal defeat_signal
 func damage() -> void:
 	if entity_life > 0:
 		entity_life -= 1
-		
 	if entity_life == 0:
 		defeat_signal.emit()
 

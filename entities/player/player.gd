@@ -30,6 +30,8 @@ var invincibility: bool = false
 @onready var invecibility_time = $invencibility_time as Timer
 @onready var hurt_animation = $hurt_animation as AnimationPlayer
 
+signal change_life_bar
+
 var kick_buffering = false
 var kick_buffering_duration = 0
 var attack_direction: Vector2
@@ -104,6 +106,7 @@ func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	if not invincibility:
 		AudioManager.play_sfx($dano)
 		life.damage()
+		change_life_bar.emit(-1)
 		invencibility_frames()
 
 func _on_kick_animation_animation_finished() -> void:
