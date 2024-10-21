@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://ball/ball.gd" id="1_og6ph"]
 [ext_resource type="Script" path="res://ball/contact_area.gd" id="2_62eaa"]
-[ext_resource type="Texture2D" uid="uid://d1m1sgplbbng6" path="res://assets/Ball.png" id="3_ae5up"]
+[ext_resource type="Texture2D" uid="uid://kykx7cvjpfn" path="res://assets/Ball.png" id="3_ae5up"]
 [ext_resource type="PackedScene" uid="uid://de8vseig5n84b" path="res://ball/heat.tscn" id="4_ieycs"]
 [ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SoundQueue.gd" id="5_wc7j1"]
-[ext_resource type="AudioStream" uid="uid://dxuunju6rc0ry" path="res://assets/Sounds/Ball/Bola_Kika_Fria1.mp3" id="6_eujpv"]
-[ext_resource type="AudioStream" uid="uid://c7k3y6ioo5p8p" path="res://assets/Sounds/Ball/Bola_Kika_Fria2.mp3" id="7_bc4ss"]
-[ext_resource type="AudioStream" uid="uid://b15wf8g7ka64y" path="res://assets/Sounds/Ball/Bola_Kika_Fria3.mp3" id="8_t1bn0"]
-[ext_resource type="AudioStream" uid="uid://pd46361yuhx3" path="res://assets/Sounds/Ball/Bola_Kika_Quente1.mp3" id="9_6usrh"]
-[ext_resource type="AudioStream" uid="uid://m7x2scfdafbx" path="res://assets/Sounds/Ball/Bola_Kika_Quente2.mp3" id="10_be44e"]
-[ext_resource type="AudioStream" uid="uid://cvae50qgetoai" path="res://assets/Sounds/Ball/Bola_Kika_Quente3.mp3" id="11_3anyi"]
+[ext_resource type="AudioStream" uid="uid://ni4hr0hadirs" path="res://assets/Sounds/Ball/Bola_Kika_Fria1.mp3" id="6_eujpv"]
+[ext_resource type="AudioStream" uid="uid://bl1bk8stg8l65" path="res://assets/Sounds/Ball/Bola_Kika_Fria2.mp3" id="7_bc4ss"]
+[ext_resource type="AudioStream" uid="uid://dcuy5syn0dthw" path="res://assets/Sounds/Ball/Bola_Kika_Fria3.mp3" id="8_t1bn0"]
+[ext_resource type="AudioStream" uid="uid://xvc1akexamyq" path="res://assets/Sounds/Ball/Bola_Kika_Quente1.mp3" id="9_6usrh"]
+[ext_resource type="AudioStream" uid="uid://b2mg06rstsfxu" path="res://assets/Sounds/Ball/Bola_Kika_Quente2.mp3" id="10_be44e"]
+[ext_resource type="AudioStream" uid="uid://i7dqov0llejb" path="res://assets/Sounds/Ball/Bola_Kika_Quente3.mp3" id="11_3anyi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njqvl"]
 radius = 16.7835
@@ -42,6 +42,8 @@ speed = 300
 shape = SubResource("CircleShape2D_njqvl")
 
 [node name="ContactArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 29
 script = ExtResource("2_62eaa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ContactArea"]

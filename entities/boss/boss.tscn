@@ -1,49 +1,162 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3wob6r2y6gom"]
+[gd_scene load_steps=33 format=3 uid="uid://c3wob6r2y6gom"]
 
 [ext_resource type="Script" path="res://entities/boss/boss.gd" id="1_n8o6t"]
-[ext_resource type="Texture2D" uid="uid://niyvrnccmdpa" path="res://assets/boss A.png" id="2_346jb"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="3_piw0h"]
 [ext_resource type="Script" path="res://entities/enemy/behaviours/enemy_intelligence.gd" id="4_w6tsh"]
-[ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="5_iaom8"]
+[ext_resource type="PackedScene" uid="uid://um7g1axvk4nx" path="res://entities/actions/grab/grab.tscn" id="5_edhoy"]
+[ext_resource type="Texture2D" uid="uid://cjm16dmidtj76" path="res://assets/boss A .png" id="5_s2xt6"]
+[ext_resource type="Texture2D" uid="uid://c3owei1a50ua6" path="res://assets/Boss float_0001.png" id="6_scfx5"]
+[ext_resource type="Texture2D" uid="uid://dp3vqvi0kdc2h" path="res://assets/Boss float_0002.png" id="7_8a5wj"]
+[ext_resource type="Texture2D" uid="uid://b4heop5npyh5m" path="res://assets/Boss float_0003.png" id="8_qrmsm"]
+[ext_resource type="Texture2D" uid="uid://cc787148xfrqu" path="res://assets/Boss float_0004.png" id="9_4lqhn"]
+[ext_resource type="Texture2D" uid="uid://b7rcy4tc41atu" path="res://assets/Boss float_0005.png" id="10_o8tbx"]
+[ext_resource type="Texture2D" uid="uid://b378bfhprf1lw" path="res://assets/Boss float_0006.png" id="11_e2187"]
+[ext_resource type="Texture2D" uid="uid://bgqnnka2y0eqc" path="res://assets/Boss float_0007.png" id="12_xpoma"]
+[ext_resource type="Texture2D" uid="uid://d3qe7jkf5m2u7" path="res://assets/Boss float_0008.png" id="13_1mdc3"]
+[ext_resource type="Texture2D" uid="uid://b23o6o2iplwli" path="res://assets/Boss float_0009.png" id="14_vul8k"]
+[ext_resource type="Texture2D" uid="uid://c1s6odvlrxvqm" path="res://assets/Boss float_0010.png" id="15_1tlke"]
+[ext_resource type="Texture2D" uid="uid://dd3ph63lubr3l" path="res://assets/Boss float_0011.png" id="16_fxrvb"]
+[ext_resource type="Texture2D" uid="uid://bpeh6xma37pid" path="res://assets/Boss float_0012.png" id="17_2nbfp"]
+[ext_resource type="Texture2D" uid="uid://toi0l3o4g6uf" path="res://assets/Boss float_0013.png" id="18_fnddt"]
+[ext_resource type="Texture2D" uid="uid://dr7aedb66qx28" path="res://assets/Boss float_0014.png" id="19_gkb6m"]
+[ext_resource type="Texture2D" uid="uid://cctmtr6suj3wg" path="res://assets/Boss float_0015.png" id="20_hjlb8"]
+[ext_resource type="Texture2D" uid="uid://c575ddv5o2ry2" path="res://assets/Boss float_0016.png" id="21_4mp1r"]
+[ext_resource type="Texture2D" uid="uid://ch4qo4a205lwh" path="res://assets/Boss float_0017.png" id="22_omowc"]
+[ext_resource type="Texture2D" uid="uid://dvxe4pujj6w2f" path="res://assets/Boss float_0018.png" id="23_kj6u4"]
+[ext_resource type="Texture2D" uid="uid://ckayvrl8g07iq" path="res://assets/Boss float_0019.png" id="24_skjk4"]
+[ext_resource type="Texture2D" uid="uid://b3obtcadwqgci" path="res://assets/Boss float_0020.png" id="25_8xcxy"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p8oxy"]
-radius = 12.0
-height = 138.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_uv78e"]
+radius = 138.073
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a7lno"]
 radius = 77.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_26q73"]
-radius = 75.1665
+[sub_resource type="CircleShape2D" id="CircleShape2D_3dy0u"]
+radius = 30.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mfxm7"]
-radius = 14.0
+[sub_resource type="SpriteFrames" id="SpriteFrames_un371"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_scfx5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8a5wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qrmsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4lqhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_o8tbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_e2187")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xpoma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1mdc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vul8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1tlke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fxrvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2nbfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_fnddt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gkb6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hjlb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_4mp1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_omowc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_kj6u4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_skjk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_8xcxy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="Animation" id="Animation_mre12"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5eut6"]
+resource_name = "hurt_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5syhw"]
+_data = {
+"RESET": SubResource("Animation_mre12"),
+"hurt_animation": SubResource("Animation_5eut6")
+}
 
 [node name="boss" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_n8o6t")
 
-[node name="AttackArea" type="Area2D" parent="."]
-position = Vector2(0, 82)
+[node name="GrabableArea" type="Area2D" parent="."]
+position = Vector2(0, -53)
+collision_layer = 16
+collision_mask = 2
+input_pickable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(-1, 12)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabableArea"]
+position = Vector2(0.5, 54)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_p8oxy")
+shape = SubResource("CircleShape2D_uv78e")
+debug_color = Color(0.862474, 0.33491, 0.350799, 0.42)
 
 [node name="boss_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a7lno")
-
-[node name="boss_sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_346jb")
-
-[node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 2
-
-[node name="hurt_collision" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CircleShape2D_26q73")
-debug_color = Color(0.934147, 0.226615, 0.316402, 0.42)
 
 [node name="life" type="Node" parent="."]
 unique_name_in_owner = true
@@ -52,12 +165,39 @@ script = ExtResource("3_piw0h")
 [node name="ActionManagers" type="Node" parent="."]
 script = ExtResource("4_w6tsh")
 
-[node name="Kick" parent="." instance=ExtResource("5_iaom8")]
+[node name="Grab" parent="." instance=ExtResource("5_edhoy")]
 unique_name_in_owner = true
-position = Vector2(-58, 94)
-shape = SubResource("CircleShape2D_mfxm7")
-target_position = Vector2(114, 0)
+scale = Vector2(4.7, 4.7)
+shape = SubResource("CircleShape2D_3dy0u")
+target_position = Vector2(0, -0.5)
+distance = 0
 
-[connection signal="area_entered" from="AttackArea" to="ActionManagers" method="_on_attack_area_area_entered"]
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[node name="Grab_position" type="Marker2D" parent="."]
+position = Vector2(0, 95)
+
+[node name="hold_time" type="Timer" parent="."]
+one_shot = true
+
+[node name="dizzy_time" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="boss_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("5_s2xt6")
+
+[node name="float_animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 82.5)
+sprite_frames = SubResource("SpriteFrames_un371")
+autoplay = "default"
+frame_progress = 0.430062
+
+[node name="damage_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5syhw")
+}
+
+[connection signal="area_entered" from="GrabableArea" to="." method="_on_grabable_area_area_entered"]
 [connection signal="defeat_signal" from="life" to="." method="_on_life_defeat_signal"]
+[connection signal="timeout" from="hold_time" to="." method="_on_hold_time_timeout"]
+[connection signal="timeout" from="dizzy_time" to="." method="_on_dizzy_time_timeout"]
+[connection signal="animation_finished" from="damage_animation" to="." method="_on_damage_animation_animation_finished"]
