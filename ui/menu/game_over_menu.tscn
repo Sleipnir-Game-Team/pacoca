@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://beo8088eeuvfy"]
+[gd_scene load_steps=7 format=3 uid="uid://beo8088eeuvfy"]
 
 [ext_resource type="FontFile" uid="uid://la8m3mlxp7ua" path="res://assets/Text_Fonts/ModernDOS9x16.ttf" id="1_dad5q"]
 [ext_resource type="Script" path="res://ui/menu/game_over_menu.gd" id="1_ps2gm"]
+[ext_resource type="Texture2D" uid="uid://dyjf8lly7bo3l" path="res://assets/Main Menu Background.jpg" id="3_fsf3h"]
+[ext_resource type="Texture2D" uid="uid://cpf50366grbmr" path="res://assets/Game over screen.png" id="3_xltt6"]
 
 [sub_resource type="Theme" id="Theme_fsuem"]
 default_font = ExtResource("1_dad5q")
@@ -15,6 +17,7 @@ shadow_size = 14
 shadow_color = Color(0, 0, 0, 0.447059)
 
 [node name="GameOverMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +26,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_fsuem")
 script = ExtResource("1_ps2gm")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_fsf3h")
+
+[node name="BG2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_xltt6")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -53,7 +78,8 @@ alignment = 1
 [node name="Label" type="Label" parent="GridContainer/content_container/label_container"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "PERDEU NEGUINHO!"
+text = "VOCÊ 
+PERDEU!"
 label_settings = SubResource("LabelSettings_cwspd")
 horizontal_alignment = 1
 

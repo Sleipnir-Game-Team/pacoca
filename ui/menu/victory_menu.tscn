@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ogqywrng528u"]
+[gd_scene load_steps=5 format=3 uid="uid://ogqywrng528u"]
 
 [ext_resource type="Script" path="res://ui/menu/victory_menu.gd" id="1_bmmt1"]
+[ext_resource type="Texture2D" uid="uid://dyjf8lly7bo3l" path="res://assets/Main Menu Background.jpg" id="2_7mwav"]
+[ext_resource type="Texture2D" uid="uid://b3ey50uh8p0vv" path="res://assets/Victory screen.png" id="2_ub0d7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cwspd"]
 font_size = 45
@@ -11,6 +13,7 @@ shadow_size = 14
 shadow_color = Color(0, 0, 0, 0.447059)
 
 [node name="VictoryMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +21,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bmmt1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_7mwav")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -405.0
+offset_top = -540.0
+offset_right = 405.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_ub0d7")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -48,8 +77,8 @@ alignment = 1
 [node name="Label" type="Label" parent="GridContainer/content_container/label_container"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "PARABÉNS, VC DEIXOU
-A PAÇOQUITA FELIZ!"
+text = "PARABÉNS, A PAÇOQUITA
+SALVOU O MUNDO!"
 label_settings = SubResource("LabelSettings_cwspd")
 horizontal_alignment = 1
 
