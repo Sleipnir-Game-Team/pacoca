@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 			print(waves[0])
 			run_wave(waves)
 		else:
-			GameManager.game_over()
+			UI_Controller.changeScreen("res://ui/menu/victory_menu.tscn", get_tree().root)
 		Waves.has_pass = false
 
 func run_wave(wave: Array) -> void:

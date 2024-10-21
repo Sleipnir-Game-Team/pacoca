@@ -34,6 +34,6 @@ func throw_ball_away() -> void:
 	# TODO
 	attack_player()
 
-func _on_attack_area_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "ContactArea":
 		decision()
