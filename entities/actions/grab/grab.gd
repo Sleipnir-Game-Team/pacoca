@@ -3,6 +3,8 @@ extends AreaTrigger
 
 var held_object: Ball = null
 
+signal hold_to_stop
+
 func _ready() -> void:
 	super._ready()
 
@@ -15,6 +17,7 @@ func _handler(direction: Vector2, data: Dictionary) -> void:
 		ball.change_angle(angle_deg)
 	else: # GRABBING
 		held_object = ball
+		hold_to_stop.emit()
 
 func is_holding() -> bool:
 	return held_object != null

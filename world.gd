@@ -1,5 +1,8 @@
 extends Node2D
 
+func _ready() -> void:
+	SleipnirMaestro.change_song("level_one",true,"CUT")
+
 ## Pause game when action is pressed
 ## TODO Uncomment
 #func _unhandled_input(event: InputEvent) -> void:

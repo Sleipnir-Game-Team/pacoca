@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmvk3h52rrel0"]
+[gd_scene load_steps=10 format=3 uid="uid://dmvk3h52rrel0"]
 
+[ext_resource type="Script" path="res://world.gd" id="1_igby4"]
 [ext_resource type="PackedScene" uid="uid://q7r31yidg88g" path="res://entities/player/player.tscn" id="1_lklov"]
 [ext_resource type="PackedScene" uid="uid://c424f240qxo4m" path="res://game/waves_scene.tscn" id="1_vrmhi"]
 [ext_resource type="PackedScene" uid="uid://gchihnv3vpvw" path="res://ball/ball.tscn" id="2_y5g5q"]
-[ext_resource type="Texture2D" uid="uid://dhxdervk1gjjr" path="res://assets/Background.jpg" id="4_wi1h0"]
+[ext_resource type="Texture2D" uid="uid://cploosi6yg5k" path="res://assets/Background.jpg" id="4_wi1h0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1wdxc"]
 normal = Vector2(1, 0)
@@ -17,6 +18,7 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5y33w"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_igby4")
 
 [node name="WavesScene" parent="." instance=ExtResource("1_vrmhi")]
 
@@ -50,6 +52,9 @@ shape = SubResource("WorldBoundaryShape2D_5y33w")
 position = Vector2(401, 957)
 movement_speed = 400
 
+[node name="head_animation" parent="Player" index="9"]
+frame_progress = 0.0
+
 [node name="Ball" parent="." instance=ExtResource("2_y5g5q")]
 position = Vector2(152, 588)
 
@@ -62,3 +67,7 @@ repeat_times = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 texture = ExtResource("4_wi1h0")
+
+[connection signal="hold_to_stop" from="Player/Grab" to="Ball" method="_on_grab_hold_to_stop"]
+
+[editable path="Player"]

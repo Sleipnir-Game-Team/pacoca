@@ -1,10 +1,10 @@
 extends Control
 
-@onready var resolution_dropbox = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/resolution/resolution_dropbox/resolution_dropbox
-@onready var window_mode_dropbox = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/window_mode/window_mode_dropbox/window_mode_dropbox
-@onready var volume_master_slider = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_master/volume_master_slider/volume_master_slider
-@onready var volume_music_slider = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_music/volume_music_slider/volume_music_slider
-@onready var volume_sfx_slider = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_sfx/volume_sfx_slider/volume_sfx_slider
+@onready var resolution_dropbox: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/resolution/resolution_dropbox/resolution_dropbox
+@onready var window_mode_dropbox: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/window_mode/window_mode_dropbox/window_mode_dropbox
+@onready var volume_master_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_master/volume_master_slider/volume_master_slider
+@onready var volume_music_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_music/volume_music_slider/volume_music_slider
+@onready var volume_sfx_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_sfx/volume_sfx_slider/volume_sfx_slider
 
 var volume_value
 
@@ -60,7 +60,7 @@ func _on_resolution_dropbox_item_selected(index):
 
 
 func _on_volume_master_slider_value_changed(value):
-	AudioManager.bus_volume("Master", value)
+	AudioManager.bus_volume(&"Master", value)
 
 
 func _on_volume_master_slider_drag_ended(value_changed):
@@ -70,17 +70,16 @@ func _on_volume_master_slider_drag_ended(value_changed):
 
 
 func _on_volume_music_slider_value_changed(value):
-	AudioManager.bus_volume("music", value)
+	AudioManager.bus_volume(&"music", value)
 
 
 func _on_volume_music_slider_drag_ended(value_changed):
 	if value_changed:
 		Config_File_Handler.save_all_audio_settings("music_volume", volume_music_slider.value / 100)
 	
-	
-	
+
 func _on_volume_sfx_slider_value_changed(value):
-	AudioManager.bus_volume("sfx", value)
+	AudioManager.bus_volume(&"sfx", value)
 
 
 func _on_volume_sfx_slider_drag_ended(value_changed):
@@ -89,17 +88,19 @@ func _on_volume_sfx_slider_drag_ended(value_changed):
 	
 	
 func _on_mute_checkbox_toggled(toggled_on):
+	SfxGlobals.play_global("click")
 	Config_File_Handler.save_all_audio_settings("muted", toggled_on)
 	if toggled_on:
-		volume_value = -30
+		AudioServer.set_bus_mute(0,true)
 	else:
+		AudioServer.set_bus_mute(0,false)
 		volume_value = Config_File_Handler.get_setting("audio", "master_volume")
-	AudioManager.bus_volume("sfx", volume_value)
-		
-		
+
+
 func _on_button_pressed():
-	SfxGlobals.play_global("teste_som")
+	SfxGlobals.play_global("click")
 
 
 func _on_back_button_pressed():
+	SfxGlobals.play_global("back")
 	UI_Controller.freeScreen()

@@ -7,5 +7,9 @@ extends MarginContainer
 		#get_tree().paused = false
 
 func _input(event: InputEvent) -> void:
+	#if GameManager._pause_layers <= 0:
+	#	SfxGlobals.play_global("pause")
+	#elif GameManager._pause_layers > 0:
+	#	SfxGlobals.play_global("resume")
 	if event.is_action_pressed("pause"):
 		UI_Controller.managePauseMenu()

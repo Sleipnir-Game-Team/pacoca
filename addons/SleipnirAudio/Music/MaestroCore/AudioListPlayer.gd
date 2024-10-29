@@ -6,4 +6,4 @@ class_name AudioListPlayer
 func _ready() -> void:
 	self.volume_db = 1                 # volume pra 1
 	self.pitch_scale = 1               # pitch pra 1
-	self.bus = &"Music"
+	self.bus = &"music"

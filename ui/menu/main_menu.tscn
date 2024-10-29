@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5cwvqaharjej"]
+[gd_scene load_steps=14 format=3 uid="uid://c5cwvqaharjej"]
 
 [ext_resource type="Script" path="res://ui/menu/main_menu.gd" id="1_5p82l"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_533pj"]
-font_size = 45
-font_color = Color(0, 0, 0, 1)
-outline_size = 12
-outline_color = Color(1, 1, 1, 0.67451)
-shadow_size = 14
-shadow_color = Color(0, 0, 0, 0.447059)
+[ext_resource type="Texture2D" uid="uid://dyjf8lly7bo3l" path="res://assets/Main Menu Background.jpg" id="2_5nyck"]
+[ext_resource type="Texture2D" uid="uid://bmmohoedbd0ww" path="res://assets/UI/Main Menu Title.png" id="3_082ed"]
+[ext_resource type="Texture2D" uid="uid://cpw35yxh7heom" path="res://assets/UI/Button Play.png" id="4_4478w"]
+[ext_resource type="Texture2D" uid="uid://dh7pln7hdqdj1" path="res://assets/UI/Button Play Clicked.png" id="5_xwkki"]
+[ext_resource type="Texture2D" uid="uid://cexu6w08kfq3e" path="res://assets/UI/Button Play Hover.png" id="6_r8f3w"]
+[ext_resource type="Texture2D" uid="uid://brfec23yyr6xs" path="res://assets/UI/Button Config.png" id="7_igp1u"]
+[ext_resource type="Texture2D" uid="uid://byqtvgy8asuys" path="res://assets/UI/Button Config Clicked.png" id="8_kewef"]
+[ext_resource type="Texture2D" uid="uid://duf3yv6df2jqy" path="res://assets/UI/Button Config Hover.png" id="9_f5jrw"]
+[ext_resource type="Texture2D" uid="uid://dru0ciqei3tak" path="res://assets/UI/Button Exit.png" id="10_02iys"]
+[ext_resource type="Texture2D" uid="uid://cs7f0flrhglqm" path="res://assets/UI/Button Exit Clicked.png" id="11_e18ha"]
+[ext_resource type="Texture2D" uid="uid://f41aidfijb1x" path="res://assets/UI/Button Exit Hover.png" id="12_jtvm0"]
+[ext_resource type="Texture2D" uid="uid://bxv0u7cati1ck" path="res://assets/UI/Credits Main Menu.png" id="13_kvypp"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -19,6 +23,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5p82l")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_5nyck")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -46,35 +60,56 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="GridContainer/content_container/label_container"]
+[node name="TextureRect" type="TextureRect" parent="GridContainer/content_container/label_container"]
 layout_mode = 2
-size_flags_vertical = 0
-text = "Slepi Gamin"
-label_settings = SubResource("LabelSettings_533pj")
-horizontal_alignment = 1
+texture = ExtResource("3_082ed")
 
-[node name="button_container" type="VBoxContainer" parent="GridContainer/content_container"]
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/content_container"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+
+[node name="button_container" type="VBoxContainer" parent="GridContainer/content_container/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="play_button" type="Button" parent="GridContainer/content_container/button_container"]
+[node name="play_button" type="TextureButton" parent="GridContainer/content_container/MarginContainer/button_container"]
 layout_mode = 2
-text = "Jogar"
+texture_normal = ExtResource("4_4478w")
+texture_pressed = ExtResource("5_xwkki")
+texture_hover = ExtResource("6_r8f3w")
 
-[node name="options_button" type="Button" parent="GridContainer/content_container/button_container"]
+[node name="options_button" type="TextureButton" parent="GridContainer/content_container/MarginContainer/button_container"]
 layout_mode = 2
-text = "Opções"
+texture_normal = ExtResource("7_igp1u")
+texture_pressed = ExtResource("8_kewef")
+texture_hover = ExtResource("9_f5jrw")
 
-[node name="quit_button" type="Button" parent="GridContainer/content_container/button_container"]
+[node name="quit_button" type="TextureButton" parent="GridContainer/content_container/MarginContainer/button_container"]
 layout_mode = 2
-text = "Sair"
+texture_normal = ExtResource("10_02iys")
+texture_pressed = ExtResource("11_e18ha")
+texture_hover = ExtResource("12_jtvm0")
 
-[node name="mid_down_blank_space" type="Control" parent="GridContainer/content_container"]
+[node name="mid_down_blank_space" type="VBoxContainer" parent="GridContainer/content_container"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/content_container/mid_down_blank_space"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 70
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/content_container/mid_down_blank_space/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("13_kvypp")
 
 [node name="right_blank_space" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -83,6 +118,6 @@ size_flags_vertical = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[connection signal="pressed" from="GridContainer/content_container/button_container/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="GridContainer/content_container/button_container/options_button" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="GridContainer/content_container/button_container/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="GridContainer/content_container/MarginContainer/button_container/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="GridContainer/content_container/MarginContainer/button_container/options_button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="GridContainer/content_container/MarginContainer/button_container/quit_button" to="." method="_on_quit_button_pressed"]

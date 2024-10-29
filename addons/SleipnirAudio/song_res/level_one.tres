@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="SongData" load_steps=5 format=3 uid="uid://dq8771art0d7s"]
+
+[ext_resource type="Script" path="res://addons/SleipnirAudio/Music/MaestroCore/SongData.gd" id="1_8fqoc"]
+[ext_resource type="AudioStream" uid="uid://bgnwfk6aar2ny" path="res://assets/Music/level_one/level1 [START].ogg" id="1_gkdsp"]
+[ext_resource type="AudioStream" uid="uid://bellwqhdg8cwh" path="res://assets/Music/level_one/level1 [LOOP].ogg" id="2_y11do"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ns6fo"]
+clip_count = 2
+clip_0/name = &"start"
+clip_0/stream = ExtResource("1_gkdsp")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"loop"
+clip_1/stream = ExtResource("2_y11do")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+}
+}
+
+[resource]
+resource_name = "level_one"
+script = ExtResource("1_8fqoc")
+BPM = 100
+BeatsPerBar = 4
+MainClips = SubResource("AudioStreamInteractive_ns6fo")
+TriggerClips = Array[Resource]([])
+default_first_section = "start"
+default_track_transition = 0
+fade_mode = 0
+fade_beats = 0

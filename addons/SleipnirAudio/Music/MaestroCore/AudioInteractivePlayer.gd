@@ -4,9 +4,9 @@ class_name AudioInteractivePlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.volume_db = 1                 # volume pra 1
+	self.volume_db = -3                 # volume pra 1
 	self.pitch_scale = 1               # pitch pra 1
-	self.bus = &"Music"
+	self.bus = &"music"
 	#match AudioManager.create_bus(self.name):
 	#	OK:
 	#		AudioServer.set_bus_send(AudioServer.get_bus_index(self.name),"Music")

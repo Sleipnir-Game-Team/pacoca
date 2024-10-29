@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dmvk3h52rrel0" path="res://world.tscn" id="1_45oy0"]
 [ext_resource type="Script" path="res://main.gd" id="1_cxumw"]
-[ext_resource type="Script" path="res://world.gd" id="2_nsl35"]
-[ext_resource type="Texture2D" uid="uid://c05rlohoqxep3" path="res://assets/Alien Dog 1.jpg" id="4_mcjaf"]
-[ext_resource type="Texture2D" uid="uid://bt4osvglw2o2b" path="res://assets/Alien Dog 2.jpg" id="5_cntkf"]
+[ext_resource type="Texture2D" uid="uid://bups53w1w13gd" path="res://assets/Alien Dog 1.jpg" id="4_mcjaf"]
+[ext_resource type="Texture2D" uid="uid://c6464c6w7s27s" path="res://assets/Alien Dog 2.jpg" id="5_cntkf"]
+[ext_resource type="PackedScene" uid="uid://dbi5oq1h8iiaf" path="res://ui/hud/HUD.tscn" id="5_u5r6x"]
 
 [node name="Main" type="MarginContainer"]
 process_mode = 3
@@ -31,7 +31,6 @@ size = Vector2i(810, 1080)
 render_target_update_mode = 4
 
 [node name="World" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_45oy0")]
-script = ExtResource("2_nsl35")
 
 [node name="AlienDog1" type="Sprite2D" parent="."]
 position = Vector2(-277, 540)
@@ -40,3 +39,6 @@ texture = ExtResource("4_mcjaf")
 [node name="AlienDog2" type="Sprite2D" parent="."]
 position = Vector2(1087, 540)
 texture = ExtResource("5_cntkf")
+
+[node name="Hud" parent="." instance=ExtResource("5_u5r6x")]
+layout_mode = 2

@@ -201,6 +201,7 @@ func resume() ->void :
 func change_song(song_name:String, stay_playing:bool=false, transition_type:String="FADE", keep_section:bool=false) ->Error:
 	# BUG se tu trocar várias vezes muito rápido (o que é BEM improvável), cria audiostream extra. 
 	# ele eventualmente é limpado, mas acaba gerando duas transições por algum motivo
+	
 	if _current_song_node != null and song_name == _current_song_node.name: # checa se n tá tentando ir pra mesma
 		if log_level <= 3: Logger.warn("Cannot change to the same song!")
 		return ERR_ALREADY_IN_USE
@@ -226,6 +227,12 @@ func change_song(song_name:String, stay_playing:bool=false, transition_type:Stri
 	
 	# carrega o resource da musica
 	var song_data = load(_song_path+"/"+song_name+".tres")
+	
+	print("SleipnirMaestro, ", str(song_data.resource_name))
+	
+	if song_data == null or song_data is not SongData:
+		Logger.error("Could not load song \""+song_name+"\"")
+		return ERR_FILE_NOT_FOUND
 	
 	if MainPlayer.get_child_count() == 0:
 		_data_handling(song_data) # distribui os dados onde precisa

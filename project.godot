@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Waves="*res://game/waves.gd"
 GameManager="*res://globals/game_manager.gd"
 Logger="*res://addons/log_and_error/logger.gd"
 SfxGlobals="*res://addons/SleipnirAudio/SFX/SFXGlobals.tscn"
@@ -26,6 +25,7 @@ SleipnirMaestro="*res://addons/SleipnirAudio/Music/SleipnirMaestro.tscn"
 UI_Controller="*res://ui/controller/ui_controller.gd"
 Game_Manager="*res://globals/game_manager.gd"
 Config_File_Handler="*res://globals/config_file_handler.gd"
+Waves="*res://game/waves.gd"
 
 [debug]
 
@@ -43,7 +43,15 @@ project/assembly_name="Game Jam Plus 24 25"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/SleipnirAudio/plugin.cfg", "res://addons/log_and_error/plugin.cfg")
+
+[global_group]
+
+Ball="Holds the ball lmao"
+
+[gui]
+
+theme/custom_font="res://assets/Text_Fonts/ModernDOS9x16.ttf"
 
 [input]
 
@@ -89,6 +97,7 @@ pause={
 2d_physics/layer_2="BALL"
 2d_physics/layer_3="PLAYER"
 2d_physics/layer_4="ENEMIES"
+2d_physics/layer_5="BOSS"
 2d_physics/layer_7="GOLD_LIGHT"
 2d_physics/layer_8="RED_LIGHT"
 
