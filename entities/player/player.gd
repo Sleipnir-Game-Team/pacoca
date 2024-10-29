@@ -2,21 +2,27 @@ extends CharacterBody2D
 
 class_name Player
 
+#TODO isso talvez seja aq
 var invincibility: bool = false
 
+#TODO isso não é aq, é do grab
 ## Distance in pixels between the player's center and the held object's origin
 @export var holding_distance: int = 78
 
+#TODO isso não é aq, é do grab
 ## Speed at which to launch held objects
 @export var launch_velocity: int = 30
 
+#TODO isso não é aq, é do movemento
 @export_group('Movement', 'movement')
 @export var movement_speed: int = 200
 
+#TODO isso não é aq, é do kick
 @export_group('Kick', 'kick')
 @export var kick_cooldown_seconds: float = 1
 @export var kick_buffering_duration_seconds: float = 0.1
 
+#TODO isso não é aq, é do grab
 @export_group('Grab', 'grab')
 @export var grab_buffering_duration_seconds: float = 0.1
 
@@ -30,19 +36,24 @@ var invincibility: bool = false
 @onready var invecibility_time = $invencibility_time as Timer
 @onready var hurt_animation = $hurt_animation as AnimationPlayer
 
+#TODO isso talvez seja aq
 signal change_life_bar
 
+#TODO isso não é aq, é do kick
 var kick_buffering = false
 var kick_buffering_duration = 0
 var attack_direction: Vector2
 
+#TODO isso não é aq, é do grab
 var grab_buffering = false
 var grab_buffering_duration = 0
 var grab_direction: Vector2
 
 func _physics_process(_delta: float) -> void:
+	#TODO isso não é aq, é do movemento
 	velocity.x = 0
 	
+	#TODO isso não é aq, é do kick
 	if kick_buffering:
 		if kick_buffering_duration < kick_buffering_duration_seconds:
 			kick_buffering_duration += _delta
@@ -51,6 +62,7 @@ func _physics_process(_delta: float) -> void:
 			kick_buffering = false
 			kick_buffering_duration = 0
 	
+	#TODO isso não é aq, é do grab
 	if grab_buffering:
 		if grab_buffering_duration < grab_buffering_duration_seconds:
 			grab_buffering_duration += _delta
@@ -59,11 +71,13 @@ func _physics_process(_delta: float) -> void:
 			grab_buffering = false
 			grab_buffering_duration = 0
 	
+	#TODO isso não é aq, é do movemento
 	var movement_direction: int = int(Input.is_action_pressed("player_right")) - int(Input.is_action_pressed("player_left"))
 	velocity.x = movement_speed * movement_direction
 	
 	move_and_slide()
 	
+	#TODO isso não é aq, é da rotaçao
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var aim_direction: Vector2 = global_position.direction_to(mouse_position).clamp(Vector2(-INF, -INF), Vector2(INF, 0))
 	
@@ -77,11 +91,14 @@ func _physics_process(_delta: float) -> void:
 			side = -side
 		rotation = rotate_toward(rotation, side, 0.1)
 	
+	#TODO isso não era pra ser necessario
 	if grab.is_holding():
 		invincibility = true
 		grab.held_object.global_position = tongue.global_position
 
 
+#TODO isso talvez seja aq, deveria ter um nó lidando com input, mas acho q é especifico de mais pra generalizar
+#análise pendente
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_hit") and not grab.is_holding() and kick.can_trigger():
 		var click_position: Vector2 = get_global_mouse_position()
@@ -100,7 +117,7 @@ func _on_life_defeat_signal() -> void:
 	# NOTE Maybe play death animation, wait a few seconds, and then actually call game_over().
 	GameManager.game_over()
 
-
+#TODO isso não é aq, é de um life system
 func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	# NOTE Maybe play hurt animation, give some invincibility frames and then back to normal
 	if not invincibility:
@@ -112,20 +129,25 @@ func _on_hurt_box_body_entered(_body: Node2D) -> void:
 func _on_kick_animation_animation_finished() -> void:
 	head_animation.play("default")
 
+#TODO Cristo pq isso existe e por que eu tenho medo da resposta?
 func show_global():
 	return global_position
 
+#TODO isso não é aq, é de um life system
 func invencibility_frames():
 	invecibility_time.start()
 	hurt_animation.play("hurt")
 	invincibility = true
 
+#TODO isso não é aq, é de um life system
 func _on_invencibility_time_timeout() -> void:
 	invincibility = false
 
 
+#TODO isso não é aq, é do kick
 func _on_kick_hit(direction, data):
 	kick_buffering = false
 
+#TODO isso não é aq, é do grab
 func _on_grab_hit(direction, data):
 	grab_buffering = false
