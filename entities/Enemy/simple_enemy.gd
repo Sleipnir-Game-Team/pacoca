@@ -8,7 +8,7 @@ var rng = RandomNumberGenerator.new()
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var list_audio  : Array[Node]   = [%alien_sounds,%alien_sounds,%cat_sounds]
 
-var list_sprite : Array[String] = ["res://assets/alien A.png", "res://assets/alien B.png", "res://assets/alien C.png"]
+var list_sprite : Array[String] = ["res://assets/alien A.png", "res://assets/alien B.png", "res://assets/alien c.png"]
 var audio_node  : Node
 
 func _ready() -> void:
