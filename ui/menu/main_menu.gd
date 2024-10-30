@@ -11,15 +11,15 @@ func _ready() -> void:
 
 ## Função que roda quando você aperta o botão de "jogar"
 func _on_play_button_pressed() -> void:
-	SfxGlobals.play_global("play")
+	AudioManager.play_global("ui.play")
 	UI_Controller.changeScreen("res://main.tscn", get_tree().root)
 
 ## Função que roda quando você aperta o botão de "opções"
 func _on_options_button_pressed() -> void:
-	SfxGlobals.play_global("click")
+	AudioManager.play_global("ui.button.click")
 	UI_Controller.openScreen("res://ui/menu/options_menu.tscn", get_tree().root)
 
 ## Função que roda quando você aperta o botão de "sair"
 func _on_quit_button_pressed() -> void:
-	SfxGlobals.play_global("click")
+	AudioManager.play_global("ui.button.click")
 	get_tree().quit() # Fecha a aplicação

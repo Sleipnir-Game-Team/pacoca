@@ -5,32 +5,34 @@ extends Node
 ## Utilize esta cena para sons que irão se repetir em multiplos lugares pelo jogo
 ## como botões de UI, ataques em comum de inimigos, e etc.
 
-var child_nodes : Array[Variant] = []  ## Lista de AudioStreamPlayer's Globais
-var child_search: Array[String]  = []  ## Lista dos nomes de cada AudioStreamPlayer, para busca mais facil
+var sound_events : Dictionary ## Sons no SFXGlobals
 
 func _ready() -> void:
-	child_nodes.clear()
-	child_search.clear()
-	child_nodes = _get_all(self)
-	Logger.info("SFX Globais são:"+str(child_search))
-## Método para tocar um SFX Global
-func play_global(sfx_name: String) -> void: AudioManager.play_sfx(child_nodes[child_search.find(sfx_name)], 4)
-
-## Método para parar um SFX Global
-func stop_global(sfx_name: String) -> void: AudioManager.stop_sfx(child_nodes[child_search.find(sfx_name)])
+	sound_events.clear()
+	sound_events = _get_all(self)
+	if sound_events.size() == 0:
+		Logger.info("Não existe nenhum SFX Global carregado.")
+	else:
+		Logger.info("SFX Globais são: "+", ".join(sound_events.keys()))
 
 # private
-func _get_all(node:Node) -> Array: # pega todos as children e grand children de um node e joga pro child_nodes
-	if node.get_child_count() == 0: return []
-	var all_child : Array[Variant]
+func _get_all(node:Node) -> Dictionary: # pega todos as children e grand children de um node e joga pro sound_events
+	if node.get_child_count() == 0: return {}
+	
+	var all_child : Dictionary
 	
 	for child in node.get_children():
-		if child is SoundQueue or child is AudioStreamPlayer:
-			all_child.append(child)
-			child_search.append(child.name)
+		if child.has_method("play_sound") or child.has_method("play"):
+			if child.get_parent() != self:
+				all_child.merge({child.name.to_lower():child})
+			else:
+				all_child.merge({"uncategorized."+child.name.to_lower():child})
 			continue
-		for grand_child in _get_all(child):
-			if grand_child is SoundQueue or grand_child is AudioStreamPlayer:
-				all_child.append(grand_child)
+		
+		var child_array = _get_all(child)
+		for grand_child in child_array:
+			if child_array[grand_child].has_method("play_sound") or child_array[grand_child].has_method("play"):
+				all_child.merge({child.name.to_lower()+"."+grand_child.to_lower():child_array[grand_child]})
 				continue
+	
 	return all_child

@@ -8,8 +8,8 @@ extends MarginContainer
 
 func _input(event: InputEvent) -> void:
 	#if GameManager._pause_layers <= 0:
-	#	SfxGlobals.play_global("pause")
+	#	AudioManager.play_global("ui.pause")
 	#elif GameManager._pause_layers > 0:
-	#	SfxGlobals.play_global("resume")
+	#	AudioManager.play_global("ui.resume")
 	if event.is_action_pressed("pause"):
 		UI_Controller.managePauseMenu()

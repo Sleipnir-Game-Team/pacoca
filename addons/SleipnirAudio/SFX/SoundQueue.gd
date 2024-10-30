@@ -18,10 +18,10 @@ extends Node
 var _next : int = 0 ## Variável que vai ser usada para navegar na lista de AudioStreamPlayers
 var _audioStreamPlayers : Array[AudioStreamPlayer] ## Faz uma lista que só aceita AudioStreamPlayers
 
+
 func _ready() -> void:                      # Logo quando entra
 	if get_child_count() == 0:              # Se o Node n tiver nenhuma child
-		return                              # Manda pro Log que não tem, e retorna cedo
-	#                                       # TODO Colocar um logger aqui
+		return                           
 	var child = get_child(0)                # Pega a primeira child
 	if child is AudioStreamPlayer:          # Se ela for AudioStreamPlayer
 		_audioStreamPlayers.append(child)   # Bota na Lista
@@ -30,33 +30,37 @@ func _ready() -> void:                      # Logo quando entra
 			add_child( child_duplicate)
 			_audioStreamPlayers.append(child_duplicate)
 
-## método para pegar polifonia maxima da soundqueue
-func get_polyphony() -> int: return Count
 
 func play_sound() -> void:   ## Toca a SoundQueue    
-	#if print_log == true: 
-	#	Logger.debug(str(_next))    
-	#	Logger.debug(str(_audioStreamPlayers))
 	if !_audioStreamPlayers[_next].playing: # Se o som da child _next não estiver tocando:
-		AudioManager.currently_playing_audiostreams.append(_audioStreamPlayers[_next])
+		if !AudioManager.currently_playing_audiostreams.has(_audioStreamPlayers[_next]): 
+			AudioManager.currently_playing_audiostreams.append(_audioStreamPlayers[_next])
+			AudioManager._currently_playing_size = AudioManager. currently_playing_audiostreams.size()
+			
 		_audioStreamPlayers[_next].play() # Ele vai tocar nela
 		
 		# cria uma variavel
-		var audio_playing := get_node(get_path_to(_audioStreamPlayers[_next])) 
-		audio_playing.connect("finished",func(): _on_audio_finished(audio_playing)) 
+		var audio_playing := get_node(get_path_to(_audioStreamPlayers[_next]))
+		if !audio_playing.finished.is_connected(_on_audio_finished.bind(audio_playing)):
+			audio_playing.finished.connect(_on_audio_finished.bind(audio_playing)) 
 		# conecta um sinal a ela pra saber quando acaba
+		
 		_next = _next + 1                              # E passar pro proximo AudioStreamPlayer na lista	
 	if _next == _audioStreamPlayers.size(): _next = 0  # Quando atinge o fim Reseta pra 0, criando um ciclo
+
 
 func stop_sound() -> void:
 	for audio_index in Count:
 		if _audioStreamPlayers[audio_index].playing:
 			_audioStreamPlayers[audio_index].stop()
+			_audioStreamPlayers[audio_index].emit_signal("finished")
+
 
 func _on_audio_finished(audio_playing): 
 	AudioManager.currently_playing_audiostreams.erase(audio_playing)
 	#if print_log == true:
 	#	Logger.debug("Tocando:\n"+str(AudioManager.currently_playing_audiostreams)+"\n - - - - - - -")
+
 
 func _get_configuration_warnings() -> PackedStringArray: # Manda Notificação Direto no Node:
 	if get_child_count() == 0:                           # Se n tem nenhuma Child
