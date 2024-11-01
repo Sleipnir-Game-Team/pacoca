@@ -2,9 +2,6 @@ extends CharacterBody2D
 
 class_name Player
 
-#TODO isso talvez seja aq
-var invincibility: bool = false
-
 #TODO isso não é aq, é do grab
 ## Distance in pixels between the player's center and the held object's origin
 @export var holding_distance: int = 78
@@ -33,11 +30,7 @@ var invincibility: bool = false
 @onready var head_animation = $head_animation as AnimatedSprite2D
 @onready var tail_animation = $tail_animation as AnimatedSprite2D
 @onready var hurtbox = $HurtBox as Area2D
-@onready var invecibility_time = $invencibility_time as Timer
-@onready var hurt_animation = $hurt_animation as AnimationPlayer
-
-#TODO isso talvez seja aq
-signal change_life_bar
+@onready var animation_player = $AnimationPlayer as AnimationPlayer
 
 #TODO isso não é aq, é do kick
 var kick_buffering = false
@@ -48,6 +41,9 @@ var attack_direction: Vector2
 var grab_buffering = false
 var grab_buffering_duration = 0
 var grab_direction: Vector2
+
+func _ready():
+	life.damage_received.connect(animation_player.play_animation.bind('hurt').unbind(1))
 
 func _physics_process(_delta: float) -> void:
 	#TODO isso não é aq, é do movemento
@@ -91,9 +87,8 @@ func _physics_process(_delta: float) -> void:
 			side = -side
 		rotation = rotate_toward(rotation, side, 0.1)
 	
-	#TODO isso não era pra ser necessario
+	#TODO isso não é aq, é do grab
 	if grab.is_holding():
-		invincibility = true
 		grab.held_object.global_position = tongue.global_position
 
 
@@ -108,23 +103,18 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("player_special") and grab.can_trigger():
 		head_animation.play("bite")
 		AudioManager.play_global("player.attack")
-		invincibility = false
 		var click_position: Vector2 = get_global_mouse_position()
 		grab_direction = global_position.direction_to(click_position)
 		grab_buffering = true
 
-func _on_life_defeat_signal() -> void:
+func _on_death() -> void:
 	# NOTE Maybe play death animation, wait a few seconds, and then actually call game_over().
 	GameManager.game_over()
 
-#TODO isso não é aq, é de um life system
 func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	# NOTE Maybe play hurt animation, give some invincibility frames and then back to normal
-	if not invincibility:
-		AudioManager.play_global("player.hit")
-		life.damage()
-		change_life_bar.emit(-1)
-		invencibility_frames()
+	AudioManager.play_global("player.hit")
+	life.damage(1)
 
 func _on_kick_animation_animation_finished() -> void:
 	head_animation.play("default")
@@ -132,17 +122,6 @@ func _on_kick_animation_animation_finished() -> void:
 #TODO Cristo pq isso existe e por que eu tenho medo da resposta?
 func show_global():
 	return global_position
-
-#TODO isso não é aq, é de um life system
-func invencibility_frames():
-	invecibility_time.start()
-	hurt_animation.play("hurt")
-	invincibility = true
-
-#TODO isso não é aq, é de um life system
-func _on_invencibility_time_timeout() -> void:
-	invincibility = false
-
 
 #TODO isso não é aq, é do kick
 func _on_kick_hit(direction, data):

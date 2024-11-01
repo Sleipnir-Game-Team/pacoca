@@ -41,9 +41,9 @@ func _physics_process(_delta: float) -> void:
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Ball:
 		AudioManager.play_global("enemy."+random_enemy["type"]+".hit")
-		life.damage()
+		life.damage(1)
 
-func _on_life_defeat_signal() -> void:
+func _on_death() -> void:
 	# NOTE Maybe play a death sound, or a death animation, then run a timer and finally actually die lmao
 	AudioManager.play_global("enemy."+random_enemy["type"]+".death")
 	queue_free()

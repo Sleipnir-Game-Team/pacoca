@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Ball:
 		AudioManager.play_global("boss.crab.hit")
-		life.damage()
+		life.damage(1)
 
 func _on_life_defeat_signal() -> void:
 	AudioManager.play_global("boss.crab.death")
@@ -53,7 +53,7 @@ func _on_grabable_area_area_entered(area: Area2D) -> void:
 	elif !invincibility:
 		print("boss levou dano")
 		AudioManager.play_global("boss.crab.hit")
-		life.damage()
+		life.damage(1)
 		dizzy_time.stop()
 		invincibility_frame()
 

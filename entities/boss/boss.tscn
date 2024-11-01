@@ -198,6 +198,7 @@ shape = SubResource("CircleShape2D_a7lno")
 [node name="life" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_piw0h")
+on_hit_invecibility_time = 0
 
 [node name="ActionManagers" type="Node" parent="."]
 script = ExtResource("4_w6tsh")
@@ -256,7 +257,6 @@ stream = SubResource("AudioStreamRandomizer_v3h7p")
 bus = &"sfx"
 
 [connection signal="area_entered" from="GrabableArea" to="." method="_on_grabable_area_area_entered"]
-[connection signal="defeat_signal" from="life" to="." method="_on_life_defeat_signal"]
 [connection signal="timeout" from="hold_time" to="." method="_on_hold_time_timeout"]
 [connection signal="timeout" from="dizzy_time" to="." method="_on_dizzy_time_timeout"]
 [connection signal="animation_finished" from="damage_animation" to="." method="_on_damage_animation_animation_finished"]
