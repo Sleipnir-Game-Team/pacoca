@@ -275,6 +275,7 @@ Count = 9
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy/alien/hit"]
 stream = SubResource("AudioStreamRandomizer_6404p")
+volume_db = 1.0
 bus = &"sfx"
 
 [node name="death" type="Node" parent="enemy/alien"]
@@ -283,6 +284,7 @@ Count = 9
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy/alien/death"]
 stream = SubResource("AudioStreamRandomizer_wukk5")
+volume_db = 1.0
 bus = &"sfx"
 
 [node name="cat" type="Node" parent="enemy"]
@@ -301,6 +303,7 @@ Count = 9
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy/cat/hit"]
 stream = SubResource("AudioStreamRandomizer_tqjxr")
+volume_db = 1.0
 bus = &"sfx"
 
 [node name="death" type="Node" parent="enemy/cat"]
@@ -309,6 +312,7 @@ Count = 9
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy/cat/death"]
 stream = SubResource("AudioStreamRandomizer_mrcm0")
+volume_db = 1.0
 bus = &"sfx"
 
 [node name="boss" type="Node" parent="."]
@@ -347,7 +351,7 @@ Count = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ball/hot/hit"]
 stream = SubResource("AudioStreamRandomizer_io6o5")
-volume_db = 3.0
+volume_db = 2.0
 bus = &"sfx"
 
 [node name="cold" type="Node" parent="ball"]
@@ -358,7 +362,7 @@ Count = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ball/cold/hit"]
 stream = SubResource("AudioStreamRandomizer_in041")
-volume_db = 3.0
+volume_db = 2.0
 bus = &"sfx"
 
 [node name="player" type="Node" parent="."]
@@ -375,5 +379,5 @@ script = ExtResource("3_gcjy4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player/hit"]
 stream = SubResource("AudioStreamRandomizer_4onou")
-volume_db = 3.0
+volume_db = 2.0
 bus = &"sfx"
