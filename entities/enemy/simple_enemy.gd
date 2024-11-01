@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 		var aim_angle: float = global_position.angle_to_point(ball.global_position)
 		if deg_to_rad(10.0) < aim_angle and aim_angle < deg_to_rad(170.0):
 			rotation = rotate_toward(rotation, aim_angle - (PI/2), _delta)
-		AudioManager.play_global("enemy."+random_enemy["type"]+".attack")
+		#AudioManager.play_global("enemy."+random_enemy["type"]+".attack")
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Ball:
