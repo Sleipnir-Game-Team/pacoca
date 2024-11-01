@@ -10,7 +10,7 @@ func _ready() -> void:
 
 ## Função que roda quando você aperta o botão de "jogar"
 func _on_play_button_pressed() -> void:
-	AudioManager.play_global("ui.play")
+	AudioManager.play_global("ui.button.click")
 	UI_Controller.changeScreen("res://main.tscn", get_tree().root)
 
 ## Função que roda quando você aperta o botão de "opções"

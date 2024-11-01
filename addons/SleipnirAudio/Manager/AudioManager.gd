@@ -37,7 +37,7 @@ func _ready() -> void:
 
 ## Método pra tocar SFX, acontando com os limites do AudioManager [br]
 func play_sfx(audio_player) -> void:
-	Logger.debug(str(currently_playing_audiostreams))
+	#Logger.debug(str(currently_playing_audiostreams))
 	if audio_player is Array: # Pra tocar grupos, pq eles são array de nodes
 		for member in audio_player:
 			_play(member)

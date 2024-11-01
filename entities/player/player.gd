@@ -107,7 +107,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		head_animation.play("kick")
 	elif event.is_action_pressed("player_special") and grab.can_trigger():
 		head_animation.play("bite")
-		AudioManager.play_sfx($mordida)
+		AudioManager.play_global("player.attack")
 		invincibility = false
 		var click_position: Vector2 = get_global_mouse_position()
 		grab_direction = global_position.direction_to(click_position)
@@ -121,7 +121,7 @@ func _on_life_defeat_signal() -> void:
 func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	# NOTE Maybe play hurt animation, give some invincibility frames and then back to normal
 	if not invincibility:
-		AudioManager.play_sfx($dano)
+		AudioManager.play_global("player.hit")
 		life.damage()
 		change_life_bar.emit(-1)
 		invencibility_frames()

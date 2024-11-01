@@ -3,12 +3,12 @@ extends Control
 
 ## OnClick do botão "Continuar" - resume a execução do jogo
 func _on_resume_button_pressed() -> void:
-	AudioManager.play_global("ui.resume")
+	AudioManager.play_global("ui.screen.resume")
 	localPause()
 
 ## OnClick do botão "Reiniciar" - reinicia o jogo do ínicio do tutorial
 func _on_restart_button_pressed() -> void:
-	AudioManager.play_global("ui.play")
+	AudioManager.play_global("ui.button.click")
 	localPause()
 	UI_Controller.changeScreen("res://main.tscn", get_tree().root)
 

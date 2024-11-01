@@ -36,8 +36,8 @@ func _physics_process(delta: float) -> void:
 
 func change_angle(angle: float) -> void:
 	
-	if heat.is_burning == true: AudioManager.play_sfx($kikaquente)
-	else: AudioManager.play_sfx($kikafrio)
+	if heat.is_burning == true: AudioManager.play_global("ball.hot.hit")
+	else: AudioManager.play_global("ball.cold.hit")
 	
 	direction = angle
 	var base_velocity: Vector2 = Vector2(cos(deg_to_rad(direction)), sin(deg_to_rad(direction)))
@@ -47,8 +47,8 @@ func change_angle(angle: float) -> void:
 
 func flip(normal: Vector2) -> void:
 	
-	if heat.is_burning == true: AudioManager.play_sfx($kikaquente)
-	else: AudioManager.play_sfx($kikafrio)
+	if heat.is_burning == true: AudioManager.play_global("ball.hot.hit")
+	else: AudioManager.play_global("ball.cold.hit")
 	
 	heat.cool_down()
 	

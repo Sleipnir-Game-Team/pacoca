@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_restart_button_pressed() -> void:
-	AudioManager.play_global("ui.play")
+	AudioManager.play_global("ui.button.click")
 	UI_Controller.changeScreen("res://main.tscn", get_tree().root)
 
 

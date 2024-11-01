@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://lg6kuv3fkktu"]
+[gd_scene load_steps=81 format=3 uid="uid://lg6kuv3fkktu"]
 
 [ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SFXGlobals.gd" id="1_p5jl5"]
 [ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SoundQueue.gd" id="3_gcjy4"]
@@ -12,7 +12,56 @@
 [ext_resource type="AudioStream" uid="uid://c7qadgaa053w7" path="res://assets/Sounds/UI/UI_Hover3.mp3" id="11_yhi0g"]
 [ext_resource type="AudioStream" uid="uid://cnrwjldlt23vm" path="res://assets/Sounds/UI/UI_Hover4.mp3" id="12_ljk5r"]
 [ext_resource type="AudioStream" uid="uid://qux376478aje" path="res://assets/Sounds/UI/UI_Pause.mp3" id="13_spnc2"]
+[ext_resource type="AudioStream" uid="uid://ccv7li4rlt15m" path="res://assets/Sounds/UI/UI_Slider.mp3" id="14_fsmqa"]
 [ext_resource type="AudioStream" uid="uid://b7scsxa7t77r" path="res://assets/Sounds/UI/UI_Resume.mp3" id="14_vl2ws"]
+[ext_resource type="AudioStream" uid="uid://drmuihj77ay8k" path="res://assets/Sounds/Enemy/Alien_Ataque1.mp3" id="15_6jggm"]
+[ext_resource type="AudioStream" uid="uid://tjs8t1mmxjdd" path="res://assets/Sounds/Enemy/Alien_Ataque2.mp3" id="16_gniuo"]
+[ext_resource type="AudioStream" uid="uid://boset3borpr5w" path="res://assets/Sounds/Enemy/Alien_Ataque3.mp3" id="17_sgqeh"]
+[ext_resource type="AudioStream" uid="uid://cflcotmsey8tq" path="res://assets/Sounds/Enemy/Alien_Ataque4.mp3" id="18_ldt3b"]
+[ext_resource type="AudioStream" uid="uid://b25h7vkrphxa2" path="res://assets/Sounds/Enemy/Alien_Dano1.mp3" id="19_xqnjc"]
+[ext_resource type="AudioStream" uid="uid://butsmav030v1d" path="res://assets/Sounds/Enemy/Alien_Dano2.mp3" id="20_ka0c4"]
+[ext_resource type="AudioStream" uid="uid://dt3uf0a1ett8e" path="res://assets/Sounds/Enemy/Alien_Dano3.mp3" id="21_ww5wq"]
+[ext_resource type="AudioStream" uid="uid://bmyl65w6ggw7n" path="res://assets/Sounds/Enemy/Alien_Dano4.mp3" id="22_r3nk5"]
+[ext_resource type="AudioStream" uid="uid://b5bqah1tfwt2c" path="res://assets/Sounds/Enemy/Alien_Morte1.mp3" id="23_nst00"]
+[ext_resource type="AudioStream" uid="uid://b2esj4psf71v0" path="res://assets/Sounds/Enemy/Alien_Morte2.mp3" id="24_cwxup"]
+[ext_resource type="AudioStream" uid="uid://dftqwsom63bnv" path="res://assets/Sounds/Enemy/Alien_Morte3.mp3" id="25_p3ovd"]
+[ext_resource type="AudioStream" uid="uid://bx3lw38moapve" path="res://assets/Sounds/Enemy/Alien_Morte4.mp3" id="26_qml3o"]
+[ext_resource type="AudioStream" uid="uid://t61r1qo6rxj2" path="res://assets/Sounds/Enemy/AlienCat_Ataque1.mp3" id="27_0s6ev"]
+[ext_resource type="AudioStream" uid="uid://3qe4w5dclwhe" path="res://assets/Sounds/Enemy/AlienCat_Ataque2.mp3" id="28_0slym"]
+[ext_resource type="AudioStream" uid="uid://dvlaim0hoflpu" path="res://assets/Sounds/Enemy/AlienCat_Ataque3.mp3" id="29_4eshe"]
+[ext_resource type="AudioStream" uid="uid://cy4h4uxam4rwl" path="res://assets/Sounds/Enemy/AlienCat_Ataque4.mp3" id="30_yhwqk"]
+[ext_resource type="AudioStream" uid="uid://c68h5vd6r2uj3" path="res://assets/Sounds/Enemy/AlienCat_Dano1.mp3" id="31_nt6ww"]
+[ext_resource type="AudioStream" uid="uid://bffxvss26pwj5" path="res://assets/Sounds/Enemy/AlienCat_Dano2.mp3" id="32_hoy8k"]
+[ext_resource type="AudioStream" uid="uid://cn5x8e7skleeh" path="res://assets/Sounds/Enemy/AlienCat_Dano3.mp3" id="33_ovmsf"]
+[ext_resource type="AudioStream" uid="uid://cppcg3q45uj2t" path="res://assets/Sounds/Enemy/AlienCat_Dano4.mp3" id="34_sw7xy"]
+[ext_resource type="AudioStream" uid="uid://c76hxoelprkgn" path="res://assets/Sounds/Enemy/AlienCat_Morte1.mp3" id="35_ddbti"]
+[ext_resource type="AudioStream" uid="uid://b8x7b8opfsu32" path="res://assets/Sounds/Enemy/AlienCat_Morte2.mp3" id="36_35vgt"]
+[ext_resource type="AudioStream" uid="uid://c0no66lj3wr2x" path="res://assets/Sounds/Enemy/AlienCat_Morte3.mp3" id="37_ab32n"]
+[ext_resource type="AudioStream" uid="uid://dywuv5277h0n7" path="res://assets/Sounds/Enemy/AlienCat_Morte4.mp3" id="38_wrb0s"]
+[ext_resource type="AudioStream" uid="uid://dm4157k5swaa6" path="res://assets/Sounds/Enemy/Carangueijo_Ataque1.mp3" id="39_yl433"]
+[ext_resource type="AudioStream" uid="uid://j2j4kib7358t" path="res://assets/Sounds/Enemy/Carangueijo_Ataque2.mp3" id="40_8r0hl"]
+[ext_resource type="AudioStream" uid="uid://rxwh7ouf5b4h" path="res://assets/Sounds/Enemy/Carangueijo_Ataque3.mp3" id="41_xq8mu"]
+[ext_resource type="AudioStream" uid="uid://c6gurf6dt6im0" path="res://assets/Sounds/Enemy/Carangueijo_Ataque4.mp3" id="42_scs72"]
+[ext_resource type="AudioStream" uid="uid://cgk5rf0e15mc5" path="res://assets/Sounds/Enemy/Carangueijo_Dano1.mp3" id="43_jp7n6"]
+[ext_resource type="AudioStream" uid="uid://ddartbf44t2w0" path="res://assets/Sounds/Enemy/Carangueijo_Dano2.mp3" id="44_4rkmw"]
+[ext_resource type="AudioStream" uid="uid://bm54oeknb02w8" path="res://assets/Sounds/Enemy/Carangueijo_Dano3.mp3" id="45_qkopu"]
+[ext_resource type="AudioStream" uid="uid://cba2k52tdeber" path="res://assets/Sounds/Enemy/Carangueijo_Dano4.mp3" id="46_k768f"]
+[ext_resource type="AudioStream" uid="uid://u7fk608577b7" path="res://assets/Sounds/Enemy/Carangueijo_Morte1.mp3" id="47_skmwt"]
+[ext_resource type="AudioStream" uid="uid://bmoxmik3616a4" path="res://assets/Sounds/Enemy/Carangueijo_Morte2.mp3" id="48_rs8kr"]
+[ext_resource type="AudioStream" uid="uid://c6g2qcdrjse46" path="res://assets/Sounds/Enemy/Carangueijo_Morte3.mp3" id="49_kj806"]
+[ext_resource type="AudioStream" uid="uid://cukc8b5t61jvb" path="res://assets/Sounds/Enemy/Carangueijo_Morte4.mp3" id="50_wi1y0"]
+[ext_resource type="AudioStream" uid="uid://dwpp5o8qvmq2h" path="res://assets/Sounds/Ball/Bola_Kika_Quente1.mp3" id="51_des0y"]
+[ext_resource type="AudioStream" uid="uid://cb37534nufy1c" path="res://assets/Sounds/Ball/Bola_Kika_Quente2.mp3" id="52_gkoj6"]
+[ext_resource type="AudioStream" uid="uid://d6wtyxrrm006" path="res://assets/Sounds/Ball/Bola_Kika_Quente3.mp3" id="53_it425"]
+[ext_resource type="AudioStream" uid="uid://b2j2ii7javuhh" path="res://assets/Sounds/Ball/Bola_Kika_Fria1.mp3" id="54_t6ly0"]
+[ext_resource type="AudioStream" uid="uid://c64spmofjtq8g" path="res://assets/Sounds/Ball/Bola_Kika_Fria2.mp3" id="55_ywflw"]
+[ext_resource type="AudioStream" uid="uid://cr602kpann40v" path="res://assets/Sounds/Ball/Bola_Kika_Fria3.mp3" id="56_o1noh"]
+[ext_resource type="AudioStream" uid="uid://cs2eeevgxnlnq" path="res://assets/Sounds/Player/Mordida1.mp3" id="57_klyna"]
+[ext_resource type="AudioStream" uid="uid://uwj2daumffh7" path="res://assets/Sounds/Player/Mordida2.mp3" id="58_1obhc"]
+[ext_resource type="AudioStream" uid="uid://bs170ovg27jkp" path="res://assets/Sounds/Player/Mordida3.mp3" id="59_lfugg"]
+[ext_resource type="AudioStream" uid="uid://nnlm3e1ldi23" path="res://assets/Sounds/Player/Mordida4.mp3" id="60_804gp"]
+[ext_resource type="AudioStream" uid="uid://wurwc42pvog0" path="res://assets/Sounds/Player/Cachorro_Dano_1.mp3" id="61_g3tlr"]
+[ext_resource type="AudioStream" uid="uid://bbmp3ykuq0c2x" path="res://assets/Sounds/Player/Cachorro_Dano_2.mp3" id="62_gwwkb"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_62u7i"]
 random_pitch = 1.05
@@ -45,6 +94,106 @@ random_pitch = 1.05
 streams_count = 1
 stream_0/stream = ExtResource("14_vl2ws")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_226aa"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("15_6jggm")
+stream_1/stream = ExtResource("16_gniuo")
+stream_2/stream = ExtResource("17_sgqeh")
+stream_3/stream = ExtResource("18_ldt3b")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6404p"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("19_xqnjc")
+stream_1/stream = ExtResource("20_ka0c4")
+stream_2/stream = ExtResource("21_ww5wq")
+stream_3/stream = ExtResource("22_r3nk5")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wukk5"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("23_nst00")
+stream_1/stream = ExtResource("24_cwxup")
+stream_2/stream = ExtResource("25_p3ovd")
+stream_3/stream = ExtResource("26_qml3o")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c1wff"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("27_0s6ev")
+stream_1/stream = ExtResource("28_0slym")
+stream_2/stream = ExtResource("29_4eshe")
+stream_3/stream = ExtResource("30_yhwqk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tqjxr"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("31_nt6ww")
+stream_1/stream = ExtResource("32_hoy8k")
+stream_2/stream = ExtResource("33_ovmsf")
+stream_3/stream = ExtResource("34_sw7xy")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mrcm0"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("35_ddbti")
+stream_1/stream = ExtResource("36_35vgt")
+stream_2/stream = ExtResource("37_ab32n")
+stream_3/stream = ExtResource("38_wrb0s")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lahp6"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("39_yl433")
+stream_1/stream = ExtResource("40_8r0hl")
+stream_2/stream = ExtResource("41_xq8mu")
+stream_3/stream = ExtResource("42_scs72")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pusff"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("43_jp7n6")
+stream_1/stream = ExtResource("44_4rkmw")
+stream_2/stream = ExtResource("45_qkopu")
+stream_3/stream = ExtResource("46_k768f")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pjte5"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("47_skmwt")
+stream_1/stream = ExtResource("48_rs8kr")
+stream_2/stream = ExtResource("49_kj806")
+stream_3/stream = ExtResource("50_wi1y0")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_io6o5"]
+random_pitch = 1.05
+streams_count = 3
+stream_0/stream = ExtResource("51_des0y")
+stream_1/stream = ExtResource("52_gkoj6")
+stream_2/stream = ExtResource("53_it425")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_in041"]
+random_pitch = 1.05
+streams_count = 3
+stream_0/stream = ExtResource("54_t6ly0")
+stream_1/stream = ExtResource("55_ywflw")
+stream_2/stream = ExtResource("56_o1noh")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a7kpj"]
+random_pitch = 1.05
+streams_count = 4
+stream_0/stream = ExtResource("57_klyna")
+stream_1/stream = ExtResource("58_1obhc")
+stream_2/stream = ExtResource("59_lfugg")
+stream_3/stream = ExtResource("60_804gp")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4onou"]
+random_pitch = 1.05
+streams_count = 2
+stream_0/stream = ExtResource("61_g3tlr")
+stream_1/stream = ExtResource("62_gwwkb")
+
 [node name="SfxGlobals" type="Node"]
 script = ExtResource("1_p5jl5")
 
@@ -70,38 +219,161 @@ Count = 3
 stream = SubResource("AudioStreamRandomizer_3h3jl")
 bus = &"sfx"
 
-[node name="play" type="Node" parent="ui"]
-script = ExtResource("3_gcjy4")
-Count = 2
+[node name="screen" type="Node" parent="ui"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ui/play"]
-stream = SubResource("AudioStreamRandomizer_k846e")
-pitch_scale = 1.5
-bus = &"sfx"
-
-[node name="back" type="Node" parent="ui"]
+[node name="back" type="Node" parent="ui/screen"]
 script = ExtResource("3_gcjy4")
 Count = 4
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ui/back"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ui/screen/back"]
 stream = SubResource("AudioStreamRandomizer_k846e")
 pitch_scale = 1.5
 bus = &"sfx"
 
-[node name="pause" type="Node" parent="ui"]
+[node name="pause" type="Node" parent="ui/screen"]
 process_mode = 3
 script = ExtResource("3_gcjy4")
 Count = 2
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ui/pause"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ui/screen/pause"]
 stream = SubResource("AudioStreamRandomizer_10o18")
 pitch_scale = 1.5
 bus = &"sfx"
 
-[node name="resume" type="Node" parent="ui"]
+[node name="resume" type="Node" parent="ui/screen"]
 script = ExtResource("3_gcjy4")
 Count = 2
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ui/resume"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ui/screen/resume"]
 stream = SubResource("AudioStreamRandomizer_xh0td")
+bus = &"sfx"
+
+[node name="slider" type="Node" parent="ui"]
+
+[node name="tick" type="Node" parent="ui/slider"]
+script = ExtResource("3_gcjy4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ui/slider/tick"]
+stream = ExtResource("14_fsmqa")
+bus = &"sfx"
+
+[node name="enemy" type="Node" parent="."]
+
+[node name="alien" type="Node" parent="enemy"]
+
+[node name="attack" type="Node" parent="enemy/alien"]
+script = ExtResource("3_gcjy4")
+Count = 9
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy/alien/attack"]
+stream = SubResource("AudioStreamRandomizer_226aa")
+bus = &"sfx"
+
+[node name="hit" type="Node" parent="enemy/alien"]
+script = ExtResource("3_gcjy4")
+Count = 9
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy/alien/hit"]
+stream = SubResource("AudioStreamRandomizer_6404p")
+bus = &"sfx"
+
+[node name="death" type="Node" parent="enemy/alien"]
+script = ExtResource("3_gcjy4")
+Count = 9
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy/alien/death"]
+stream = SubResource("AudioStreamRandomizer_wukk5")
+bus = &"sfx"
+
+[node name="cat" type="Node" parent="enemy"]
+
+[node name="attack" type="Node" parent="enemy/cat"]
+script = ExtResource("3_gcjy4")
+Count = 9
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy/cat/attack"]
+stream = SubResource("AudioStreamRandomizer_c1wff")
+bus = &"sfx"
+
+[node name="hit" type="Node" parent="enemy/cat"]
+script = ExtResource("3_gcjy4")
+Count = 9
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy/cat/hit"]
+stream = SubResource("AudioStreamRandomizer_tqjxr")
+bus = &"sfx"
+
+[node name="death" type="Node" parent="enemy/cat"]
+script = ExtResource("3_gcjy4")
+Count = 9
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="enemy/cat/death"]
+stream = SubResource("AudioStreamRandomizer_mrcm0")
+bus = &"sfx"
+
+[node name="boss" type="Node" parent="."]
+
+[node name="crab" type="Node" parent="boss"]
+
+[node name="attack" type="Node" parent="boss/crab"]
+script = ExtResource("3_gcjy4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="boss/crab/attack"]
+stream = SubResource("AudioStreamRandomizer_lahp6")
+volume_db = 3.0
+bus = &"sfx"
+
+[node name="hit" type="Node" parent="boss/crab"]
+script = ExtResource("3_gcjy4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="boss/crab/hit"]
+stream = SubResource("AudioStreamRandomizer_pusff")
+bus = &"sfx"
+
+[node name="death" type="Node" parent="boss/crab"]
+script = ExtResource("3_gcjy4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="boss/crab/death"]
+stream = SubResource("AudioStreamRandomizer_pjte5")
+bus = &"sfx"
+
+[node name="ball" type="Node" parent="."]
+
+[node name="hot" type="Node" parent="ball"]
+
+[node name="hit" type="Node" parent="ball/hot"]
+script = ExtResource("3_gcjy4")
+Count = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ball/hot/hit"]
+stream = SubResource("AudioStreamRandomizer_io6o5")
+volume_db = 3.0
+bus = &"sfx"
+
+[node name="cold" type="Node" parent="ball"]
+
+[node name="hit" type="Node" parent="ball/cold"]
+script = ExtResource("3_gcjy4")
+Count = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ball/cold/hit"]
+stream = SubResource("AudioStreamRandomizer_in041")
+volume_db = 3.0
+bus = &"sfx"
+
+[node name="player" type="Node" parent="."]
+
+[node name="attack" type="Node" parent="player"]
+script = ExtResource("3_gcjy4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player/attack"]
+stream = SubResource("AudioStreamRandomizer_a7kpj")
+bus = &"sfx"
+
+[node name="hit" type="Node" parent="player"]
+script = ExtResource("3_gcjy4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player/hit"]
+stream = SubResource("AudioStreamRandomizer_4onou")
+volume_db = 3.0
 bus = &"sfx"

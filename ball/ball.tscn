@@ -1,36 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://gchihnv3vpvw"]
+[gd_scene load_steps=7 format=3 uid="uid://gchihnv3vpvw"]
 
 [ext_resource type="Script" path="res://ball/ball.gd" id="1_og6ph"]
 [ext_resource type="Script" path="res://ball/contact_area.gd" id="2_62eaa"]
-[ext_resource type="Texture2D" uid="uid://d1m1sgplbbng6" path="res://assets/Ball.png" id="3_ae5up"]
+[ext_resource type="Texture2D" uid="uid://dngpcex65t01c" path="res://assets/Ball.png" id="3_ae5up"]
 [ext_resource type="PackedScene" uid="uid://de8vseig5n84b" path="res://ball/heat.tscn" id="4_ieycs"]
-[ext_resource type="Script" path="res://addons/SleipnirAudio/SFX/SoundQueue.gd" id="5_wc7j1"]
-[ext_resource type="AudioStream" uid="uid://dxuunju6rc0ry" path="res://assets/Sounds/Ball/Bola_Kika_Fria1.mp3" id="6_eujpv"]
-[ext_resource type="AudioStream" uid="uid://c7k3y6ioo5p8p" path="res://assets/Sounds/Ball/Bola_Kika_Fria2.mp3" id="7_bc4ss"]
-[ext_resource type="AudioStream" uid="uid://b15wf8g7ka64y" path="res://assets/Sounds/Ball/Bola_Kika_Fria3.mp3" id="8_t1bn0"]
-[ext_resource type="AudioStream" uid="uid://pd46361yuhx3" path="res://assets/Sounds/Ball/Bola_Kika_Quente1.mp3" id="9_6usrh"]
-[ext_resource type="AudioStream" uid="uid://m7x2scfdafbx" path="res://assets/Sounds/Ball/Bola_Kika_Quente2.mp3" id="10_be44e"]
-[ext_resource type="AudioStream" uid="uid://cvae50qgetoai" path="res://assets/Sounds/Ball/Bola_Kika_Quente3.mp3" id="11_3anyi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njqvl"]
 radius = 16.7835
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v86q5"]
 radius = 18.2088
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1i0c6"]
-random_pitch = 1.05
-streams_count = 3
-stream_0/stream = ExtResource("6_eujpv")
-stream_1/stream = ExtResource("7_bc4ss")
-stream_2/stream = ExtResource("8_t1bn0")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_htjo6"]
-random_pitch = 1.05
-streams_count = 3
-stream_0/stream = ExtResource("9_6usrh")
-stream_1/stream = ExtResource("10_be44e")
-stream_2/stream = ExtResource("11_3anyi")
 
 [node name="Ball" type="CharacterBody2D" groups=["Ball"]]
 collision_layer = 2
@@ -56,21 +35,3 @@ texture = ExtResource("3_ae5up")
 [node name="Heat" parent="." instance=ExtResource("4_ieycs")]
 unique_name_in_owner = true
 per_heat_bonus = 0.5
-
-[node name="kikafrio" type="Node" parent="."]
-script = ExtResource("5_wc7j1")
-Count = 2
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="kikafrio"]
-stream = SubResource("AudioStreamRandomizer_1i0c6")
-volume_db = 3.0
-bus = &"sfx"
-
-[node name="kikaquente" type="Node" parent="."]
-script = ExtResource("5_wc7j1")
-Count = 2
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="kikaquente"]
-stream = SubResource("AudioStreamRandomizer_htjo6")
-volume_db = 3.0
-bus = &"sfx"

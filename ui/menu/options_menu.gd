@@ -60,7 +60,7 @@ func _on_resolution_dropbox_item_selected(index): #TODO chamar uma funcao do con
 
 
 func _on_volume_master_slider_value_changed(value):
-	AudioManager.bus_volume(&"Master", value) #TODO chamar uma funcao do config_handler p ele trocar o valor no jogo
+	AudioManager.change_bus_volume(&"Master", value) #TODO chamar uma funcao do config_handler p ele trocar o valor no jogo
 
 
 func _on_volume_master_slider_drag_ended(value_changed):
@@ -70,7 +70,7 @@ func _on_volume_master_slider_drag_ended(value_changed):
 
 
 func _on_volume_music_slider_value_changed(value): #TODO chamar uma funcao do config_handler p ele trocar o valor no jogo
-	AudioManager.bus_volume(&"music", value)
+	AudioManager.change_bus_volume(&"music", value)
 
 
 func _on_volume_music_slider_drag_ended(value_changed):
@@ -79,7 +79,7 @@ func _on_volume_music_slider_drag_ended(value_changed):
 	
 
 func _on_volume_sfx_slider_value_changed(value): #TODO chamar uma funcao do config_handler p ele trocar o valor no jogo
-	AudioManager.bus_volume(&"sfx", value)
+	AudioManager.change_bus_volume(&"sfx", value)
 
 
 func _on_volume_sfx_slider_drag_ended(value_changed): 
@@ -102,5 +102,5 @@ func _on_button_pressed():
 
 
 func _on_back_button_pressed():
-	AudioManager.play_global("ui.back")
+	AudioManager.play_global("ui.screen.back")
 	UI_Controller.freeScreen()
