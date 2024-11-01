@@ -6,7 +6,6 @@ func _ready() -> void:
 	else:
 		SleipnirMaestro.change_song("main_menu")
 		SleipnirMaestro.play()
-	
 	UI_Controller.stack.screens.append(self)
 
 ## Função que roda quando você aperta o botão de "jogar"

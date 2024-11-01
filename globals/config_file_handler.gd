@@ -3,7 +3,10 @@ extends Node
 var config: ConfigFile = ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini"
 
-func _ready() -> void:
+func _ready(): #TODO reformular essa parada toda
+	verify_configfile()
+
+func verify_configfile():
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
 		config.set_value("keybinding", "player_up", "W")
 		config.set_value("keybinding", "player_down", "S")
@@ -23,6 +26,7 @@ func _ready() -> void:
 	else:
 		config.load(SETTINGS_FILE_PATH)
 
+#TODO repensar o uso dessas paradas daq p baixo
 
 func save_all_video_settings(key: String, value: Variant) -> void:
 	config.set_value("video", key, value)
