@@ -1,8 +1,7 @@
-[gd_scene load_steps=49 format=3 uid="uid://c3wob6r2y6gom"]
+[gd_scene load_steps=48 format=3 uid="uid://c3wob6r2y6gom"]
 
 [ext_resource type="Script" path="res://entities/boss/boss.gd" id="1_n8o6t"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="3_piw0h"]
-[ext_resource type="Script" path="res://entities/enemy/behaviours/enemy_intelligence.gd" id="4_w6tsh"]
 [ext_resource type="PackedScene" uid="uid://um7g1axvk4nx" path="res://entities/actions/grab/grab.tscn" id="5_edhoy"]
 [ext_resource type="Texture2D" uid="uid://bkosjt76uhatd" path="res://assets/boss A .png" id="5_s2xt6"]
 [ext_resource type="Texture2D" uid="uid://mfuja1sc3rcu" path="res://assets/Boss float_0001.png" id="6_scfx5"]
@@ -200,8 +199,7 @@ unique_name_in_owner = true
 script = ExtResource("3_piw0h")
 on_hit_invecibility_time = 0
 
-[node name="ActionManagers" type="Node" parent="."]
-script = ExtResource("4_w6tsh")
+[node name="invencibility_time" type="Timer" parent="life"]
 
 [node name="Grab" parent="." instance=ExtResource("5_edhoy")]
 unique_name_in_owner = true

@@ -50,10 +50,6 @@ shape = SubResource("WorldBoundaryShape2D_5y33w")
 
 [node name="Player" parent="." instance=ExtResource("1_lklov")]
 position = Vector2(401, 957)
-movement_speed = 400
-
-[node name="head_animation" parent="Player" index="9"]
-frame_progress = 0.0
 
 [node name="Ball" parent="." instance=ExtResource("2_y5g5q")]
 position = Vector2(152, 588)
@@ -67,7 +63,5 @@ repeat_times = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 texture = ExtResource("4_wi1h0")
-
-[connection signal="hold_to_stop" from="Player/Grab" to="Ball" method="_on_grab_hold_to_stop"]
 
 [editable path="Player"]

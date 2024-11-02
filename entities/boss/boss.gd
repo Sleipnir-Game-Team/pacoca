@@ -12,7 +12,6 @@ var grab_count
 @onready var grab: Grab = %Grab
 @onready var grab_position = $Grab_position as Marker2D
 @onready var hold_time = $hold_time as Timer
-@onready var dizzy_time = $dizzy_time as Timer
 @onready var boss_sprite = $boss_sprite as Sprite2D
 @onready var hurt_animation = $damage_animation as AnimationPlayer
 
@@ -47,28 +46,28 @@ func grab_ball():
 
 func _on_grabable_area_area_entered(area: Area2D) -> void:
 	if !is_dizzy:
-		print("boss pegou a bola")
 		boss_sprite.texture = load("res://assets/boss A grab.png")
 		grab_ball()
+		Logger.info("Boss pegou a bola")
 	elif !invincibility:
-		print("boss levou dano")
 		AudioManager.play_global("boss.crab.hit")
 		life.damage(1)
-		dizzy_time.stop()
+		Logger.info("Boss levou dano, vida atual: "+str(life.entity_life))
 		invincibility_frame()
 
 func _on_hold_time_timeout() -> void:
 	var x = rng_x.pick_random()
 	var y = rng_y.randf_range(0.25, 1)
+	Logger.info("Tempo de grab acabou, o boss vai arremessar")
 	
 	if grab_count == 3 or grab_count == 2:
 		grab.held_object.heat.heat_gain = 5
 		grab.held_object.heat.heat_up()
 	elif grab_count == 1:
 		grab.held_object.set("heat",1)
-		
 	AudioManager.play_global("boss.crab.attack")
 	grab.start(Vector2(x, y))
+	
 	grab_count -= 1
 	sprite_manage()
 

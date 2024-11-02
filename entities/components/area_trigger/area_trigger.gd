@@ -1,8 +1,6 @@
 class_name AreaTrigger
 extends ShapeCast2D
 
-
-#var last_direction: Vector2 = Vector2(0,0)
 var current_direction: Vector2
 
 @export var cooldown_seconds: float = 1
@@ -29,14 +27,13 @@ func _ready() -> void:
 	cooldown_timer.wait_time = cooldown_seconds
 
 func trigger() -> void:
-	#last_direction = direction
-	
 	cooldown_timer.start()
 	
 	enabled = true
 	force_shapecast_update()
 	match collision_result:
 		[var data]:
+			reset_buffering()
 			_handler.call(current_direction, data)
 			hit.emit(current_direction, data)
 	enabled = false
@@ -47,13 +44,18 @@ func _physics_process(_delta: float) -> void:
 			buffering_duration += _delta
 			trigger()
 		else:
-			buffering = false
-			buffering_duration = 0
+			reset_buffering()
+
+func reset_buffering() -> void:
+	buffering = false
+	buffering_duration = 0
 
 func start(direction):
 	if avaible and can_trigger():
 		current_direction = direction
 		buffering = true
+	else:
+		Logger.debug("A o trigger tentou ser iniciado com avaible "+str(avaible)+" e can_trigger() "+ str(can_trigger()))
 
 func _handler(_direction: Vector2, _data: Dictionary) -> void:
 	push_error("MUST OVERRIDE _HANDLER")

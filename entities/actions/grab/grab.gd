@@ -15,11 +15,14 @@ func _handler(direction: Vector2, data: Dictionary) -> void:
 	buffering = false
 	var ball: Ball = data.collider 
 	
+	Logger.info("Comando de grap/trow iniciando")
 	if held_object != null and (16 < ball.position.x and ball.position.x < 794): # THROWING
+		Logger.info("A bola será arremessada")
 		held_object = null
 		var angle_deg: float = rad_to_deg(direction.angle())
 		ball.change_angle(angle_deg)
 	else: # GRABBING
+		Logger.info("A bola será capturada")
 		held_object = ball
 		cooldown_timer.stop()
 
