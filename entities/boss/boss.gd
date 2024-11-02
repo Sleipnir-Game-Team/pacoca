@@ -35,14 +35,14 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 		AudioManager.play_global("boss.crab.hit")
 		life.damage(1)
 
-func _on_life_defeat_signal() -> void:
+func _on_death() -> void:
 	AudioManager.play_global("boss.crab.death")
 	queue_free()
 	Waves.pop_enemy()
 
 func grab_ball():
 	if grab_count > 0:
-		grab.trigger(Vector2(0, 0))
+		grab.start(Vector2(0, 0))
 		hold_time.start()
 
 func _on_grabable_area_area_entered(area: Area2D) -> void:
@@ -68,7 +68,7 @@ func _on_hold_time_timeout() -> void:
 		grab.held_object.set("heat",1)
 		
 	AudioManager.play_global("boss.crab.attack")
-	grab.trigger(Vector2(x, y))
+	grab.start(Vector2(x, y))
 	grab_count -= 1
 	sprite_manage()
 

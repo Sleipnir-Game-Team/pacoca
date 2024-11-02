@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/enemy/simple_enemy.gd" id="1_ihm60"]
 [ext_resource type="Texture2D" uid="uid://2j74uc8bvtrr" path="res://assets/alien A.png" id="2_qolu7"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="3_4odr0"]
-[ext_resource type="Script" path="res://entities/enemy/behaviours/movement_top_down.gd" id="4_42b13"]
+[ext_resource type="Script" path="res://entities/components/movement_top_down.gd" id="4_42b13"]
 [ext_resource type="Script" path="res://entities/enemy/behaviours/ia_movement_horizontal.gd" id="5_q86qn"]
 [ext_resource type="Script" path="res://entities/enemy/behaviours/enemy_intelligence.gd" id="6_s6krm"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="7_p8cn1"]

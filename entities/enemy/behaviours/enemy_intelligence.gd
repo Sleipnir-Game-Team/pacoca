@@ -28,7 +28,7 @@ func attack_player() -> void:
 		player = get_tree().get_first_node_in_group("Player")
 		
 	var enemy_position: Vector2 = get_parent().global_position
-	kick.trigger(enemy_position.direction_to(player.global_position))
+	kick.start(enemy_position.direction_to(player.global_position))
 
 func throw_ball_away() -> void:
 	# TODO

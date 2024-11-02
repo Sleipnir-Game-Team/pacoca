@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="2_lqefg"]
 [ext_resource type="PackedScene" uid="uid://um7g1axvk4nx" path="res://entities/actions/grab/grab.tscn" id="3_18o26"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="3_po3r7"]
+[ext_resource type="Script" path="res://entities/components/movement_top_down.gd" id="4_weakb"]
+[ext_resource type="Script" path="res://entities/player/input_handlers/input_reader_bidirectional.gd" id="5_g7ux8"]
 [ext_resource type="Script" path="res://entities/components/animation_handler.gd" id="5_xbre0"]
 [ext_resource type="Texture2D" uid="uid://bahoksq21dcr0" path="res://assets/dog animations/Dog fly_0002.png" id="6_8hth4"]
 [ext_resource type="Texture2D" uid="uid://kw6e51b564ie" path="res://assets/dog animations/Dog fly_0003.png" id="7_muc70"]
@@ -72,18 +74,6 @@
 [ext_resource type="Texture2D" uid="uid://bqra2buxsyi63" path="res://assets/dog animations/Dog body_0021.png" id="47_40bd4"]
 [ext_resource type="Texture2D" uid="uid://c3ao8j01ghk0y" path="res://assets/dog animations/Dog body_0022.png" id="48_p7do5"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7abv1"]
-radius = 25.0
-height = 156.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xbaix"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1hr4t"]
-radius = 38.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_378xm"]
-radius = 30.0
-
 [sub_resource type="Animation" id="Animation_ddt0y"]
 length = 0.001
 tracks/0/type = "value"
@@ -122,13 +112,13 @@ _data = {
 "hurt": SubResource("Animation_ev53e")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfssv"]
-radius = 37.0
-height = 160.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_xbaix"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dx7bl"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1hr4t"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_378xm"]
 radius = 30.0
-height = 126.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7tvr"]
 animations = [{
@@ -317,7 +307,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("48_p7do5")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 22.0
 }, {
@@ -354,43 +344,13 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7abv1"]
+radius = 25.0
+height = 88.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 4
 script = ExtResource("1_s5awy")
-kick_cooldown_seconds = 0.1
-
-[node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-input_pickable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CapsuleShape2D_7abv1")
-debug_color = Color(0.803922, 0, 0.141176, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_xbaix")
-
-[node name="Kick" parent="." instance=ExtResource("2_lqefg")]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-42, -104)
-shape = SubResource("CircleShape2D_1hr4t")
-target_position = Vector2(84, 0)
-distance = 104
-
-[node name="Grab" parent="." instance=ExtResource("3_18o26")]
-unique_name_in_owner = true
-visible = false
-position = Vector2(0, -53)
-shape = SubResource("CircleShape2D_378xm")
-target_position = Vector2(0, -84)
-
-[node name="Life" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("3_po3r7")
-
-[node name="invencibility_time" type="Timer" parent="Life"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -398,30 +358,30 @@ libraries = {
 }
 script = ExtResource("5_xbre0")
 
-[node name="Tongue" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -83)
+[node name="Life" type="Node" parent="."]
+script = ExtResource("3_po3r7")
 
-[node name="KickableArea" type="Area2D" parent="."]
-collision_layer = 64
-collision_mask = 0
-input_pickable = false
+[node name="invencibility_time" type="Timer" parent="Life"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KickableArea"]
-position = Vector2(0, -104)
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_lfssv")
-debug_color = Color(0.831756, 0.69328, 0, 0.419608)
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("4_weakb")
+speed = 400.0
 
-[node name="GrabableArea" type="Area2D" parent="."]
-collision_layer = 128
-collision_mask = 0
-input_pickable = false
+[node name="InputReader_Movement" type="Node" parent="."]
+script = ExtResource("5_g7ux8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabableArea"]
-position = Vector2(0, -104)
-shape = SubResource("CapsuleShape2D_dx7bl")
-debug_color = Color(0.862474, 0.33491, 0.350799, 0.42)
+[node name="Body" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xbaix")
+
+[node name="Kick" parent="." instance=ExtResource("2_lqefg")]
+position = Vector2(-14, -93)
+shape = SubResource("CircleShape2D_1hr4t")
+target_position = Vector2(26, 0)
+
+[node name="Grab" parent="." instance=ExtResource("3_18o26")]
+position = Vector2(0, -78)
+shape = SubResource("CircleShape2D_378xm")
+target_position = Vector2(0, -25)
 
 [node name="tail_animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 70)
@@ -432,17 +392,24 @@ frame_progress = 0.328506
 [node name="head_animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -57)
 sprite_frames = SubResource("SpriteFrames_7pab3")
-animation = &"bite"
 autoplay = "default"
-frame = 12
-frame_progress = 1.0
 
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
-[connection signal="hit" from="Kick" to="." method="handle_kick"]
-[connection signal="hit" from="Kick" to="." method="_on_kick_hit"]
-[connection signal="hit" from="Grab" to="." method="_on_grab_hit"]
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(0, 8)
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_7abv1")
+debug_color = Color(0.803922, 0, 0.141176, 1)
+
 [connection signal="death" from="Life" to="." method="_on_death"]
 [connection signal="timeout" from="Life/invencibility_time" to="Life" method="_on_invencibility_time_timeout"]
 [connection signal="timeout" from="Life/invencibility_time" to="AnimationPlayer" method="stop_named_animation" binds= ["hurt"]]
-[connection signal="body_entered" from="KickableArea" to="." method="_on_kickable_area_body_entered"]
+[connection signal="move" from="InputReader_Movement" to="Movement" method="move"]
+[connection signal="hit" from="Kick" to="." method="handle_kick"]
+[connection signal="hit" from="Kick" to="." method="_on_kick_hit"]
+[connection signal="hit" from="Grab" to="." method="_on_grab_hit"]
 [connection signal="animation_finished" from="head_animation" to="." method="_on_kick_animation_animation_finished"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

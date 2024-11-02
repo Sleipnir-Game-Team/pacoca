@@ -208,7 +208,6 @@ unique_name_in_owner = true
 scale = Vector2(4.7, 4.7)
 shape = SubResource("CircleShape2D_3dy0u")
 target_position = Vector2(0, -0.5)
-distance = 0
 
 [node name="Grab_position" type="Marker2D" parent="."]
 position = Vector2(0, 95)
@@ -257,6 +256,7 @@ stream = SubResource("AudioStreamRandomizer_v3h7p")
 bus = &"sfx"
 
 [connection signal="area_entered" from="GrabableArea" to="." method="_on_grabable_area_area_entered"]
+[connection signal="death" from="life" to="." method="_on_death"]
 [connection signal="timeout" from="hold_time" to="." method="_on_hold_time_timeout"]
 [connection signal="timeout" from="dizzy_time" to="." method="_on_dizzy_time_timeout"]
 [connection signal="animation_finished" from="damage_animation" to="." method="_on_damage_animation_animation_finished"]
