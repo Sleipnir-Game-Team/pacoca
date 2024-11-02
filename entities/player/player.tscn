@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://q7r31yidg88g"]
+[gd_scene load_steps=89 format=3 uid="uid://q7r31yidg88g"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_s5awy"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="2_lqefg"]
@@ -73,6 +73,18 @@
 [ext_resource type="Texture2D" uid="uid://c30ugewauq6xo" path="res://assets/dog animations/Dog body_0020.png" id="46_ucqdu"]
 [ext_resource type="Texture2D" uid="uid://bqra2buxsyi63" path="res://assets/dog animations/Dog body_0021.png" id="47_40bd4"]
 [ext_resource type="Texture2D" uid="uid://c3ao8j01ghk0y" path="res://assets/dog animations/Dog body_0022.png" id="48_p7do5"]
+[ext_resource type="Script" path="res://entities/components/rotation.gd" id="74_k4cfl"]
+[ext_resource type="Script" path="res://entities/player/input_handlers/mouse_reader_rotation.gd" id="75_e0o7d"]
+[ext_resource type="Texture2D" uid="uid://d4hhrn55nxsgf" path="res://assets/dog animations/Tail/Sprite_Sheet.png" id="76_tuc7a"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqlfj"]
+animation = &"tail_wigle"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4lmi7"]
+graph_offset = Vector2(-91.4122, -22.9196)
+nodes/TailSprite/node = SubResource("AnimationNodeAnimation_nqlfj")
+nodes/TailSprite/position = Vector2(180, 40)
+nodes/output/position = Vector2(580, 80)
 
 [sub_resource type="Animation" id="Animation_ddt0y"]
 length = 0.001
@@ -87,6 +99,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TailSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_ev53e"]
@@ -106,10 +130,28 @@ tracks/0/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_yuai0"]
+resource_name = "tail_wigle"
+length = 0.7333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TailSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sjp73"]
 _data = {
 "RESET": SubResource("Animation_ddt0y"),
-"hurt": SubResource("Animation_ev53e")
+"hurt": SubResource("Animation_ev53e"),
+"tail_wigle": SubResource("Animation_yuai0")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xbaix"]
@@ -352,6 +394,10 @@ height = 88.0
 collision_layer = 4
 script = ExtResource("1_s5awy")
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_4lmi7")
+anim_player = NodePath("../AnimationPlayer")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_sjp73")
@@ -361,8 +407,6 @@ script = ExtResource("5_xbre0")
 [node name="Life" type="Node" parent="."]
 script = ExtResource("3_po3r7")
 
-[node name="invencibility_time" type="Timer" parent="Life"]
-
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("4_weakb")
 speed = 400.0
@@ -371,31 +415,39 @@ speed = 400.0
 script = ExtResource("5_g7ux8")
 
 [node name="Body" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource("CircleShape2D_xbaix")
 
 [node name="Kick" parent="." instance=ExtResource("2_lqefg")]
-position = Vector2(-14, -93)
+position = Vector2(93, -14)
+rotation = 1.5708
 shape = SubResource("CircleShape2D_1hr4t")
 target_position = Vector2(26, 0)
 
 [node name="Grab" parent="." instance=ExtResource("3_18o26")]
-position = Vector2(0, -78)
+position = Vector2(78, 3.40949e-06)
+rotation = 1.5708
 shape = SubResource("CircleShape2D_378xm")
 target_position = Vector2(0, -25)
 
 [node name="tail_animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 70)
+visible = false
+position = Vector2(-70, 0.999997)
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_u7tvr")
 autoplay = "default"
 frame_progress = 0.328506
 
 [node name="head_animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -57)
+visible = false
+position = Vector2(57, 1)
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_7pab3")
 autoplay = "default"
 
 [node name="HurtBox" type="Area2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(-8, -3.49691e-07)
+rotation = 1.5708
 collision_layer = 0
 collision_mask = 2
 input_pickable = false
@@ -404,12 +456,36 @@ input_pickable = false
 shape = SubResource("CapsuleShape2D_7abv1")
 debug_color = Color(0.803922, 0, 0.141176, 1)
 
+[node name="Rotation" type="Node" parent="."]
+script = ExtResource("74_k4cfl")
+max_angle = 0
+
+[node name="MouseReader_Rotation" type="Node2D" parent="."]
+rotation = 1.5708
+script = ExtResource("75_e0o7d")
+limit_left = 0.0
+limit_right = 810.0
+reset_off_limits = true
+default_aim_direction = Vector2(0, -1)
+
+[node name="HeadSprite" type="Sprite2D" parent="."]
+position = Vector2(57, 1)
+rotation = 1.57079
+texture = ExtResource("27_hofvc")
+
+[node name="TailSprite" type="Sprite2D" parent="."]
+position = Vector2(-70, 1)
+rotation = 1.5708
+texture = ExtResource("76_tuc7a")
+hframes = 4
+vframes = 6
+
 [connection signal="death" from="Life" to="." method="_on_death"]
-[connection signal="timeout" from="Life/invencibility_time" to="Life" method="_on_invencibility_time_timeout"]
-[connection signal="timeout" from="Life/invencibility_time" to="AnimationPlayer" method="stop_named_animation" binds= ["hurt"]]
+[connection signal="invecibility_end" from="Life" to="AnimationPlayer" method="stop_named_animation" binds= ["hurt"]]
 [connection signal="move" from="InputReader_Movement" to="Movement" method="move"]
 [connection signal="hit" from="Kick" to="." method="handle_kick"]
 [connection signal="hit" from="Kick" to="." method="_on_kick_hit"]
 [connection signal="hit" from="Grab" to="." method="_on_grab_hit"]
 [connection signal="animation_finished" from="head_animation" to="." method="_on_kick_animation_animation_finished"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="rotate" from="MouseReader_Rotation" to="Rotation" method="rotate"]

@@ -6,13 +6,21 @@ extends Node
 @onready var entity_life: int = max_life
 
 @export var on_hit_invecibility_time:= 1
-@onready var invecibility_timer = $invencibility_time as Timer
+var invecibility_timer: Timer
 var invincibility: bool = false
 
 signal death
+signal invecibility_end
 
 signal damage_received(damage)
 signal healing_received(heal)
+
+
+func _ready():
+	invecibility_timer = Timer.new()
+	invecibility_timer.wait_time = on_hit_invecibility_time
+	invecibility_timer.timeout.connect(_on_invencibility_time_timeout)
+	add_child(invecibility_timer)
 
 func damage(damage) -> void:
 	if entity_life > 0 and not invincibility:
@@ -42,3 +50,4 @@ func invencibility_frames(invecibility_time):
 
 func _on_invencibility_time_timeout() -> void:
 	invincibility = false
+	invecibility_end.emit()
