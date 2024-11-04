@@ -18,8 +18,9 @@ signal healing_received(heal)
 
 func _ready():
 	invecibility_timer = Timer.new()
-	invecibility_timer.wait_time = on_hit_invecibility_time
-	invecibility_timer.timeout.connect(_on_invencibility_time_timeout)
+	if on_hit_invecibility_time > 0:
+		invecibility_timer.wait_time = on_hit_invecibility_time
+		invecibility_timer.timeout.connect(_on_invencibility_time_timeout)
 	add_child(invecibility_timer)
 
 func damage(damage) -> void:

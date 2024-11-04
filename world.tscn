@@ -51,6 +51,9 @@ shape = SubResource("WorldBoundaryShape2D_5y33w")
 [node name="Player" parent="." instance=ExtResource("1_lklov")]
 position = Vector2(401, 957)
 
+[node name="AnimationTree" parent="Player" index="0"]
+parameters/Add/add_amount = 0
+
 [node name="Ball" parent="." instance=ExtResource("2_y5g5q")]
 position = Vector2(152, 588)
 
