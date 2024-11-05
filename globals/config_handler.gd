@@ -55,6 +55,7 @@ func switch_window_mode_type(value):
 			return "windowed"
 
 func switch_window_resolution_type(value):
+	if type_string((typeof(value))) == "String": value = value.to_lower()
 	match value:
 		"1920x1080":
 			return 0
@@ -76,6 +77,7 @@ func change_window_resolution(resolution):
 
 
 func get_vector_2i(resolution):
+	resolution = resolution.to_lower()
 	var resolutions = resolution.split("x")
 	var width = int(resolutions[0])
 	var height = int(resolutions[1])
