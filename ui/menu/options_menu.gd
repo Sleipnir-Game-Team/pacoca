@@ -5,8 +5,8 @@ extends Control
 @onready var volume_master_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_master/volume_master_slider/volume_master_slider
 @onready var volume_music_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_music/volume_music_slider/volume_music_slider
 @onready var volume_sfx_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_sfx/volume_sfx_slider/volume_sfx_slider
+@onready var mute_checkbox: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/mute/mute_check/mute_checkbox
 
-var volume_value
 
 func _ready():
 	var window_mode = Config_Handler.get_setting("video", "window_mode")
@@ -27,6 +27,7 @@ func _on_resolution_dropbox_item_selected(index):
 	
 
 func _on_volume_master_slider_value_changed(value):
+	mute_checkbox.button_pressed = false
 	Config_Handler.change_master_volume(value)
 	
 
@@ -48,12 +49,13 @@ func _on_volume_sfx_slider_value_changed(value):
 	Config_Handler.change_sfx_volume(value)
 	
 
-func _on_volume_sfx_slider_drag_ended(value_changed): 
+func _on_volume_sfx_slider_drag_ended(value_changed):
 	if value_changed:
 		Config_Handler.save_audio_settings("sfx_volume", volume_sfx_slider.value / 100)
 	
 
 func _on_mute_checkbox_toggled(toggled_on):
+	print(toggled_on)
 	AudioManager.play_global("ui.button.click")
 	Config_Handler.save_audio_settings("muted", toggled_on)
 	Config_Handler.mute_master_volume(toggled_on)
