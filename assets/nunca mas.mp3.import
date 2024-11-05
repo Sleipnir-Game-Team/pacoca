@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yoswcmtdn0mq"
+path="res://.godot/imported/nunca mas.mp3-68481e4f1e4ae06be158e3fdf2f4419e.mp3str"
+
+[deps]
+
+source_file="res://assets/nunca mas.mp3"
+dest_files=["res://.godot/imported/nunca mas.mp3-68481e4f1e4ae06be158e3fdf2f4419e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
