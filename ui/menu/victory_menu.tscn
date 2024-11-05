@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ogqywrng528u"]
 
 [ext_resource type="Script" path="res://ui/menu/victory_menu.gd" id="1_bmmt1"]
-[ext_resource type="Texture2D" uid="uid://dyjf8lly7bo3l" path="res://assets/Main Menu Background.jpg" id="2_7mwav"]
-[ext_resource type="Texture2D" uid="uid://b3ey50uh8p0vv" path="res://assets/Victory screen.png" id="2_ub0d7"]
+[ext_resource type="Texture2D" uid="uid://bnxcaj66q3hnj" path="res://assets/Main Menu Background.jpg" id="2_7mwav"]
+[ext_resource type="Texture2D" uid="uid://db6y2e2oj2iqv" path="res://assets/Victory screen.png" id="2_ub0d7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cwspd"]
 font_size = 45

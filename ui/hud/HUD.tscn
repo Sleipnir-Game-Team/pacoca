@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbi5oq1h8iiaf"]
 
-[ext_resource type="FontFile" uid="uid://la8m3mlxp7ua" path="res://assets/Text_Fonts/ModernDOS9x16.ttf" id="1_idfc3"]
-[ext_resource type="Texture2D" uid="uid://iyl1xhxaps0y" path="res://assets/UI/Gameplay Section BG.png" id="1_iedm3"]
+[ext_resource type="FontFile" uid="uid://bwmj1glum30at" path="res://assets/Text_Fonts/ModernDOS9x16.ttf" id="1_idfc3"]
+[ext_resource type="Texture2D" uid="uid://cdfe0aq0ln6j7" path="res://assets/UI/Gameplay Section BG.png" id="1_iedm3"]
 [ext_resource type="Script" path="res://ui/hud/hud.gd" id="2_n58b4"]
-[ext_resource type="Texture2D" uid="uid://257ydhw1c60m" path="res://assets/UI/Gampelay Section Playername Text.png" id="3_3osbb"]
-[ext_resource type="Texture2D" uid="uid://dsrkcfyc5b3ce" path="res://assets/UI/Gampley Section Wave Text.png" id="3_tjkh5"]
-[ext_resource type="Texture2D" uid="uid://i61tpxydm5o5" path="res://assets/UI/Gampelay Section Player Photo.png" id="4_hf2f5"]
-[ext_resource type="Texture2D" uid="uid://dkhxp6hohs2k0" path="res://assets/UI/Gameplay Section Health Text.png" id="5_h8ek8"]
-[ext_resource type="Texture2D" uid="uid://cxwylli3afsem" path="res://assets/UI/Health Progress.png" id="8_i0gjn"]
+[ext_resource type="Texture2D" uid="uid://cr4vbt6fo6cr5" path="res://assets/UI/Gampelay Section Playername Text.png" id="3_3osbb"]
+[ext_resource type="Texture2D" uid="uid://dix8x2q16m5oa" path="res://assets/UI/Gampley Section Wave Text.png" id="3_tjkh5"]
+[ext_resource type="Texture2D" uid="uid://t2fdyptr6cv6" path="res://assets/UI/Gampelay Section Player Photo.png" id="4_hf2f5"]
+[ext_resource type="Texture2D" uid="uid://ceg2wnjew04jl" path="res://assets/UI/Gameplay Section Health Text.png" id="5_h8ek8"]
+[ext_resource type="Texture2D" uid="uid://dbertcs5q68gg" path="res://assets/UI/Health Progress.png" id="8_i0gjn"]
 
 [sub_resource type="Theme" id="Theme_nknrp"]
 default_font = ExtResource("1_idfc3")
