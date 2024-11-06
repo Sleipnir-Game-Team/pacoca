@@ -18,9 +18,10 @@ func _handler(direction: Vector2, data: Dictionary) -> void:
 	if held_object != null and (16 < ball.position.x and ball.position.x < 794): # THROWING
 		Logger.info("A bola será arremessada")
 		held_object = null
-		ball.change_angle(rad_to_deg(direction.angle()))
+		ball._on_throw(rad_to_deg(direction.angle()))
 	else: # GRABBING
 		Logger.info("A bola será capturada")
+		ball._on_grab(get_parent())
 		held_object = ball
 		cooldown_timer.stop()
 

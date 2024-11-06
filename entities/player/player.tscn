@@ -67,10 +67,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_xbaix"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1hr4t"]
-radius = 40.0
+radius = 35.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_378xm"]
-radius = 30.0
+radius = 25.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7abv1"]
 radius = 25.0
@@ -367,16 +367,17 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_xbaix")
 
 [node name="Kick" parent="." instance=ExtResource("2_lqefg")]
-position = Vector2(93, -14)
+position = Vector2(92, -15)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_1hr4t")
-target_position = Vector2(26, 0)
+target_position = Vector2(27, 0.999901)
+cooldown_seconds = 0.5
 
 [node name="Grab" parent="." instance=ExtResource("3_18o26")]
 position = Vector2(78, 3.40949e-06)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_378xm")
-target_position = Vector2(0, -25)
+target_position = Vector2(-1.00005, -13)
 
 [node name="HurtBox" type="Area2D" parent="."]
 position = Vector2(-8, -3.49691e-07)
@@ -430,9 +431,8 @@ script = ExtResource("5_xbre0")
 [connection signal="death" from="Life" to="." method="_on_death"]
 [connection signal="invecibility_end" from="Life" to="AnimationHandler" method="stop_named_animation" binds= ["Body", "hurt"]]
 [connection signal="move" from="InputReader_Movement" to="Movement" method="move"]
-[connection signal="hit" from="Kick" to="." method="handle_kick"]
-[connection signal="hit" from="Kick" to="." method="_on_kick_hit"]
-[connection signal="hit" from="Grab" to="." method="_on_grab_hit"]
+[connection signal="started" from="Kick" to="AnimationHandler" method="play_animation" binds= ["Head", "lick"]]
+[connection signal="started" from="Grab" to="AnimationHandler" method="play_animation" binds= ["Head", "bite"]]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="rotate" from="MouseReader_Rotation" to="Rotation" method="rotate"]
 [connection signal="tree_entered" from="AnimationHandler" to="AnimationHandler" method="register" binds= [{
