@@ -3,7 +3,7 @@ extends Node
 var config: ConfigFile = ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini" #local:C:\Users\#USUARIO#\AppData\Roaming\Godot\app_userdata\#PROJECTNAME#
 var window_mode_dict = {"fullscreen" : DisplayServer.WINDOW_MODE_FULLSCREEN, "windowed" : DisplayServer.WINDOW_MODE_WINDOWED}
-var resolution_list = []
+var resolution_list = ["1920x1080", "1600x900", "1366x768", "1280x720"]
 @onready var keybinding_list = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/keybinding_list
 
 func _ready():
@@ -31,6 +31,8 @@ func verify_configfile():
 		run_all_settings()
 
 func run_all_settings():
+	if get_setting("video", "resolution") not in resolution_list:
+		save_video_settings("resolution", "1920x1080")
 	var video_settings = load_all_video_settings()
 	change_window_mode(video_settings.window_mode)
 	change_window_resolution(video_settings.resolution)

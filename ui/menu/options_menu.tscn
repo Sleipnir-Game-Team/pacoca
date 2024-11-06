@@ -119,9 +119,9 @@ item_count = 4
 popup/item_0/text = "1920x1080"
 popup/item_1/text = "1600x900"
 popup/item_1/id = 1
-popup/item_2/text = "1280x720"
+popup/item_2/text = "1366x768"
 popup/item_2/id = 2
-popup/item_3/text = "1366x768"
+popup/item_3/text = "1280x720"
 popup/item_3/id = 3
 
 [node name="Control4" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/resolution/resolution_dropbox"]
