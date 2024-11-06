@@ -1,21 +1,15 @@
 extends Node
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+var json = JSON.new()
+var data = {}
 
 func acesse_json_file(file_path):
-	return
-
-func create_json_file(data):
-	return
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	var content = json.parse_string(file.get_as_text())
+	return content
 	
-func save_on_json_file():
-	return
-	
+func save_on_json_file(file_path,data):
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	file.store_string(json.stringify(data))
+	file.close()
+	file = null

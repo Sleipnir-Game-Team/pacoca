@@ -20,4 +20,3 @@ func start_lists() -> void:
 	Waves.add_list(third_wave)
 	Waves.add_list(fourth_wave)
 	Waves.add_list(boss)
-	
