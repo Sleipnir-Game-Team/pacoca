@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://gchihnv3vpvw"]
+[gd_scene load_steps=10 format=3 uid="uid://gchihnv3vpvw"]
 
 [ext_resource type="Script" path="res://ball/ball.gd" id="1_og6ph"]
 [ext_resource type="Script" path="res://ball/contact_area.gd" id="2_62eaa"]
 [ext_resource type="Texture2D" uid="uid://d1m1sgplbbng6" path="res://assets/Ball.png" id="3_ae5up"]
 [ext_resource type="PackedScene" uid="uid://de8vseig5n84b" path="res://ball/heat.tscn" id="4_ieycs"]
-[ext_resource type="Texture2D" uid="uid://cukstcp5goo84" path="res://shaders/trail.png" id="6_evpy0"]
+[ext_resource type="Material" uid="uid://c22e8fyrcpgp1" path="res://shaders/ball_heat_material.tres" id="5_rgqut"]
+[ext_resource type="Script" path="res://shaders/trail2d.gd" id="6_viubt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njqvl"]
 radius = 16.7835
@@ -12,7 +13,7 @@ radius = 16.7835
 [sub_resource type="CircleShape2D" id="CircleShape2D_v86q5"]
 radius = 18.2088
 
-[sub_resource type="QuadMesh" id="QuadMesh_5xn1g"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_1y8nb"]
 
 [node name="Ball" type="CharacterBody2D" groups=["Ball"]]
 collision_layer = 2
@@ -39,8 +40,9 @@ texture = ExtResource("3_ae5up")
 unique_name_in_owner = true
 per_heat_bonus = 0.5
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(-39, 0)
-scale = Vector2(77.25, -28)
-mesh = SubResource("QuadMesh_5xn1g")
-texture = ExtResource("6_evpy0")
+[node name="Trail2D" type="MeshInstance2D" parent="."]
+material = ExtResource("5_rgqut")
+mesh = SubResource("ImmediateMesh_1y8nb")
+script = ExtResource("6_viubt")
+fromWidth = 20.0
+toWidth = 20.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cukstcp5goo84"
-path="res://.godot/imported/trail.png-2544e1e41b8e1c1e4e0a283ba6758a57.ctex"
+uid="uid://c0pdr366b5dw"
+path="res://.godot/imported/ball_trail_texture.png-4fd334ac8f1622993832ff7cb38f4cc9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shaders/trail.png"
-dest_files=["res://.godot/imported/trail.png-2544e1e41b8e1c1e4e0a283ba6758a57.ctex"]
+source_file="res://shaders/ball_trail_texture.png"
+dest_files=["res://.godot/imported/ball_trail_texture.png-4fd334ac8f1622993832ff7cb38f4cc9.ctex"]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1

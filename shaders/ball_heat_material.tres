@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c22e8fyrcpgp1"]
+
+[ext_resource type="Shader" uid="uid://byjnybl0k0q17" path="res://shaders/ball_heat_shader.tres" id="1_2xlbq"]
+[ext_resource type="Texture2D" uid="uid://c0pdr366b5dw" path="res://shaders/ball_trail_texture.png" id="2_limds"]
+
+[sub_resource type="Gradient" id="Gradient_dawva"]
+offsets = PackedFloat32Array(0, 0.462687, 1)
+colors = PackedColorArray(1, 0.656, 0.14, 0, 1, 0.8785, 0.19, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ibxhf"]
+gradient = SubResource("Gradient_dawva")
+use_hdr = true
+
+[resource]
+shader = ExtResource("1_2xlbq")
+shader_parameter/Trail_Speed = Vector2(1, 0)
+shader_parameter/Trail_Color = SubResource("GradientTexture1D_ibxhf")
+shader_parameter/Trail_Texture = ExtResource("2_limds")
