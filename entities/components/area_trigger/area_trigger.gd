@@ -38,10 +38,10 @@ func trigger() -> void:
 			hit.emit(current_direction, data)
 	enabled = false
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if buffering:
 		if buffering_duration < buffering_duration_seconds:
-			buffering_duration += _delta
+			buffering_duration += delta
 			trigger()
 		else:
 			reset_buffering()

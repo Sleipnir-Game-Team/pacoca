@@ -29,13 +29,13 @@ func _ready() -> void:
 	# Carrega a textura a partir do caminho
 	sprite.texture = load(random_enemy["sprite"])
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not is_instance_valid(ball):
 		ball = get_tree().get_first_node_in_group('Ball')
 	else:
 		var aim_angle: float = global_position.angle_to_point(ball.global_position)
 		if deg_to_rad(10.0) < aim_angle and aim_angle < deg_to_rad(170.0):
-			rotation = rotate_toward(rotation, aim_angle - (PI/2), _delta)
+			rotation = rotate_toward(rotation, aim_angle - (PI/2), delta)
 		#AudioManager.play_global("enemy."+random_enemy["type"]+".attack")
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
