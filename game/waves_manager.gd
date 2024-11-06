@@ -4,10 +4,12 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Waves.restart()
-	wave_lists.start_lists()
-	var wave: Array = Waves.return_list()
-	run_wave(wave)
+	# WARNING TEMPORARIAMENTE TIRANDO A LÓGICA DE WAVE PQ O INIMIGO FOI ASSASSINADO
+	pass
+	#Waves.restart()
+	#wave_lists.start_lists()
+	#var wave: Array = Waves.return_list()
+	#run_wave(wave)
 
 func _process(_delta: float) -> void:
 	if Waves.has_pass == true:
