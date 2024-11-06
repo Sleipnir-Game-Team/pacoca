@@ -2,7 +2,9 @@ extends Node
 
 var config: ConfigFile = ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini" #local:C:\Users\#USUARIO#\AppData\Roaming\Godot\app_userdata\#PROJECTNAME#
-var window_mode_list = [DisplayServer.WINDOW_MODE_FULLSCREEN, DisplayServer.WINDOW_MODE_WINDOWED]
+var window_mode_dict = {"fullscreen" : DisplayServer.WINDOW_MODE_FULLSCREEN, "windowed" : DisplayServer.WINDOW_MODE_WINDOWED}
+var resolution_list = []
+@onready var keybinding_list = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/keybinding_list
 
 func _ready():
 	verify_configfile()
@@ -30,7 +32,7 @@ func verify_configfile():
 
 func run_all_settings():
 	var video_settings = load_all_video_settings()
-	change_window_mode(switch_window_mode_type(video_settings.window_mode))
+	change_window_mode(video_settings.window_mode)
 	change_window_resolution(video_settings.resolution)
 	
 	var audio_settings = load_all_audio_settings()
@@ -39,36 +41,49 @@ func run_all_settings():
 	change_sfx_volume(min(audio_settings.sfx_volume, 1.0) * 100)
 
 
-func change_window_mode(index):
-	DisplayServer.window_set_mode(window_mode_list[index])
-	save_video_settings("window_mode", switch_window_mode_type(index))
+func create_action_list():
+	InputMap.load_from_project_settings()
+	for item in keybinding_list:
+		item.queue_free()
+	
+	var action_formatted_list = format_actions(InputMap.get_actions())
+	for action in action_formatted_list:
+		#var button = input_button_scene.instantiate()
+		pass
+		
+
+func format_actions(actions):
+	pass
+
+func change_window_mode(value):
+	if type_string((typeof(value))) == "int": value = switch_window_mode_type(value)
+	DisplayServer.window_set_mode(window_mode_dict[value])
+	save_video_settings("window_mode", value)
 	
 func switch_window_mode_type(value):
-	match value:
-		"fullscreen":
-			return 0
-		"windowed":
-			return 1
-		0:
-			return "fullscreen"
-		1:
-			return "windowed"
+	if type_string((typeof(value))) == "int":
+		return window_mode_dict.keys()[value]
+	else:
+		for pos in range(window_mode_dict.keys().size()):
+			if window_mode_dict.keys()[pos] == value:
+				return pos
+				
 
 func switch_window_resolution_type(value):
-	if type_string((typeof(value))) == "String": value = value.to_lower()
-	match value:
-		"1920x1080":
-			return 0
-		"1600x900":
-			return 1
-		"1280x720":
-			return 2
-		0:
-			return "1920x1080"
-		1:
-			return "1600x900"
-		2:
-			return "1280x720"
+	if type_string((typeof(value))) == "String":
+		value = value.to_lower()
+		for pos in range(resolution_list.size()):
+			if resolution_list[pos] == value:
+				return pos
+	else:
+		return resolution_list[value]
+		
+
+func update_resolution_dropbox(resolution_dropbox):
+	var test_list = []
+	for i in range(resolution_dropbox.item_count):
+		test_list.append(resolution_dropbox.get_item_text(i))
+	resolution_list = test_list
 
 func change_window_resolution(resolution):
 	var vector = get_vector_2i(resolution)
@@ -92,9 +107,7 @@ func change_music_volume(value):
 func change_sfx_volume(value):
 	AudioManager.change_bus_volume(&"sfx", value)
 
-# TODO Consertar bug que faz o botão n ser
-# desmarcado quando o jogo é desmutado sem
-# clicar nele (mudando o volume pelo slider)
+
 func mute_master_volume(toggled_on):
 	if toggled_on:
 		AudioServer.set_bus_mute(0,true)
