@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://beo8088eeuvfy"]
 
-[ext_resource type="FontFile" uid="uid://la8m3mlxp7ua" path="res://assets/Text_Fonts/ModernDOS9x16.ttf" id="1_dad5q"]
+[ext_resource type="FontFile" uid="uid://bwmj1glum30at" path="res://assets/Text_Fonts/ModernDOS9x16.ttf" id="1_dad5q"]
 [ext_resource type="Script" path="res://ui/menu/game_over_menu.gd" id="1_ps2gm"]
-[ext_resource type="Texture2D" uid="uid://dyjf8lly7bo3l" path="res://assets/Main Menu Background.jpg" id="3_fsf3h"]
-[ext_resource type="Texture2D" uid="uid://cpf50366grbmr" path="res://assets/Game over screen.png" id="3_xltt6"]
+[ext_resource type="Texture2D" uid="uid://bnxcaj66q3hnj" path="res://assets/Main Menu Background.jpg" id="3_fsf3h"]
+[ext_resource type="Texture2D" uid="uid://brx8eaf6hwrwj" path="res://assets/Game over screen.png" id="3_xltt6"]
 
 [sub_resource type="Theme" id="Theme_fsuem"]
 default_font = ExtResource("1_dad5q")

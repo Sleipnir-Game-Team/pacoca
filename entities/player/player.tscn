@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://q7r31yidg88g"]
+[gd_scene load_steps=29 format=3 uid="uid://q7r31yidg88g"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_s5awy"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="2_lqefg"]
@@ -7,84 +7,12 @@
 [ext_resource type="Script" path="res://entities/components/movement_top_down.gd" id="4_weakb"]
 [ext_resource type="Script" path="res://entities/player/input_handlers/input_reader_bidirectional.gd" id="5_g7ux8"]
 [ext_resource type="Script" path="res://entities/components/animation_handler.gd" id="5_xbre0"]
-[ext_resource type="Texture2D" uid="uid://bahoksq21dcr0" path="res://assets/dog animations/Dog fly_0002.png" id="6_8hth4"]
-[ext_resource type="Texture2D" uid="uid://kw6e51b564ie" path="res://assets/dog animations/Dog fly_0003.png" id="7_muc70"]
-[ext_resource type="Texture2D" uid="uid://i7gyofawg8kf" path="res://assets/dog animations/Dog fly_0004.png" id="8_xat34"]
-[ext_resource type="Texture2D" uid="uid://qewtruxq06gx" path="res://assets/dog animations/Dog fly_0005.png" id="9_15d2k"]
-[ext_resource type="Texture2D" uid="uid://bf4jxslf8m7od" path="res://assets/dog animations/Dog fly_0006.png" id="10_r3dkm"]
-[ext_resource type="Texture2D" uid="uid://c50tv3j1nygg7" path="res://assets/dog animations/Dog fly_0007.png" id="11_l4yjk"]
-[ext_resource type="Texture2D" uid="uid://cng1oushpdbik" path="res://assets/dog animations/Dog fly_0008.png" id="12_twa0m"]
-[ext_resource type="Texture2D" uid="uid://otprof1mmvr1" path="res://assets/dog animations/Dog fly_0009.png" id="13_lmrbw"]
-[ext_resource type="Texture2D" uid="uid://cp1y6jkcu6b2n" path="res://assets/dog animations/Dog fly_0010.png" id="14_fxsb8"]
-[ext_resource type="Texture2D" uid="uid://d1mrfaxbxc7fd" path="res://assets/dog animations/Dog fly_0011.png" id="15_62j83"]
-[ext_resource type="Texture2D" uid="uid://csxqhfyi1ipo3" path="res://assets/dog animations/Dog fly_0012.png" id="16_34cxc"]
-[ext_resource type="Texture2D" uid="uid://c6l0shdusaxe" path="res://assets/dog animations/Dog fly_0013.png" id="17_47ntr"]
-[ext_resource type="Texture2D" uid="uid://btw5y0nxlfegc" path="res://assets/dog animations/Dog fly_0014.png" id="18_nyg41"]
-[ext_resource type="Texture2D" uid="uid://dhlqmfvs6q38n" path="res://assets/dog animations/Dog fly_0015.png" id="19_4fsxq"]
-[ext_resource type="Texture2D" uid="uid://jt34htr1tb44" path="res://assets/dog animations/Dog fly_0016.png" id="20_tl015"]
-[ext_resource type="Texture2D" uid="uid://c5wqk332nhw75" path="res://assets/dog animations/Dog fly_0017.png" id="21_vx41b"]
-[ext_resource type="Texture2D" uid="uid://ch82l1lferehe" path="res://assets/dog animations/Dog fly_0018.png" id="22_125si"]
-[ext_resource type="Texture2D" uid="uid://dff1lhvt2lbok" path="res://assets/dog animations/Dog fly_0019.png" id="23_ef1s1"]
-[ext_resource type="Texture2D" uid="uid://qbggcqufil5" path="res://assets/dog animations/Dog fly_0020.png" id="24_2ie8x"]
-[ext_resource type="Texture2D" uid="uid://b7w6cgwxjlbha" path="res://assets/dog animations/Dog fly_0021.png" id="25_yclli"]
-[ext_resource type="Texture2D" uid="uid://c44u1vr37rwnl" path="res://assets/dog animations/Dog fly_0022.png" id="26_1qe1x"]
-[ext_resource type="Texture2D" uid="uid://b3h1petnl0x4j" path="res://assets/dog animations/Dog fly_0023.png" id="27_1xp4c"]
-[ext_resource type="Texture2D" uid="uid://rlth2jkm3x5i" path="res://assets/dog animations/Dog body_0000.png" id="27_hofvc"]
-[ext_resource type="Texture2D" uid="uid://b1cgdumk5ytv0" path="res://assets/dog animations/Dog body_0001.png" id="28_6dpkp"]
-[ext_resource type="Texture2D" uid="uid://bicqcrolg06h3" path="res://assets/dog animations/Dog lick_0000.png" id="29_7rkim"]
-[ext_resource type="Texture2D" uid="uid://p1ax4f0rm17h" path="res://assets/dog animations/Dog body_0002.png" id="29_telo5"]
-[ext_resource type="Texture2D" uid="uid://b2s38hyc70w80" path="res://assets/dog animations/Dog lick_0001.png" id="30_3y2jy"]
-[ext_resource type="Texture2D" uid="uid://dk4eimhye1hqm" path="res://assets/dog animations/Dog body_0003.png" id="30_vt80k"]
-[ext_resource type="Texture2D" uid="uid://cya6jh4emjuu7" path="res://assets/dog animations/Dog body_0004.png" id="31_1pad1"]
-[ext_resource type="Texture2D" uid="uid://d2mvp8gtlw4ib" path="res://assets/dog animations/Dog lick_0002.png" id="31_8tup5"]
-[ext_resource type="Texture2D" uid="uid://bf7mnq05e0tbf" path="res://assets/dog animations/Dog bite_0004.png" id="31_vdisa"]
-[ext_resource type="Texture2D" uid="uid://bbprpa1b1xh0i" path="res://assets/dog animations/Dog body_0005.png" id="32_4sgi6"]
-[ext_resource type="Texture2D" uid="uid://gtdqfvakrgux" path="res://assets/dog animations/Dog lick_0003.png" id="32_h4vec"]
-[ext_resource type="Texture2D" uid="uid://dnrw3hwi3j3gn" path="res://assets/dog animations/Dog bite_0005.png" id="32_o2mj8"]
-[ext_resource type="Texture2D" uid="uid://bjnxcr27u7m8g" path="res://assets/dog animations/Dog body_0006.png" id="33_nua4y"]
-[ext_resource type="Texture2D" uid="uid://cf7gw4r7g5rux" path="res://assets/dog animations/Dog lick_0004.png" id="33_uf7fs"]
-[ext_resource type="Texture2D" uid="uid://d134bchv06xeq" path="res://assets/dog animations/Dog bite_0007.png" id="33_ungnl"]
-[ext_resource type="Texture2D" uid="uid://coc1uaf5acqv4" path="res://assets/dog animations/Dog body_0007.png" id="34_bdr3a"]
-[ext_resource type="Texture2D" uid="uid://cj05gwcdiwiam" path="res://assets/dog animations/Dog lick_0005.png" id="34_pk468"]
-[ext_resource type="Texture2D" uid="uid://du70ft36oopby" path="res://assets/dog animations/Dog bite_0008.png" id="34_x2udw"]
-[ext_resource type="Texture2D" uid="uid://2pane262pmue" path="res://assets/dog animations/Dog lick_0006.png" id="35_6y4gy"]
-[ext_resource type="Texture2D" uid="uid://b2cabi5o5dlsp" path="res://assets/dog animations/Dog bite_0009.png" id="35_g5eds"]
-[ext_resource type="Texture2D" uid="uid://cj77hc0kg3mbn" path="res://assets/dog animations/Dog body_0008.png" id="35_uck55"]
-[ext_resource type="Texture2D" uid="uid://b8ebeflm8xprt" path="res://assets/dog animations/Dog lick_0007.png" id="36_2wasc"]
-[ext_resource type="Texture2D" uid="uid://dv8vm80bj5180" path="res://assets/dog animations/Dog body_0009.png" id="36_e8uft"]
-[ext_resource type="Texture2D" uid="uid://cfsnlg4emfurb" path="res://assets/dog animations/Dog bite_0010.png" id="36_qu8be"]
-[ext_resource type="Texture2D" uid="uid://cku3bxcf6e1dd" path="res://assets/dog animations/Dog body_0011.png" id="37_01iyp"]
-[ext_resource type="Texture2D" uid="uid://cer8quyxuoqdk" path="res://assets/dog animations/Dog bite_0011.png" id="37_b1w6e"]
-[ext_resource type="Texture2D" uid="uid://clnrisvkyat4l" path="res://assets/dog animations/Dog lick_0008.png" id="37_vrrh7"]
-[ext_resource type="Texture2D" uid="uid://c8vffhng8nh8t" path="res://assets/dog animations/Dog bite_0012.png" id="38_i5ks3"]
-[ext_resource type="Texture2D" uid="uid://bgmggfgry8yqo" path="res://assets/dog animations/Dog body_0012.png" id="38_i307g"]
-[ext_resource type="Texture2D" uid="uid://nr7hus4ydghn" path="res://assets/dog animations/Dog bite_0013.png" id="39_6oyes"]
-[ext_resource type="Texture2D" uid="uid://dffkjlfjprd0r" path="res://assets/dog animations/Dog body_0013.png" id="39_rjr7c"]
-[ext_resource type="Texture2D" uid="uid://deu6fa15bfjvo" path="res://assets/dog animations/Dog bite_0014.png" id="40_e8kdj"]
-[ext_resource type="Texture2D" uid="uid://bfp0reih5dses" path="res://assets/dog animations/Dog body_0014.png" id="40_ejnlh"]
-[ext_resource type="Texture2D" uid="uid://drpy6co0e7t6f" path="res://assets/dog animations/Dog body_0015.png" id="41_7nlk3"]
-[ext_resource type="Texture2D" uid="uid://cl786wyue8srf" path="res://assets/dog animations/Dog bite_0015.png" id="41_bpin8"]
-[ext_resource type="Texture2D" uid="uid://dweg00knej47l" path="res://assets/dog animations/Dog body_0016.png" id="42_4hete"]
-[ext_resource type="Texture2D" uid="uid://dbmlvx66vclhd" path="res://assets/dog animations/Dog bite_0016.png" id="42_q6atn"]
-[ext_resource type="Texture2D" uid="uid://c8nw7wblwgi2" path="res://assets/dog animations/Dog bite_0017.png" id="43_7pwvk"]
-[ext_resource type="Texture2D" uid="uid://cqb7qub0l3thh" path="res://assets/dog animations/Dog body_0017.png" id="43_fx3q4"]
-[ext_resource type="Texture2D" uid="uid://cktq6aibo1x33" path="res://assets/dog animations/Dog body_0018.png" id="44_3gobu"]
-[ext_resource type="Texture2D" uid="uid://bp4av1rogpgp1" path="res://assets/dog animations/Dog body_0019.png" id="45_bqnm7"]
-[ext_resource type="Texture2D" uid="uid://c30ugewauq6xo" path="res://assets/dog animations/Dog body_0020.png" id="46_ucqdu"]
-[ext_resource type="Texture2D" uid="uid://bqra2buxsyi63" path="res://assets/dog animations/Dog body_0021.png" id="47_40bd4"]
-[ext_resource type="Texture2D" uid="uid://c3ao8j01ghk0y" path="res://assets/dog animations/Dog body_0022.png" id="48_p7do5"]
 [ext_resource type="Script" path="res://entities/components/rotation.gd" id="74_k4cfl"]
+[ext_resource type="Texture2D" uid="uid://dxdkfufp5levf" path="res://assets/dog animations/Head/Dog body_0000.png" id="75_2nyin"]
 [ext_resource type="Script" path="res://entities/player/input_handlers/mouse_reader_rotation.gd" id="75_e0o7d"]
+[ext_resource type="Texture2D" uid="uid://cvlp3e218u0xq" path="res://assets/dog animations/Bite/Sprite_Sheet.png" id="76_5tv3c"]
 [ext_resource type="Texture2D" uid="uid://d4hhrn55nxsgf" path="res://assets/dog animations/Tail/Sprite_Sheet.png" id="76_tuc7a"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqlfj"]
-animation = &"tail_wigle"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4lmi7"]
-graph_offset = Vector2(-91.4122, -22.9196)
-nodes/TailSprite/node = SubResource("AnimationNodeAnimation_nqlfj")
-nodes/TailSprite/position = Vector2(180, 40)
-nodes/output/position = Vector2(580, 80)
+[ext_resource type="Texture2D" uid="uid://prsj331wt77u" path="res://assets/dog animations/Lick/Sprite_Sheet.png" id="77_46b73"]
 
 [sub_resource type="Animation" id="Animation_ddt0y"]
 length = 0.001
@@ -130,7 +58,269 @@ tracks/0/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_yuai0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjp73"]
+_data = {
+"RESET": SubResource("Animation_ddt0y"),
+"hurt": SubResource("Animation_ev53e")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xbaix"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1hr4t"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_378xm"]
+radius = 30.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7abv1"]
+radius = 25.0
+height = 88.0
+
+[sub_resource type="Animation" id="Animation_oo08e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("75_2nyin")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_e8clt"]
+resource_name = "bite"
+length = 0.5333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("76_5tv3c")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"check_grab"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_746at"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("75_2nyin")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_n1hpg"]
+resource_name = "lick"
+length = 0.2667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("77_46b73")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AnimationHandler")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.266667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Head", "idle"],
+"method": &"play_animation"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5cojh"]
+_data = {
+"RESET": SubResource("Animation_oo08e"),
+"bite": SubResource("Animation_e8clt"),
+"idle": SubResource("Animation_746at"),
+"lick": SubResource("Animation_n1hpg")
+}
+
+[sub_resource type="Animation" id="Animation_p3eni"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TailSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_gp07a"]
 resource_name = "tail_wigle"
 length = 0.7333
 loop_mode = 1
@@ -147,262 +337,20 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjp73"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8gnuj"]
 _data = {
-"RESET": SubResource("Animation_ddt0y"),
-"hurt": SubResource("Animation_ev53e"),
-"tail_wigle": SubResource("Animation_yuai0")
+"RESET": SubResource("Animation_p3eni"),
+"tail_wigle": SubResource("Animation_gp07a")
 }
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xbaix"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1hr4t"]
-radius = 40.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_378xm"]
-radius = 30.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_u7tvr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_8hth4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_muc70")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_xat34")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_15d2k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_r3dkm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_l4yjk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_twa0m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_lmrbw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_fxsb8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_62j83")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_34cxc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_47ntr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_nyg41")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_4fsxq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_tl015")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_vx41b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_125si")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_ef1s1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_2ie8x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_yclli")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_1qe1x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_1xp4c")
-}],
-"loop": true,
-"name": &"default",
-"speed": 22.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7pab3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("31_vdisa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_o2mj8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_ungnl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("34_x2udw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("35_g5eds")
-}, {
-"duration": 1.0,
-"texture": ExtResource("36_qu8be")
-}, {
-"duration": 1.0,
-"texture": ExtResource("37_b1w6e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("38_i5ks3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("39_6oyes")
-}, {
-"duration": 1.0,
-"texture": ExtResource("40_e8kdj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("41_bpin8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("42_q6atn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("43_7pwvk")
-}],
-"loop": false,
-"name": &"bite",
-"speed": 24.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("27_hofvc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_6dpkp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_telo5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_vt80k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_1pad1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_4sgi6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_nua4y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("34_bdr3a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("35_uck55")
-}, {
-"duration": 1.0,
-"texture": ExtResource("36_e8uft")
-}, {
-"duration": 1.0,
-"texture": ExtResource("37_01iyp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("38_i307g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("39_rjr7c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("40_ejnlh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("41_7nlk3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("42_4hete")
-}, {
-"duration": 1.0,
-"texture": ExtResource("43_fx3q4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("44_3gobu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("45_bqnm7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("46_ucqdu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("47_40bd4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("48_p7do5")
-}],
-"loop": false,
-"name": &"default",
-"speed": 22.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("29_7rkim")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_3y2jy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_8tup5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_h4vec")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_uf7fs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("34_pk468")
-}, {
-"duration": 1.0,
-"texture": ExtResource("35_6y4gy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("36_2wasc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("37_vrrh7")
-}],
-"loop": false,
-"name": &"kick",
-"speed": 16.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7abv1"]
-radius = 25.0
-height = 88.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 4
 script = ExtResource("1_s5awy")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeBlendTree_4lmi7")
-anim_player = NodePath("../AnimationPlayer")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_sjp73")
 }
-script = ExtResource("5_xbre0")
 
 [node name="Life" type="Node" parent="."]
 script = ExtResource("3_po3r7")
@@ -430,21 +378,6 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_378xm")
 target_position = Vector2(0, -25)
 
-[node name="tail_animation" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(-70, 0.999997)
-rotation = 1.5708
-sprite_frames = SubResource("SpriteFrames_u7tvr")
-autoplay = "default"
-frame_progress = 0.328506
-
-[node name="head_animation" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(57, 1)
-rotation = 1.5708
-sprite_frames = SubResource("SpriteFrames_7pab3")
-autoplay = "default"
-
 [node name="HurtBox" type="Area2D" parent="."]
 position = Vector2(-8, -3.49691e-07)
 rotation = 1.5708
@@ -471,7 +404,12 @@ default_aim_direction = Vector2(0, -1)
 [node name="HeadSprite" type="Sprite2D" parent="."]
 position = Vector2(57, 1)
 rotation = 1.57079
-texture = ExtResource("27_hofvc")
+texture = ExtResource("75_2nyin")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HeadSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_5cojh")
+}
 
 [node name="TailSprite" type="Sprite2D" parent="."]
 position = Vector2(-70, 1)
@@ -480,12 +418,25 @@ texture = ExtResource("76_tuc7a")
 hframes = 4
 vframes = 6
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TailSprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_8gnuj")
+}
+
+[node name="AnimationHandler" type="Node" parent="."]
+script = ExtResource("5_xbre0")
+
 [connection signal="death" from="Life" to="." method="_on_death"]
-[connection signal="invecibility_end" from="Life" to="AnimationPlayer" method="stop_named_animation" binds= ["hurt"]]
+[connection signal="invecibility_end" from="Life" to="AnimationHandler" method="stop_named_animation" binds= ["Body", "hurt"]]
 [connection signal="move" from="InputReader_Movement" to="Movement" method="move"]
 [connection signal="hit" from="Kick" to="." method="handle_kick"]
 [connection signal="hit" from="Kick" to="." method="_on_kick_hit"]
 [connection signal="hit" from="Grab" to="." method="_on_grab_hit"]
-[connection signal="animation_finished" from="head_animation" to="." method="_on_kick_animation_animation_finished"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="rotate" from="MouseReader_Rotation" to="Rotation" method="rotate"]
+[connection signal="tree_entered" from="AnimationHandler" to="AnimationHandler" method="register" binds= [{
+"Body": NodePath("../AnimationPlayer"),
+"Head": NodePath("../HeadSprite/AnimationPlayer"),
+"Tail": NodePath("../TailSprite/AnimationPlayer")
+}]]

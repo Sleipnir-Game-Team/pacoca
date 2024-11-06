@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://de8vseig5n84b"]
-
-[ext_resource type="Script" path="res://ball/heat.gd" id="1_onllm"]
-
-[node name="Heat" type="Node"]
-script = ExtResource("1_onllm")
