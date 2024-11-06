@@ -22,14 +22,11 @@ func pass_list() -> void:
 		print("Wave derrotada")
 		print(waves[0])
 		waves.remove_at(0)
-	else:
-		pass
-		
+
 func return_list() -> Array:
 	if waves.size() > 0:
 		return waves[0]
-	else:
-		return waves
-		
+	return waves
+
 func restart() -> void:
 	waves = []

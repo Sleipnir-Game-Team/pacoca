@@ -4,5 +4,4 @@ uniform vec2 speed = vec2(1.0, 0.0);
 
 void fragment() {
 	COLOR = texture(TEXTURE, mod(UV + TIME * speed, 1.0));
-	NORMALMAP = texture(COLOR, UV).rgb;
 }

@@ -5,8 +5,8 @@ var held_object: Ball = null
 
 @onready var pointer: Marker2D = $GrabPoint
 
-func _physics_process(_delta: float) -> void:
-	super._physics_process(_delta)
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
 	if is_holding():
 		held_object.global_position = pointer.global_position
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game/waves_manager.gd" id="1_0tfrd"]
 [ext_resource type="Script" path="res://game/waves_lists.gd" id="2_s003l"]
 
-[node name="WavesScene" type="Node2D"]
+[node name="WavesScene" type="Node"]
 script = ExtResource("1_0tfrd")
 
 [node name="Wave_list" type="Node" parent="."]
