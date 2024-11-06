@@ -1,8 +1,6 @@
 class_name Ball
 extends CharacterBody2D
 
-const yellow_outline: ShaderMaterial = preload("res://ball/outline.tres")
-
 @export var speed: int = 200
 var direction: float = 30
 var bounce: Vector2
@@ -59,12 +57,6 @@ func flip(normal: Vector2) -> void:
 	var base_velocity: Vector2 = Vector2(cos(deg_to_rad(direction)), sin(deg_to_rad(direction)))
 	
 	velocity = base_velocity * speed * heat.speed_bonus
-
-func set_outline(value: bool) -> void:
-	if value:
-		sprite.material = yellow_outline
-	else:
-		sprite.material = null
 
 func _on_grab_hold_to_stop() -> void:
 	grabbed = true

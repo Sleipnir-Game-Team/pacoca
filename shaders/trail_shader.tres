@@ -1,0 +1,58 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://c4uvjld6nd681"]
+
+[ext_resource type="Texture2D" uid="uid://cukstcp5goo84" path="res://shaders/trail.png" id="1_3jpob"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_xocwj"]
+texture = ExtResource("1_3jpob")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ee7df"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_jkgfp"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_wltc2"]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix, unshaded, world_vertex_coords;
+
+uniform sampler2D tex_frg_2 : source_color;
+
+
+
+void fragment() {
+// UVFunc:5
+	vec2 n_in5p1 = vec2(1.00000, 1.00000);
+	vec2 n_in5p2 = vec2(0.00000, 0.00000);
+	vec2 n_out5p0 = n_in5p2 * n_in5p1 + UV;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, n_out5p0);
+
+
+// Output:0
+	COLOR.a = n_out2p0.x;
+
+
+}
+"
+graph_offset = Vector2(-9.66541, -53.8563)
+mode = 1
+flags/unshaded = true
+flags/light_only = false
+flags/world_vertex_coords = true
+nodes/fragment/0/position = Vector2(1005.65, 166.442)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_xocwj")
+nodes/fragment/2/position = Vector2(769.811, 67.3787)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_ee7df")
+nodes/fragment/3/position = Vector2(-120, 240)
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorOp_jkgfp")
+nodes/fragment/4/position = Vector2(220, 200)
+nodes/fragment/5/node = SubResource("VisualShaderNodeUVFunc_wltc2")
+nodes/fragment/5/position = Vector2(461.611, 169.926)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 2, 0, 0, 1, 5, 0, 2, 0)
