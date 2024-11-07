@@ -21,6 +21,7 @@ normal = Vector2(-1, 0)
 script = ExtResource("1_igby4")
 
 [node name="WavesScene" parent="." instance=ExtResource("1_vrmhi")]
+waves_file_path = "res://jsons_files/waves_order.json"
 
 [node name="LeftBoundary" type="StaticBody2D" parent="." groups=["Left Wall"]]
 metadata/_edit_group_ = true

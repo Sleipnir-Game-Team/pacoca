@@ -1,11 +1,13 @@
 extends Node
 
+@export var waves_file_path = ""
+
 @onready var wave_lists: Node = $Wave_list
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Waves.restart()
-	wave_lists.read_files()
+	wave_lists.read_files(waves_file_path)
 	var wave: Array = Waves.return_list()
 	run_wave(wave)
 

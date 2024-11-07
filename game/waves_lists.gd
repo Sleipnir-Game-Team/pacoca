@@ -10,8 +10,8 @@ func start_lists(path):
 	print(enemies_list)
 	Waves.add_list(enemies_list)
 
-func read_files():
-	var waves_list = JsonHandler.acesse_json_file("res://jsons_files/waves_order.json")
+func read_files(path):
+	var waves_list = JsonHandler.acesse_json_file(path)
 	for waves in waves_list.get("waves"):
 		print(waves)
 		start_lists(waves)
