@@ -1,17 +1,6 @@
 @tool
 class_name Trail2D extends MeshInstance2D
 
-enum InterpolationMode {
-	LINEAR,
-	SQUARE,
-	CUBE,
-	QUAD
-}
-enum InterpolationDirection {
-	FORWARD,
-	BACKWARD
-}
-
 var points: Array[Vector2]  = []
 var widths: Array  = []
 var lifePoints: Array[float] = []
@@ -26,12 +15,6 @@ var lifePoints: Array[float] = []
 @export var lifespan: float = 1.0
 
 @export var scaleTexture: bool = true
-@export var startColor: Color = Color(1.0, 1.0, 1.0, 1.0)
-@export var endColor: Color = Color(1.0, 1.0, 1.0, 0.0)
-
-
-@export var colorInterpolationMode: InterpolationMode = InterpolationMode.LINEAR
-@export var interpolationDirection: InterpolationDirection = InterpolationDirection.FORWARD
 
 var previous_position: Vector2
 
@@ -66,24 +49,6 @@ func _process(delta: float) -> void:
 	for i in range(points.size()):
 		var t: float = float(i) / (points.size() - 1.0)
 
-		var currColor: Color = endColor
-
-		var progress: float = t
-
-		if interpolationDirection == InterpolationDirection.BACKWARD:
-			progress = 1 - t
-
-		if colorInterpolationMode == InterpolationMode.LINEAR:
-			currColor = startColor.lerp(endColor, 1 - progress)
-		elif colorInterpolationMode == InterpolationMode.SQUARE:
-			currColor = startColor.lerp(endColor, 1- (progress ** 2))
-		elif colorInterpolationMode == InterpolationMode.CUBE:
-			currColor = startColor.lerp(endColor, 1 - pow(progress, 3))
-		elif colorInterpolationMode == InterpolationMode.QUAD:
-			currColor = startColor.lerp(endColor,1- pow(progress, 4))
-
-		mesh.surface_set_color(currColor)
-
 		var currWidth: Vector2 = widths[i][0] - pow(1-t, scaleAcceleration) * widths[i][1]
 
 		if scaleTexture:
@@ -94,7 +59,7 @@ func _process(delta: float) -> void:
 			mesh.surface_set_uv(Vector2(t1, 1))
 			mesh.surface_add_vertex_2d(to_local(points[i] - currWidth))
 		else:
-			var t0: float = i / points.size()
+			var t0: float = i / float(points.size())
 			var t1: float = t
 
 			mesh.surface_set_uv(Vector2(t0, 0))

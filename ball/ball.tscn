@@ -14,7 +14,7 @@ radius = 16.7835
 [sub_resource type="CircleShape2D" id="CircleShape2D_v86q5"]
 radius = 18.2088
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_7fqm2"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_yqkvd"]
 
 [node name="Ball" type="CharacterBody2D" groups=["Ball"]]
 rotation = 0.523599
@@ -45,7 +45,7 @@ per_heat_bonus = 0.5
 
 [node name="Trail2D" type="MeshInstance2D" parent="."]
 material = ExtResource("5_rgqut")
-mesh = SubResource("ImmediateMesh_7fqm2")
+mesh = SubResource("ImmediateMesh_yqkvd")
 script = ExtResource("6_viubt")
 fromWidth = 20.0
 toWidth = 20.0
