@@ -1,86 +1,87 @@
-@tool
-class_name Trail2D extends MeshInstance2D
+class_name Trail2D
+extends MeshInstance2D
 
-var points: Array[Vector2]  = []
-var widths: Array  = []
-var lifePoints: Array[float] = []
+class TrailMeshPoint extends RefCounted:
+	var position: Vector2
+	var lifespan: float = 0.0
+	
+	func older_than(time: float) -> bool:
+		return lifespan >= time
 
-@export var trailEnabled: bool = true
+var points: Array[TrailMeshPoint] = []
 
-@export var fromWidth: float = 0.5
-@export var toWidth: float = 0.0
-@export_range(0.5, 1.5) var scaleAcceleration: float  = 1.0
+@export var enabled: bool = true
 
-@export var motionDelta: float = 0.1
-@export var lifespan: float = 1.0
+@export var scale_texture: bool = true
+@export var from_width: float = 0.5
+@export var to_width: float = 0.0
+@export_range(0.5, 1.5) var scale_acceleration: float  = 1.0
 
-@export var scaleTexture: bool = true
+@export var minimum_distance: float = 0.1
+@export var point_duration: float = 1.0
 
-var previous_position: Vector2
+
+@onready var previous_position: Vector2 = global_position
 
 func _ready() -> void:
-	previous_position = get_global_transform().origin
 	mesh = ImmediateMesh.new()
 
 func _process(delta: float) -> void:
-	if (previous_position - get_global_transform().origin).length() > motionDelta and trailEnabled:
-		appendPoint()
-		previous_position = get_global_transform().origin
+	if enabled and previous_position.distance_to(global_position) > minimum_distance:
+		previous_position = global_position
+		add_point(global_position)
+	
+	clear_old_points(delta)
+	update_mesh()
 
-	var p: int = 0
-	var max_points: int = points.size()
-	while p < max_points:
-		lifePoints[p] += delta
-		if lifePoints[p] > lifespan:
-			removePoint(p)
-			p -= 1
-			if (p < 0): p = 0
+func _is_old(point: TrailMeshPoint, time_elapsed: float) -> bool:
+	point.lifespan += time_elapsed
+	return not point.older_than(point_duration)
 
-		max_points = points.size()
-		p += 1
+func clear_old_points(time_elapsed: float) -> void:
+	points.assign(points.filter(_is_old.bind(time_elapsed)))
 
+func update_mesh() -> void:
 	mesh.clear_surfaces()
-
+	
 	if points.size() < 2:
 		return
-
+	
 	mesh.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
+	
+	for index: int in points.size():
+		var point: TrailMeshPoint = points[index]
+		var percentage: float = float(index) / (points.size() - 1.0)
 
-	for i in range(points.size()):
-		var t: float = float(i) / (points.size() - 1.0)
-
-		var currWidth: Vector2 = widths[i][0] - pow(1-t, scaleAcceleration) * widths[i][1]
-
-		if scaleTexture:
-			var t0: float = motionDelta * i
-			var t1: float = motionDelta * (i + 1)
-			mesh.surface_set_uv(Vector2(t0, 0))
-			mesh.surface_add_vertex_2d(to_local(points[i] + currWidth))
-			mesh.surface_set_uv(Vector2(t1, 1))
-			mesh.surface_add_vertex_2d(to_local(points[i] - currWidth))
-		else:
-			var t0: float = i / float(points.size())
-			var t1: float = t
-
-			mesh.surface_set_uv(Vector2(t0, 0))
-			mesh.surface_add_vertex_2d(to_local(points[i] + currWidth))
-			mesh.surface_set_uv(Vector2(t1, 1))
-			mesh.surface_add_vertex_2d(to_local(points[i] - currWidth))
+		var vertices := perpendicular_points(point.position, get_parent().rotation, from_width)
+		mesh.surface_set_uv(Vector2(percentage, 0))
+		mesh.surface_add_vertex_2d(to_local(vertices[0]))
+			
+		mesh.surface_set_uv(Vector2(percentage, 1))
+		mesh.surface_add_vertex_2d(to_local(vertices[1]))
+	
 	mesh.surface_end()
 
-func appendPoint() -> void:
-	var direction: Vector2 = get_global_transform().origin - previous_position
-	direction = direction.normalized()
-	#rotation.y = atan2(direction.x, direction.z)
+func add_point(point_position: Vector2) -> void:
+	var new_point := TrailMeshPoint.new()
+	new_point.position = point_position
+	points.append(new_point)
 
-	points.append(get_global_transform().origin)
-	widths.append([
-		get_global_transform().x * fromWidth,
-		get_global_transform().x * fromWidth - get_global_transform().x * toWidth
-	])
-	lifePoints.append(0.0)
+func remove_point(index: int) -> void:
+	points.remove_at(index)
 
-func removePoint(i: int) -> void:
-	points.remove_at(i)
-	widths.remove_at(i)
-	lifePoints.remove_at(i)
+func perpendicular_points(point: Vector2, theta: float, width: float) -> Array[Vector2]:
+	# Find angle perpendicular to theta
+	var perp_angle: float = theta + PI / 2.0 
+
+	# Calculate half-width for symmetric points
+	var half_width: float = width / 2.0
+
+	# Calculate the coordinates of the two points
+	var x1: float = point.x + half_width * cos(perp_angle)
+	var y1: float = point.y + half_width * sin(perp_angle)
+
+	var x2: float = point.x - half_width * cos(perp_angle)
+	var y2: float = point.y - half_width * sin(perp_angle)
+
+	return [Vector2(x1, y1), Vector2(x2, y2)]

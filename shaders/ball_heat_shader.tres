@@ -11,10 +11,12 @@ expanded_output_ports = [0]
 source = 5
 
 [sub_resource type="VisualShaderNodeMultiplyAdd" id="VisualShaderNodeMultiplyAdd_trcnm"]
+output_port_for_preview = 0
 default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1), 2, Vector2(0, 0)]
 op_type = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kglwq"]
+output_port_for_preview = 0
 source = 5
 texture = ExtResource("1_6ou8k")
 
@@ -88,7 +90,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(46.1326, -81.0106)
+graph_offset = Vector2(-187.791, -331.302)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1280, 200)
@@ -103,11 +105,11 @@ nodes/fragment/6/position = Vector2(-260, 140)
 nodes/fragment/8/node = SubResource("VisualShaderNodeVec2Parameter_a05iu")
 nodes/fragment/8/position = Vector2(-600, 160)
 nodes/fragment/9/node = SubResource("VisualShaderNodeTexture2DParameter_lvad5")
-nodes/fragment/9/position = Vector2(-60, 340)
+nodes/fragment/9/position = Vector2(-60, 520)
 nodes/fragment/10/node = SubResource("VisualShaderNodeTexture2DParameter_mv77d")
 nodes/fragment/10/position = Vector2(280, -220)
 nodes/fragment/11/node = SubResource("VisualShaderNodeTexture_jx03h")
 nodes/fragment/11/position = Vector2(620, -80)
 nodes/fragment/12/node = SubResource("VisualShaderNodeMultiplyAdd_trcnm")
 nodes/fragment/12/position = Vector2(895.657, 175.529)
-nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 5, 0, 6, 0, 8, 0, 6, 1, 6, 0, 3, 2, 9, 0, 2, 2, 10, 0, 11, 2, 11, 0, 0, 0, 11, 4, 12, 0, 2, 0, 12, 1, 12, 0, 0, 1)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 5, 0, 6, 0, 8, 0, 6, 1, 6, 0, 3, 2, 10, 0, 11, 2, 11, 0, 0, 0, 11, 4, 12, 0, 2, 0, 12, 1, 12, 0, 0, 1, 9, 0, 2, 2)

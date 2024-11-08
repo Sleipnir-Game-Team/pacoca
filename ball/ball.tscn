@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d1m1sgplbbng6" path="res://assets/Ball.png" id="3_ae5up"]
 [ext_resource type="PackedScene" uid="uid://de8vseig5n84b" path="res://ball/heat.tscn" id="4_ieycs"]
 [ext_resource type="Script" path="res://entities/components/movement_top_down.gd" id="5_fhb1l"]
-[ext_resource type="Material" uid="uid://c22e8fyrcpgp1" path="res://shaders/ball_heat_material.tres" id="5_rgqut"]
+[ext_resource type="Texture2D" uid="uid://c0pdr366b5dw" path="res://shaders/ball_trail_texture.png" id="6_r4qj0"]
 [ext_resource type="Script" path="res://shaders/trail2d.gd" id="6_viubt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njqvl"]
@@ -14,10 +14,10 @@ radius = 16.7835
 [sub_resource type="CircleShape2D" id="CircleShape2D_v86q5"]
 radius = 18.2088
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_yqkvd"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_w408c"]
 
 [node name="Ball" type="CharacterBody2D" groups=["Ball"]]
-rotation = 0.523599
+rotation = 0.359538
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_og6ph")
@@ -44,11 +44,11 @@ unique_name_in_owner = true
 per_heat_bonus = 0.5
 
 [node name="Trail2D" type="MeshInstance2D" parent="."]
-material = ExtResource("5_rgqut")
-mesh = SubResource("ImmediateMesh_yqkvd")
+mesh = SubResource("ImmediateMesh_w408c")
+texture = ExtResource("6_r4qj0")
 script = ExtResource("6_viubt")
-fromWidth = 20.0
-toWidth = 20.0
+from_width = 30.0
+point_duration = 0.2
 
 [node name="Movement" type="Node" parent="."]
 unique_name_in_owner = true
