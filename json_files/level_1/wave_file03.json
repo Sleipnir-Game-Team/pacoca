@@ -1,0 +1,4 @@
+{"enemies": [{"path": "res://entities/enemy/simple_enemy.tscn","position": "Vector2(200, 100)"},
+{"path": "res://entities/enemy/simple_enemy.tscn","position": "Vector2(650, 250)"},
+{"path": "res://entities/enemy/simple_enemy.tscn","position": "Vector2(200, 400)"},
+{"path": "res://entities/enemy/simple_enemy.tscn","position": "Vector2(650, 550)"}]}

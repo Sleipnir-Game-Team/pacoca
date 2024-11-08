@@ -1,15 +1,15 @@
 extends Node
 
+@export var waves_file_path = ""
+
 @onready var wave_lists: Node = $Wave_list
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# WARNING TEMPORARIAMENTE TIRANDO A LÓGICA DE WAVE PQ O INIMIGO FOI ASSASSINADO
-	pass
-	#Waves.restart()
-	#wave_lists.start_lists()
-	#var wave: Array = Waves.return_list()
-	#run_wave(wave)
+	Waves.restart()
+	wave_lists.read_files(waves_file_path)
+	var wave: Array = Waves.return_list()
+	run_wave(wave)
 
 func _process(_delta: float) -> void:
 	if Waves.has_pass == true:

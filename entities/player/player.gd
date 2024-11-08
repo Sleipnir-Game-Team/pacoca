@@ -12,13 +12,10 @@ func _ready():
 	animation_handler.play_animation("Tail", "tail_wigle")
 	life.damage_received.connect(animation_handler.play_animation.bindv(["Body","hurt"]).unbind(1))
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_hit") and not grab.is_holding():
 		kick.start(global_position.direction_to(get_global_mouse_position()))
-		animation_handler.play_animation("Head","lick")
 	elif event.is_action_pressed("player_special") and grab.can_trigger():
-		animation_handler.play_animation("Head","bite")
 		grab.start(global_position.direction_to(get_global_mouse_position()))
 		AudioManager.play_global("player.attack")
 

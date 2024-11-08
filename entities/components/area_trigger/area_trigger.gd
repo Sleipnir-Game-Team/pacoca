@@ -22,6 +22,9 @@ var avaible = true
 ## [shape]: The shape index of the colliding shape.
 signal hit(direction: Vector2, data: Dictionary)
 
+signal started
+signal failed
+
 func _ready() -> void:
 	# Adjust cooldown time according to exported property
 	cooldown_timer.wait_time = cooldown_seconds
@@ -44,6 +47,7 @@ func _physics_process(delta: float) -> void:
 			buffering_duration += delta
 			trigger()
 		else:
+			failed.emit()
 			reset_buffering()
 
 func reset_buffering() -> void:
@@ -52,10 +56,11 @@ func reset_buffering() -> void:
 
 func start(direction):
 	if avaible and can_trigger():
+		started.emit()
 		current_direction = direction
 		buffering = true
 	else:
-		Logger.debug("A o trigger tentou ser iniciado com avaible "+str(avaible)+" e can_trigger() "+ str(can_trigger()))
+		Logger.debug("O trigger tentou ser iniciado com avaible "+str(avaible)+" e can_trigger() "+ str(can_trigger()))
 
 func _handler(_direction: Vector2, _data: Dictionary) -> void:
 	push_error("MUST OVERRIDE _HANDLER")

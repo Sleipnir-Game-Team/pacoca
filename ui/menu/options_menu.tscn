@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://53ka1brdqd3s"]
+[gd_scene load_steps=5 format=3 uid="uid://53ka1brdqd3s"]
 
 [ext_resource type="Script" path="res://ui/menu/options_menu.gd" id="1_flr5y"]
+[ext_resource type="Texture2D" uid="uid://bnxcaj66q3hnj" path="res://assets/Main Menu Background.jpg" id="2_hkspu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4flhf"]
 font_size = 100
@@ -24,6 +25,15 @@ grow_vertical = 2
 script = ExtResource("1_flr5y")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BackGround" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_hkspu")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -105,12 +115,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 selected = 0
 allow_reselect = true
-item_count = 3
+item_count = 4
 popup/item_0/text = "1920x1080"
 popup/item_1/text = "1600x900"
 popup/item_1/id = 1
-popup/item_2/text = "1280x720"
+popup/item_2/text = "1366x768"
 popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
 
 [node name="Control4" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/resolution/resolution_dropbox"]
 layout_mode = 2
@@ -398,6 +410,40 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer"]
+layout_mode = 2
+
+[node name="keybinding_list" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="input_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list/input_button"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list/input_button/MarginContainer"]
+layout_mode = 2
+
+[node name="action_label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list/input_button/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "action name"
+
+[node name="spacer" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list/input_button/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="input_label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list/input_button/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "input key"
 
 [node name="back" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2

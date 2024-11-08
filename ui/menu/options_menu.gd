@@ -6,11 +6,13 @@ extends Control
 @onready var volume_music_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_music/volume_music_slider/volume_music_slider
 @onready var volume_sfx_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_sfx/volume_sfx_slider/volume_sfx_slider
 @onready var mute_checkbox: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/mute/mute_check/mute_checkbox
+@onready var keybinding_list = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/keybinding_list
 
 
 func _ready():
 	var window_mode = Config_Handler.get_setting("video", "window_mode")
 	var resolution = Config_Handler.get_setting("video", "resolution")
+	Config_Handler.update_resolution_dropbox(resolution_dropbox)
 	window_mode_dropbox.select(Config_Handler.switch_window_mode_type(window_mode))
 	resolution_dropbox.select(Config_Handler.switch_window_resolution_type(resolution))
 	volume_master_slider.value = min(Config_Handler.get_setting("audio", "master_volume"), 1.0) * 100
@@ -55,7 +57,6 @@ func _on_volume_sfx_slider_drag_ended(value_changed):
 	
 
 func _on_mute_checkbox_toggled(toggled_on):
-	print(toggled_on)
 	AudioManager.play_global("ui.button.click")
 	Config_Handler.save_audio_settings("muted", toggled_on)
 	Config_Handler.mute_master_volume(toggled_on)
