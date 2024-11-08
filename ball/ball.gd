@@ -7,11 +7,11 @@ var grabber: Node2D = null
 
 @export var rotation_speed_factor: float = 0.02
 
-@onready var movement:= $Movement
-@onready var contact_area: ContactArea = $ContactArea
-@onready var heat: Heat = $Heat
-@onready var sprite: Sprite2D = $Sprite2D
-@onready var player = $"../Player"
+@onready var movement: Node = %Movement
+@onready var contact_area: ContactArea = %ContactArea
+@onready var heat: Heat = %Heat
+@onready var sprite: Sprite2D = %Sprite2D
+@onready var player: Player = $"../Player"
 
 
 func _ready() -> void:
@@ -43,7 +43,7 @@ func _on_throw(angle: float) -> void:
 	
 	rotation_degrees = angle
 	grabber = null
-	
+
 func _on_kick(angle: float):
 	heat.heat_up()
 	

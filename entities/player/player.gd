@@ -1,12 +1,11 @@
-extends CharacterBody2D
-
 class_name Player
+extends CharacterBody2D
 
 @onready var kick: Kick = $Kick
 @onready var grab: Grab = $Grab
 @onready var life: Life = $Life
-@onready var hurtbox = $HurtBox as Area2D
-@onready var animation_handler = $AnimationHandler
+@onready var hurtbox: Area2D = $HurtBox
+@onready var animation_handler: Node = $AnimationHandler
 
 func _ready():
 	animation_handler.play_animation("Tail", "tail_wigle")

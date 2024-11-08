@@ -14,7 +14,7 @@ func _handler(direction: Vector2, data: Dictionary) -> void:
 	buffering = false
 	var ball: Ball = data.collider 
 	
-	Logger.info("Comando de grap/trow iniciando")
+	Logger.info("Comando de grab/throw iniciando")
 	if held_object != null and (16 < ball.position.x and ball.position.x < 794): # THROWING
 		Logger.info("A bola será arremessada")
 		held_object = null
