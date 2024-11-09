@@ -195,20 +195,19 @@ debug_color = Color(0.862474, 0.33491, 0.350799, 0.42)
 shape = SubResource("CircleShape2D_a7lno")
 
 [node name="life" type="Node" parent="."]
-unique_name_in_owner = true
 script = ExtResource("3_piw0h")
 on_hit_invecibility_time = 0
 
 [node name="invencibility_time" type="Timer" parent="life"]
 
 [node name="Grab" parent="." instance=ExtResource("5_edhoy")]
-unique_name_in_owner = true
 scale = Vector2(4.7, 4.7)
 shape = SubResource("CircleShape2D_3dy0u")
 target_position = Vector2(0, -0.5)
+cooldown_seconds = 0.1
 
-[node name="Grab_position" type="Marker2D" parent="."]
-position = Vector2(0, 95)
+[node name="GrabPoint" parent="Grab" index="1"]
+position = Vector2(0.106383, 17.0213)
 
 [node name="hold_time" type="Timer" parent="."]
 one_shot = true
@@ -258,3 +257,5 @@ bus = &"sfx"
 [connection signal="timeout" from="hold_time" to="." method="_on_hold_time_timeout"]
 [connection signal="timeout" from="dizzy_time" to="." method="_on_dizzy_time_timeout"]
 [connection signal="animation_finished" from="damage_animation" to="." method="_on_damage_animation_animation_finished"]
+
+[editable path="Grab"]

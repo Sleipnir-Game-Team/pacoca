@@ -14,11 +14,10 @@ var grabber: Node2D = null
 @onready var contact_area: ContactArea = $ContactArea
 @onready var heat: Heat = $Heat
 @onready var sprite: Sprite2D = $Sprite2D
-var player
+@onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready() -> void:
 	movement.speed = speed * heat.speed_bonus
-	player = get_tree().get_first_node_in_group("Player")
 
 
 func _physics_process(delta: float) -> void:
@@ -31,7 +30,7 @@ func _physics_process(delta: float) -> void:
 func flip(normal: Vector2) -> void:
 	_play_hit_sound()
 	
-	heat.cool_down()
+	heat.cool_down(2)
 	
 	normal = normal.normalized()
 	var dot_product: float = velocity.dot(normal)

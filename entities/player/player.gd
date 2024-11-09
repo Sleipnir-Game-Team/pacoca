@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-var ball: Ball
+@onready var ball: Ball = get_tree().get_first_node_in_group("Ball")
 
 @onready var kick: Kick = $Kick
 @onready var grab: Grab = $Grab
@@ -13,7 +13,6 @@ var ball: Ball
 func _ready():
 	animation_handler.play_animation("Tail", "tail_wigle")
 	life.damage_received.connect(animation_handler.play_animation.bindv(["Body","hurt"]).unbind(1))
-	ball = get_tree().get_first_node_in_group("Ball")
 	grab.thrown.connect(on_trow)
 	kick.kicked.connect(on_kick)
 	
@@ -37,7 +36,7 @@ func check_grab() -> void:
 		animation_handler.play_animation("Head","idle")
 
 func on_kick(direction) -> void:
-	ball.heat.heat_up()
+	ball.heat.heat_up(2)
 	
 func on_trow(grabber) -> void:
 	ball.heat.heat = 0

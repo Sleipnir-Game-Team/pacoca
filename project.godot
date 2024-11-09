@@ -48,10 +48,6 @@ project/assembly_name="Game Jam Plus 24 25"
 
 enabled=PackedStringArray("res://addons/SleipnirAudio/plugin.cfg", "res://addons/log_and_error/plugin.cfg")
 
-[global_group]
-
-Ball="Holds the ball lmao"
-
 [gui]
 
 theme/custom_font="res://assets/Text_Fonts/ModernDOS9x16.ttf"
