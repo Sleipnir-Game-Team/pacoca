@@ -56,8 +56,6 @@ func _on_throw(angle: float) -> void:
 	
 	
 func _on_kick(angle: float):
-	heat.heat_up()
-	
 	_play_hit_sound()
 	
 	rotation_degrees = angle

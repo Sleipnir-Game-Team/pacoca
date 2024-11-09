@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
+var ball: Ball
+
 @onready var kick: Kick = $Kick
 @onready var grab: Grab = $Grab
 @onready var life: Life = $Life
@@ -11,6 +13,10 @@ class_name Player
 func _ready():
 	animation_handler.play_animation("Tail", "tail_wigle")
 	life.damage_received.connect(animation_handler.play_animation.bindv(["Body","hurt"]).unbind(1))
+	ball = get_tree().get_first_node_in_group("Ball")
+	grab.thrown.connect(on_trow)
+	kick.kicked.connect(on_kick)
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_hit") and not grab.is_holding():
@@ -29,3 +35,9 @@ func _on_hurt_box_body_entered(_body: Node2D) -> void:
 func check_grab() -> void:
 	if !grab.is_holding():
 		animation_handler.play_animation("Head","idle")
+
+func on_kick(direction) -> void:
+	ball.heat.heat_up()
+	
+func on_trow(grabber) -> void:
+	ball.heat.heat = 0
