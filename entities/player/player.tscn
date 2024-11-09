@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://q7r31yidg88g"]
+[gd_scene load_steps=30 format=3 uid="uid://q7r31yidg88g"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_s5awy"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="2_lqefg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://entities/components/movement_top_down.gd" id="4_weakb"]
 [ext_resource type="Script" path="res://entities/player/input_handlers/input_reader_bidirectional.gd" id="5_g7ux8"]
 [ext_resource type="Script" path="res://entities/components/animation_handler.gd" id="5_xbre0"]
+[ext_resource type="Script" path="res://entities/components/mono_group.gd" id="14_1wv4g"]
 [ext_resource type="Script" path="res://entities/components/rotation.gd" id="74_k4cfl"]
 [ext_resource type="Texture2D" uid="uid://dxdkfufp5levf" path="res://assets/dog animations/Head/Dog body_0000.png" id="75_2nyin"]
 [ext_resource type="Script" path="res://entities/player/input_handlers/mouse_reader_rotation.gd" id="75_e0o7d"]
@@ -427,6 +428,10 @@ libraries = {
 
 [node name="AnimationHandler" type="Node" parent="."]
 script = ExtResource("5_xbre0")
+
+[node name="MonoGroup" type="Node" parent="."]
+script = ExtResource("14_1wv4g")
+group_name = "Player"
 
 [connection signal="death" from="Life" to="." method="_on_death"]
 [connection signal="invecibility_end" from="Life" to="AnimationHandler" method="stop_named_animation" binds= ["Body", "hurt"]]
