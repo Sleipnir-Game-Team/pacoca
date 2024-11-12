@@ -1,31 +1,34 @@
 extends Control
 
-@onready var resolution_dropbox: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/resolution/resolution_dropbox/resolution_dropbox
-@onready var window_mode_dropbox: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/window_mode/window_mode_dropbox/window_mode_dropbox
+@onready var resolution_dropbox: = get_node("%resolution_dropbox")
+@onready var window_mode_dropbox: = get_node("%window_mode_dropbox")
 @onready var volume_master_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_master/volume_master_slider/volume_master_slider
 @onready var volume_music_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_music/volume_music_slider/volume_music_slider
 @onready var volume_sfx_slider: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_sfx/volume_sfx_slider/volume_sfx_slider
 @onready var mute_checkbox: = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/mute/mute_check/mute_checkbox
-@onready var keybinding_list = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/keybinding_list
+@onready var keybinding_list = get_node("%keybinding_list")
 
 
 func _ready():
+	Config_Handler.window_mode_changed.connect(_on_window_mode_changed)
 	var window_mode = Config_Handler.get_setting("video", "window_mode")
-	var resolution = Config_Handler.get_setting("video", "resolution")
-	Config_Handler.update_resolution_dropbox(resolution_dropbox)
-	window_mode_dropbox.select(Config_Handler.switch_window_mode_type(window_mode))
-	resolution_dropbox.select(Config_Handler.switch_window_resolution_type(resolution))
+	var window_resolution = [Config_Handler.get_setting("video", "width"), Config_Handler.get_setting("video", "height")]
+	window_mode_dropbox.select(window_mode_dropbox.get_item_index(window_mode))
+	resolution_dropbox.select_item(window_resolution)
 	volume_master_slider.value = min(Config_Handler.get_setting("audio", "master_volume"), 1.0) * 100
 	volume_music_slider.value = min(Config_Handler.get_setting("audio", "music_volume"), 1.0) * 100
 	volume_sfx_slider.value = min(Config_Handler.get_setting("audio", "sfx_volume"), 1.0) * 100
 	
 
+func _on_window_mode_changed(value):
+	window_mode_dropbox.select(window_mode_dropbox.get_item_index(value))
+
 func _on_window_mode_dropbox_item_selected(index):
-	Config_Handler.change_window_mode(index)
+	Config_Handler.change_window_settings(window_mode_dropbox.get_item_id(index), null)
 	
 
 func _on_resolution_dropbox_item_selected(index):
-	Config_Handler.change_window_resolution(Config_Handler.switch_window_resolution_type(index))
+	Config_Handler.change_window_settings(null, resolution_dropbox.get_selected_item(index))
 	
 
 func _on_volume_master_slider_value_changed(value):

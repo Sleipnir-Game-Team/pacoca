@@ -2,13 +2,19 @@ extends Node
 
 var config: ConfigFile = ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini" #local:C:\Users\#USUARIO#\AppData\Roaming\Godot\app_userdata\#PROJECTNAME#
-var window_mode_dict = {"fullscreen" : DisplayServer.WINDOW_MODE_FULLSCREEN, "windowed" : DisplayServer.WINDOW_MODE_WINDOWED}
-var resolution_list = ["1920x1080", "1600x900", "1366x768", "1280x720"]
+var window_mode_dict = {3 : DisplayServer.WINDOW_MODE_FULLSCREEN, 0 : DisplayServer.WINDOW_MODE_WINDOWED}
 @onready var keybinding_list = $CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/keybinding_list
+var resolution = DisplayServer.screen_get_size()
+var pc_resolution = [resolution[0], resolution[1]]
+var pc_width = pc_resolution[0]
+var pc_height = pc_resolution[1]
+signal window_mode_changed
+signal window_resolution_changed
 
 func _ready():
 	verify_configfile()
 
+######################################### Init Handler #########################################
 func verify_configfile():
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
 		config.set_value("keybinding", "player_up", "W")
@@ -18,8 +24,9 @@ func verify_configfile():
 		config.set_value("keybinding", "player_hit", "mouse_0")
 		config.set_value("keybinding", "player_special", "mouse_1")
 		
-		config.set_value("video", "window_mode", "fullscreen")
-		config.set_value("video", "resolution", "1920x1080")
+		config.set_value("video", "window_mode", 3)
+		config.set_value("video", "width", pc_width)
+		config.set_value("video", "height", pc_height)
 		
 		config.set_value("audio", "master_volume", 1.0)
 		config.set_value("audio", "music_volume", 1.0)
@@ -28,83 +35,92 @@ func verify_configfile():
 		config.save(SETTINGS_FILE_PATH)
 	else:
 		config.load(SETTINGS_FILE_PATH)
+		verify_all_settings()
 		run_all_settings()
 
 func run_all_settings():
-	if get_setting("video", "resolution") not in resolution_list:
-		save_video_settings("resolution", "1920x1080")
 	var video_settings = load_all_video_settings()
-	change_window_mode(video_settings.window_mode)
-	change_window_resolution(video_settings.resolution)
+	change_window_settings(video_settings.window_mode, [video_settings.width, video_settings.height])
 	
 	var audio_settings = load_all_audio_settings()
 	change_master_volume(min(audio_settings.master_volume, 1.0) * 100)
 	change_music_volume(min(audio_settings.music_volume, 1.0) * 100)
 	change_sfx_volume(min(audio_settings.sfx_volume, 1.0) * 100)
 
+func verify_all_settings():
+	if get_setting("video", "resolution") != null:
+		save_video_settings("resolution", null)
+	if get_setting("video", "width") == null:
+		save_video_settings("width", pc_width)
+	if get_setting("video", "height") == null:
+		save_video_settings("height", pc_height)
+	if type_string(typeof(get_setting("video", "window_mode"))) == "String":
+		save_video_settings("window_mode", 3)
+	if get_setting("video", "supported_resolutions") != null:
+		save_video_settings("supported_resolutions", null)
 
-func create_action_list():
-	InputMap.load_from_project_settings()
-	for item in keybinding_list:
-		item.queue_free()
+
+######################################### Window Handler #########################################
+func change_window_mode(mode):
+	DisplayServer.window_set_mode(mode)
+	save_video_settings("window_mode", mode)
 	
-	var action_formatted_list = format_actions(InputMap.get_actions())
-	for action in action_formatted_list:
-		#var button = input_button_scene.instantiate()
-		pass
-		
-
-func format_actions(actions):
-	pass
-
-func change_window_mode(value):
-	if type_string((typeof(value))) == "int": value = switch_window_mode_type(value)
-	DisplayServer.window_set_mode(window_mode_dict[value])
-	save_video_settings("window_mode", value)
-	
-func switch_window_mode_type(value):
-	if type_string((typeof(value))) == "int":
-		return window_mode_dict.keys()[value]
-	else:
-		for pos in range(window_mode_dict.keys().size()):
-			if window_mode_dict.keys()[pos] == value:
-				return pos
-				
-
-func switch_window_resolution_type(value):
-	if type_string((typeof(value))) == "String":
-		value = value.to_lower()
-		for pos in range(resolution_list.size()):
-			if resolution_list[pos] == value:
-				return pos
-	else:
-		return resolution_list[value]
-		
-
-func update_resolution_dropbox(resolution_dropbox):
-	var test_list = []
-	for i in range(resolution_dropbox.item_count):
-		test_list.append(resolution_dropbox.get_item_text(i))
-	resolution_list = test_list
 
 func change_window_resolution(resolution):
-	var vector = get_vector_2i(resolution)
+	var vector = Vector2i(resolution[0], resolution[1])
+	var decoration_size = Vector2i(DisplayServer.window_get_size_with_decorations() - DisplayServer.window_get_size())
+	vector -= decoration_size
+	var pos = [pc_resolution[0]/2 - vector[0]/2, pc_resolution[1]/2 - vector[1]/2]
 	DisplayServer.window_set_size(vector)
-	save_video_settings("resolution", resolution)
+	DisplayServer.window_set_position(Vector2i(pos[0], pos[1]))
+	save_video_settings("width", resolution[0])
+	save_video_settings("height", resolution[1])
 
+func change_window_settings(window_mode, window_resolution):
+	if window_mode != null and window_resolution != null:
+		var borderless = (window_mode >= 3)
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, borderless)
+		change_window_mode(window_mode)
+		change_window_resolution(window_resolution)
+		window_mode_changed.emit(window_mode)
+		window_resolution_changed.emit(window_resolution)
+	elif window_mode != null and window_resolution == null:
+		if window_mode >= 3:
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+			change_window_mode(window_mode)
+			change_window_resolution(pc_resolution)
+			window_mode_changed.emit(window_mode)
+			window_resolution_changed.emit(pc_resolution)
+		else:
+			var resolution = [get_setting("video", "width"), get_setting("video", "height")]
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			change_window_mode(window_mode)
+			change_window_resolution(resolution)
+			window_mode_changed.emit(window_mode)
+			window_resolution_changed.emit(resolution)
+	elif window_mode == null and window_resolution != null:
+		if window_resolution != pc_resolution:
+			if DisplayServer.window_get_mode() != 0:
+				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+				change_window_mode(0)
+				window_mode_changed.emit(0)
+			change_window_resolution(window_resolution)
+			window_resolution_changed.emit(window_resolution)
+	else:
+		Logger.fatal("Erro: Configuração selecionada não existe")
+#ordem:
+#1 flag
+#2 mode
+#3 resolution
 
-func get_vector_2i(resolution):
-	resolution = resolution.to_lower()
-	var resolutions = resolution.split("x")
-	var width = int(resolutions[0])
-	var height = int(resolutions[1])
-	return Vector2i(width, height)
-	
+######################################### Volume Handler #########################################
 func change_master_volume(value):
 	AudioManager.change_bus_volume(&"Master", value)
 
+
 func change_music_volume(value):
 	AudioManager.change_bus_volume(&"music", value)
+
 
 func change_sfx_volume(value):
 	AudioManager.change_bus_volume(&"sfx", value)
@@ -117,21 +133,39 @@ func mute_master_volume(toggled_on):
 		AudioServer.set_bus_mute(0,false)
 		
 
+######################################### Input Handler #########################################
+func create_action_list():
+	InputMap.load_from_project_settings()
+	for item in keybinding_list:
+		item.queue_free()
+		
+	var action_formatted_list = format_actions(InputMap.get_actions())
+	for action in action_formatted_list:
+		#var button = input_button_scene.instantiate()
+		pass
+
+
+func format_actions(actions):
+	pass
+
+
+######################################### Saving Handler #########################################
 func save_video_settings(key: String, value: Variant) -> void:
 	config.set_value("video", key, value)
 	config.save(SETTINGS_FILE_PATH)
 	
 
+func save_audio_settings(key: String, value: Variant) -> void:
+	config.set_value("audio", key, value)
+	config.save(SETTINGS_FILE_PATH)
+
+
+######################################### Loading Handler #########################################
 func load_all_video_settings() -> Dictionary:
 	var video_settings: Dictionary = {}
 	for key in config.get_section_keys("video"):
 		video_settings[key] = config.get_value("video", key)
 	return video_settings
-	
-
-func save_audio_settings(key: String, value: Variant) -> void:
-	config.set_value("audio", key, value)
-	config.save(SETTINGS_FILE_PATH)
 	
 
 func load_all_audio_settings() -> Dictionary:
