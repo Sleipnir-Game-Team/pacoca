@@ -88,7 +88,6 @@ func change_window_settings(window_mode, window_resolution):
 		if window_mode >= 3:
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 			change_window_mode(window_mode)
-			change_window_resolution(pc_resolution)
 			window_mode_changed.emit(window_mode)
 			window_resolution_changed.emit(pc_resolution)
 		else:
@@ -99,13 +98,16 @@ func change_window_settings(window_mode, window_resolution):
 			window_mode_changed.emit(window_mode)
 			window_resolution_changed.emit(resolution)
 	elif window_mode == null and window_resolution != null:
-		if window_resolution != pc_resolution:
-			if DisplayServer.window_get_mode() != 0:
+		if DisplayServer.window_get_mode() == 0:
+			change_window_resolution(window_resolution)
+			window_resolution_changed.emit(window_resolution)
+		else:
+			if window_resolution != pc_resolution:
 				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 				change_window_mode(0)
 				window_mode_changed.emit(0)
-			change_window_resolution(window_resolution)
-			window_resolution_changed.emit(window_resolution)
+				change_window_resolution(window_resolution)
+				window_resolution_changed.emit(window_resolution)
 	else:
 		Logger.fatal("Erro: Configuração selecionada não existe")
 #ordem:
