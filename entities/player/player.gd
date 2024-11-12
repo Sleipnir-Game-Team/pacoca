@@ -10,12 +10,25 @@ class_name Player
 @onready var hurtbox = $HurtBox as Area2D
 @onready var animation_handler = $AnimationHandler
 
+@onready var grabbing := false
+@export var ball_cool_time := 0.5
+@onready var time_until_cool := 0.0
+
 func _ready():
 	animation_handler.play_animation("Tail", "tail_wigle")
 	life.damage_received.connect(animation_handler.play_animation.bindv(["Body","hurt"]).unbind(1))
 	grab.thrown.connect(on_trow)
+	grab.grabbed.connect(on_grab)
 	kick.kicked.connect(on_kick)
-	
+
+func _process(delta):
+	if grabbing:
+		time_until_cool += delta
+		if time_until_cool >= ball_cool_time:
+			time_until_cool = 0
+			ball.heat.cool_down()
+	else:
+		time_until_cool = 0 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_hit") and not grab.is_holding():
@@ -37,6 +50,9 @@ func check_grab() -> void:
 
 func on_kick(direction) -> void:
 	ball.heat.heat_up(2)
-	
-func on_trow(grabber) -> void:
-	ball.heat.heat = 0
+
+func on_grab(grabber) -> void:
+	grabbing = true
+
+func on_trow(direction) -> void:
+	grabbing = false

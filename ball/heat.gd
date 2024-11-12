@@ -24,6 +24,8 @@ var is_burning: bool:
 
 func heat_up(value = 1) -> void:
 	heat = heat + value
+	Logger.info("A bola esquentou em "+str(value))
 
 func cool_down(value = 1) -> void:
 	heat = heat - value
+	Logger.info("A bola esfriou em "+str(value))
