@@ -65,7 +65,4 @@ repeat_times = 4
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 texture = ExtResource("4_wi1h0")
 
-[connection signal="move" from="Player/InputReader_Movement" to="Player/Movement" method="move"]
-[connection signal="rotate" from="Player/MouseReader_Rotation" to="Player/Rotation" method="rotate"]
-
 [editable path="Player"]
