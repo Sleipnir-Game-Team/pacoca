@@ -1,8 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://boc3egilht6n0"]
+[gd_scene load_steps=6 format=3 uid="uid://boc3egilht6n0"]
 
 [ext_resource type="Script" path="res://entities/enemy/behaviours/warning_script.gd" id="1_2ncim"]
+[ext_resource type="Texture2D" uid="uid://d1m1sgplbbng6" path="res://assets/Ball.png" id="2_vpvne"]
+
+[sub_resource type="Animation" id="Animation_ee7ri"]
+resource_name = "Warning"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../warning_sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ik2m6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../warning_sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vk726"]
+_data = {
+"RESET": SubResource("Animation_ik2m6"),
+"Warning": SubResource("Animation_ee7ri")
+}
 
 [node name="Warning" type="Node"]
 script = ExtResource("1_2ncim")
 
+[node name="warning_animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../warning_timer")
+libraries = {
+"": SubResource("AnimationLibrary_vk726")
+}
+
 [node name="warning_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="warning_sprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(272, 174)
+texture = ExtResource("2_vpvne")
+
+[connection signal="timeout" from="warning_timer" to="." method="_on_warning_timer_timeout"]
