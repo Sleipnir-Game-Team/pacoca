@@ -3,7 +3,7 @@ extends AreaTrigger
 
 var attack_direction: Vector2
 
-signal kicked(direction)
+signal kicked(direction: float)
 
 func _handler(direction: Vector2, data: Dictionary) -> void:
 	buffering = false

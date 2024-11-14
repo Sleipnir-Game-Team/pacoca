@@ -8,10 +8,10 @@ var current_direction: Vector2
 @onready var cooldown_timer: Timer = %CooldownTimer
 
 @export var buffering_duration_seconds: float = 0.1
-var buffering = false
-var buffering_duration = 0
+var buffering := false
+var buffering_duration := 0.0
 
-var avaible = true
+var avaible := true
 
 ## The emmited object is a dictionary containing the following fields:
 ## [collider_id]: The colliding object's ID.
@@ -54,7 +54,7 @@ func reset_buffering() -> void:
 	buffering = false
 	buffering_duration = 0
 
-func start(direction):
+func start(direction: Vector2) -> void:
 	if avaible and can_trigger():
 		started.emit()
 		current_direction = direction

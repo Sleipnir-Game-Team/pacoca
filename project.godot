@@ -31,6 +31,7 @@ JsonHandler="*res://globals/json_handler.gd"
 [debug]
 
 gdscript/warnings/untyped_declaration=1
+gdscript/warnings/integer_division=0
 
 [display]
 

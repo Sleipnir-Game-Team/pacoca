@@ -7,21 +7,21 @@ class_name Player
 @onready var kick: Kick = $Kick
 @onready var grab: Grab = $Grab
 @onready var life: Life = $Life
-@onready var hurtbox = $HurtBox as Area2D
-@onready var animation_handler = $AnimationHandler
+@onready var hurtbox: Area2D = $HurtBox
+@onready var animation_handler := $AnimationHandler
 
 @onready var grabbing := false
 @export var ball_cool_time := 0.5
 @onready var time_until_cool := 0.0
 
-func _ready():
+func _ready() -> void:
 	animation_handler.play_animation("Tail", "tail_wigle")
 	life.damage_received.connect(animation_handler.play_animation.bindv(["Body","hurt"]).unbind(1))
 	grab.thrown.connect(on_trow)
 	grab.grabbed.connect(on_grab)
 	kick.kicked.connect(on_kick)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if grabbing:
 		time_until_cool += delta
 		if time_until_cool >= ball_cool_time:
@@ -48,11 +48,11 @@ func check_grab() -> void:
 	if !grab.is_holding():
 		animation_handler.play_animation("Head","idle")
 
-func on_kick(direction) -> void:
+func on_kick(_direction: float) -> void:
 	ball.heat.heat_up(2)
 
-func on_grab(grabber) -> void:
+func on_grab(_grabber: Node) -> void:
 	grabbing = true
 
-func on_trow(direction) -> void:
+func on_trow(_direction: float) -> void:
 	grabbing = false

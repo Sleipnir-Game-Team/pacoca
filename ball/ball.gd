@@ -14,7 +14,7 @@ var grabber: Node2D = null
 @onready var contact_area: ContactArea = $ContactArea
 @onready var heat: Heat = $Heat
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var player = get_tree().get_first_node_in_group("Player")
+@onready var player := get_tree().get_first_node_in_group("Player")
 
 func _ready() -> void:
 	movement.speed = speed * heat.speed_bonus
@@ -44,8 +44,8 @@ func flip(normal: Vector2) -> void:
 	#else:
 		#sprite.material = null
 
-func _on_grab(grabber) -> void:
-	self.grabber = grabber
+func _on_grab(node: Node) -> void:
+	self.grabber = node
 
 func _on_throw(angle: float) -> void:
 	_play_hit_sound()
@@ -54,7 +54,7 @@ func _on_throw(angle: float) -> void:
 	grabber = null
 	
 	
-func _on_kick(angle: float):
+func _on_kick(angle: float) -> void:
 	_play_hit_sound()
 	
 	rotation_degrees = angle
@@ -63,5 +63,5 @@ func _play_hit_sound() -> void:
 	if heat.is_burning == true: AudioManager.play_global("ball.hot.hit")
 	else: AudioManager.play_global("ball.cold.hit")
 
-func _on_heat_changed(new_heat):
+func _on_heat_changed(_new_heat: int) -> void:
 	movement.speed = speed * heat.speed_bonus

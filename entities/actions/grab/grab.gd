@@ -5,8 +5,8 @@ var held_object: Ball = null
 
 @onready var pointer: Marker2D = $GrabPoint
 
-signal grabbed(grabber)
-signal thrown(direction)
+signal grabbed(grabber: Node)
+signal thrown(direction: float)
 
 func _physics_process(_delta: float) -> void:
 	super._physics_process(_delta)

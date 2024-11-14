@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var rng = RandomNumberGenerator.new()
+var rng := RandomNumberGenerator.new()
 
 @onready var hurt_box: Area2D = $HurtBox
 @onready var life: Life = $Life
@@ -43,6 +43,6 @@ func _on_death() -> void:
 	queue_free()
 	Waves.pop_enemy()
 
-func on_kick(direction) -> void:
+func on_kick(_direction: float) -> void:
 	ball.heat.heat_up()
 	

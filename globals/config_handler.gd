@@ -1,19 +1,19 @@
 extends Node
 
-var config: ConfigFile = ConfigFile.new()
-const SETTINGS_FILE_PATH = "user://settings.ini" #local:C:\Users\#USUARIO#\AppData\Roaming\Godot\app_userdata\#PROJECTNAME#
-var resolution = DisplayServer.screen_get_size()
-var pc_resolution = [resolution[0], resolution[1]]
-var pc_width = pc_resolution[0]
-var pc_height = pc_resolution[1]
+var config := ConfigFile.new()
+const SETTINGS_FILE_PATH := "user://settings.ini" #local:C:\Users\#USUARIO#\AppData\Roaming\Godot\app_userdata\#PROJECTNAME#
+var screen_resolution := DisplayServer.screen_get_size()
+var pc_resolution := [screen_resolution[0], screen_resolution[1]]
+var pc_width : int = pc_resolution[0]
+var pc_height : int = pc_resolution[1]
 signal window_mode_changed
 signal window_resolution_changed
 
-func _ready():
+func _ready() -> void:
 	verify_configfile()
 
 ######################################### Init Handler #########################################
-func verify_configfile():
+func verify_configfile() -> void:
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
 		config.set_value("keybinding", "player_left", "A")
 		config.set_value("keybinding", "player_right", "D")
@@ -34,17 +34,17 @@ func verify_configfile():
 		verify_all_settings()
 		run_all_settings()
 
-func run_all_settings():
-	var video_settings = load_all_video_settings()
+func run_all_settings() -> void:
+	var video_settings := load_all_video_settings()
 	change_window_settings(video_settings.window_mode, [video_settings.width, video_settings.height])
 	
-	var audio_settings = load_all_audio_settings()
+	var audio_settings := load_all_audio_settings()
 	change_master_volume(min(audio_settings.master_volume, 1.0) * 100)
 	change_music_volume(min(audio_settings.music_volume, 1.0) * 100)
 	change_sfx_volume(min(audio_settings.sfx_volume, 1.0) * 100)
 
-func verify_all_settings():
-	if get_setting("video", "resolution") != null:
+func verify_all_settings() -> void:
+	if config.has_section_key("video", "resolution"):
 		save_video_settings("resolution", null)
 	if get_setting("video", "width") == null:
 		save_video_settings("width", pc_width)
@@ -52,34 +52,34 @@ func verify_all_settings():
 		save_video_settings("height", pc_height)
 	if type_string(typeof(get_setting("video", "window_mode"))) == "String":
 		save_video_settings("window_mode", 3)
-	if get_setting("video", "supported_resolutions") != null:
+	if config.has_section_key("video", "supported_resolutions"):
 		save_video_settings("supported_resolutions", null)
-	if get_setting("keybinding", "player_up") != null:
+	if config.has_section_key("keybinding", "player_up"):
 		save_keybinding_settings("player_up", null)
-	if get_setting("keybinding", "player_down") != null:
+	if config.has_section_key("keybinding", "player_down"):
 		save_keybinding_settings("player_down", null)
 
 
 ######################################### Window Handler #########################################
-func change_window_mode(mode):
+func change_window_mode(mode: int) -> void:
 	DisplayServer.window_set_mode(mode)
 	save_video_settings("window_mode", mode)
 
 
-func change_window_resolution(resolution):
-	var vector = Vector2i(resolution[0], resolution[1])
-	var decoration_size = Vector2i(DisplayServer.window_get_size_with_decorations() - DisplayServer.window_get_size())
+func change_window_resolution(resolution: Array) -> void:
+	var vector := Vector2i(resolution[0], resolution[1])
+	var decoration_size := Vector2i(DisplayServer.window_get_size_with_decorations() - DisplayServer.window_get_size())
 	vector -= decoration_size
-	var pos = [pc_resolution[0]/2 - vector[0]/2, pc_resolution[1]/2 - vector[1]/2]
+	var pos := [pc_resolution[0]/2 - vector[0]/2, pc_resolution[1]/2 - vector[1]/2]
 	DisplayServer.window_set_size(vector)
 	DisplayServer.window_set_position(Vector2i(pos[0], pos[1]))
 	save_video_settings("width", resolution[0])
 	save_video_settings("height", resolution[1])
 
 
-func change_window_settings(window_mode, window_resolution):
+func change_window_settings(window_mode: Variant, window_resolution: Variant) -> void:
 	if window_mode != null and window_resolution != null:
-		var borderless = (window_mode >= 3)
+		var borderless :bool = (window_mode >= 3)
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, borderless)
 		change_window_mode(window_mode)
 		change_window_resolution(window_resolution)
@@ -92,7 +92,7 @@ func change_window_settings(window_mode, window_resolution):
 			window_mode_changed.emit(window_mode)
 			window_resolution_changed.emit(pc_resolution)
 		else:
-			var resolution = [get_setting("video", "width"), get_setting("video", "height")]
+			var resolution := [get_setting("video", "width"), get_setting("video", "height")]
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 			change_window_mode(window_mode)
 			change_window_resolution(resolution)
@@ -117,19 +117,19 @@ func change_window_settings(window_mode, window_resolution):
 #3 resolution
 
 ######################################### Volume Handler #########################################
-func change_master_volume(value):
+func change_master_volume(value: float) -> void:
 	AudioManager.change_bus_volume(&"Master", value)
 
 
-func change_music_volume(value):
+func change_music_volume(value: float) -> void:
 	AudioManager.change_bus_volume(&"music", value)
 
 
-func change_sfx_volume(value):
+func change_sfx_volume(value: float) -> void:
 	AudioManager.change_bus_volume(&"sfx", value)
 
 
-func mute_master_volume(toggled_on):
+func mute_master_volume(toggled_on: bool) -> void:
 	if toggled_on:
 		AudioServer.set_bus_mute(0,true)
 	else:

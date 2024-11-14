@@ -1,21 +1,21 @@
 extends MarginContainer
 
-@onready var keybinding_list = get_node("%keybinding_list")
-@onready var input_button_scene = preload("res://ui/buttons/input_button.tscn")
-var is_remapping = false
-var action_to_remap = null
-var remapping_button = null
+@onready var keybinding_list := get_node("%keybinding_list")
+@onready var input_button_scene := preload("res://ui/buttons/input_button.tscn")
+var is_remapping := false
+var action_to_remap : Variant = null
+var remapping_button : Variant = null
 
-func _ready():
+func _ready() -> void:
 	verify_input_mapping()
 
-func verify_input_mapping():
-	var keybinding_settings = Config_Handler.load_all_keybinding_settings()
-	var action_formatted_dict = format_actions(InputMap.get_actions(), keybinding_settings)
-	var equal = true
-	var count = 0
+func verify_input_mapping() -> void:
+	var keybinding_settings : Dictionary = Config_Handler.load_all_keybinding_settings()
+	var action_formatted_dict : Dictionary = format_actions(InputMap.get_actions(), keybinding_settings)
+	var equal := true
+	var count := 0
 	while (equal && count < action_formatted_dict.keys().size()):
-		var new_action = action_formatted_dict.keys()[count]
+		var new_action : String = action_formatted_dict.keys()[count]
 		if typeof(InputMap.action_get_events(new_action)[0]) != typeof(keybinding_settings[new_action]):
 			equal = false
 		count += 1
@@ -25,18 +25,18 @@ func verify_input_mapping():
 	else:
 		update_action_list(action_formatted_dict, keybinding_settings)
 
-func update_action_list(action_formatted_dict, keybinding_settings):
+func update_action_list(action_formatted_dict: Dictionary, keybinding_settings: Dictionary) -> void:
 	for item in keybinding_list.get_children():
 		item.queue_free()
 		
-	for action in action_formatted_dict:
-		var button = input_button_scene.instantiate()
-		var action_label = button.find_child("action_label")
-		var input_label = button.find_child("input_label")
+	for action:String in action_formatted_dict:
+		var button := input_button_scene.instantiate()
+		var action_label := button.find_child("action_label")
+		var input_label := button.find_child("input_label")
 		action_label.text = action_formatted_dict[action]
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, keybinding_settings[action])
-		var events = InputMap.action_get_events(action)
+		var events := InputMap.action_get_events(action)
 		if events.size() > 0:
 			input_label.text = events[0].as_text().trim_suffix(" (Physical)")
 			Config_Handler.save_keybinding_settings(action, events[0])
@@ -47,17 +47,17 @@ func update_action_list(action_formatted_dict, keybinding_settings):
 		button.pressed.connect(_on_input_button_pressed.bind(button, action))
 
 
-func create_action_list(action_formatted_dict):
+func create_action_list(action_formatted_dict: Dictionary) -> void:
 	InputMap.load_from_project_settings()
 	for item in keybinding_list.get_children():
 		item.queue_free()
 		
-	for action in action_formatted_dict:
-		var button = input_button_scene.instantiate()
-		var action_label = button.find_child("action_label")
-		var input_label = button.find_child("input_label")
+	for action: String in action_formatted_dict:
+		var button := input_button_scene.instantiate()
+		var action_label := button.find_child("action_label")
+		var input_label := button.find_child("input_label")
 		action_label.text = action_formatted_dict[action]
-		var events = InputMap.action_get_events(action)
+		var events := InputMap.action_get_events(action)
 		if events.size() > 0:
 			input_label.text = events[0].as_text().trim_suffix(" (Physical)")
 			Config_Handler.save_keybinding_settings(action, events[0])
@@ -68,9 +68,9 @@ func create_action_list(action_formatted_dict):
 		button.pressed.connect(_on_input_button_pressed.bind(button, action))
 
 
-func format_actions(actions, keybinding_settings):
-	var action_dict = {}
-	for item in actions:
+func format_actions(actions: Array, keybinding_settings: Dictionary) -> Dictionary:
+	var action_dict := {}
+	for item: String in actions:
 		if item in keybinding_settings.keys():
 			match item:
 				"player_up":
@@ -88,7 +88,7 @@ func format_actions(actions, keybinding_settings):
 	return action_dict
 
 
-func _on_input_button_pressed(button, action):
+func _on_input_button_pressed(button: Node, action: String) -> void:
 	if !is_remapping:
 		is_remapping = true
 		action_to_remap = action
@@ -96,7 +96,7 @@ func _on_input_button_pressed(button, action):
 		button.find_child("input_label").text = "Escolha a tecla..."
 
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if is_remapping:
 		if (event is InputEventKey) || (event is InputEventMouseButton && event.pressed):
 			if event is InputEventMouseButton && event.double_click:
@@ -110,12 +110,12 @@ func _input(event):
 			accept_event()
 
 
-func _update_input_button(button, event):
+func _update_input_button(button: Node, event: InputEvent) -> void:
 	button.find_child("input_label").text = event.as_text().trim_suffix(" (Physical)")
 	Config_Handler.save_keybinding_settings(action_to_remap, event)
 
 
-func _on_reset_button_pressed():
-	var keybinding_settings = Config_Handler.load_all_keybinding_settings()
-	var action_formatted_dict = format_actions(InputMap.get_actions(), keybinding_settings)
+func _on_reset_button_pressed() -> void:
+	var keybinding_settings := Config_Handler.load_all_keybinding_settings()
+	var action_formatted_dict := format_actions(InputMap.get_actions(), keybinding_settings)
 	create_action_list(action_formatted_dict)
