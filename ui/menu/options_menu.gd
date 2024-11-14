@@ -33,6 +33,7 @@ func _on_resolution_dropbox_item_selected(index: int) -> void:
 
 func _on_volume_master_slider_value_changed(value: float) -> void:
 	mute_checkbox.button_pressed = false
+	AudioManager.play_global("ui.slider.tick")
 	Config_Handler.change_master_volume(value)
 	
 
@@ -42,6 +43,7 @@ func _on_volume_master_slider_drag_ended(value_changed: bool) -> void:
 	
 
 func _on_volume_music_slider_value_changed(value: float) -> void:
+	AudioManager.play_global("ui.slider.tick")
 	Config_Handler.change_music_volume(value)
 
 
@@ -51,6 +53,7 @@ func _on_volume_music_slider_drag_ended(value_changed: bool) -> void:
 		
 
 func _on_volume_sfx_slider_value_changed(value:float) -> void:
+	AudioManager.play_global("ui.slider.tick")
 	Config_Handler.change_sfx_volume(value)
 	
 

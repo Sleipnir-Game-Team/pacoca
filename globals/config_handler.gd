@@ -20,7 +20,7 @@ func verify_configfile() -> void:
 		config.set_value("keybinding", "player_hit", "Left Mouse Button")
 		config.set_value("keybinding", "player_special", "Right Mouse Button")
 		
-		config.set_value("video", "window_mode", 3)
+		config.set_value("video", "window_mode", 4)
 		config.set_value("video", "width", pc_width)
 		config.set_value("video", "height", pc_height)
 		
@@ -111,10 +111,11 @@ func change_window_settings(window_mode: Variant, window_resolution: Variant) ->
 				window_resolution_changed.emit(window_resolution)
 	else:
 		Logger.fatal("Erro: Configuração selecionada não existe")
-#ordem:
-#1 flag
-#2 mode
-#3 resolution
+
+
+func reset_window_settings() -> void:
+	change_window_settings(4, [1920, 1080])
+
 
 ######################################### Volume Handler #########################################
 func change_master_volume(value: float) -> void:
@@ -150,6 +151,15 @@ func mute_master_volume(toggled_on: bool) -> void:
 #
 #func format_actions(actions):
 	#pass
+
+#TODO finalizar essa função, conectar ela com os sliders e criar o botão de reset
+func reset_volume_settings() -> void:
+	change_master_volume(1.0)
+	change_music_volume(1.0)
+	change_sfx_volume(1.0)
+	save_audio_settings("master_volume", 1.0)
+	save_audio_settings("music_volume", 1.0)
+	save_audio_settings("sfx_volume", 1.0)
 
 
 ######################################### Saving Handler #########################################

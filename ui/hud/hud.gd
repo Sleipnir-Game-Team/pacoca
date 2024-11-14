@@ -1,7 +1,8 @@
 extends Control
 
-@onready var wave_label := $CanvasLayer/HBoxContainer/left_container/info_container/score_card/VBoxContainer/score
-@onready var health_bar := $CanvasLayer/HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer/health_bar
+@onready var wave_label := get_node("%wave")
+@onready var health_bar := get_node("%health_bar")
+
 
 func _ready() -> void:
 	get_tree().get_first_node_in_group("Player").life.damage_received.connect(on_damage_taken)
