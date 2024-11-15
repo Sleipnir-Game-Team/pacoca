@@ -13,7 +13,7 @@ func _init():
 ## Por exemplo, se algo entrou ou saiu da cena, se algum recurso foi criado, não algo muito profundo
 func info(message: String) -> void:
 	print_rich("[color=cyan]INFO: [",
-	_get_script_name(get_stack()[1]["source"]),"][/color][color=blue] ",message,"[/color]")
+	_get_script_name(get_stack()[1]["source"]),"][/color][color=light_blue] ",message,"[/color]")
 
 ## Diagnóstico geral.[br]
 ## Por exemplo, se uma variável mudou de estado, se uma função foi chamada, com bastante detalhe geralmente
