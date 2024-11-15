@@ -1,10 +1,10 @@
 extends Control
 
 func _ready() -> void:
-	if SleipnirMaestro._current_song_node != null and SleipnirMaestro._current_song_node.is_playing():
-		SleipnirMaestro.change_song("main_menu",true,"CUT")
+	if SleipnirMaestro.current_song_node != null and SleipnirMaestro.current_song_node.is_playing():
+		SleipnirMaestro.load_song("main_menu",true,0,false)
 	else:
-		SleipnirMaestro.change_song("main_menu")
+		SleipnirMaestro.load_song("main_menu",false,0,false)
 		SleipnirMaestro.play()
 	UI_Controller.stack.screens.append(self)
 
