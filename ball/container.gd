@@ -6,13 +6,15 @@ extends Node
 @export var limit_up := -INF
 @export var limit_down := INF
 
+@export var tp_amount := 0
+
 
 func _process(_delta: float) -> void:
 	if get_parent().position.x < limit_left:
-		get_parent().position.x = limit_left + 1
+		get_parent().position.x = limit_left + tp_amount
 	if get_parent().position.x > limit_right:
-		get_parent().position.x = limit_right - 1
+		get_parent().position.x = limit_right - tp_amount
 	if get_parent().position.y < limit_up:
-		get_parent().position.y = limit_up + 1
+		get_parent().position.y = limit_up + tp_amount
 	if get_parent().position.y > limit_down:
-		get_parent().position.y = limit_down - 1
+		get_parent().position.y = limit_down - tp_amount
