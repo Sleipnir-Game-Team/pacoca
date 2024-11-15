@@ -93,19 +93,19 @@ func change_window_settings(window_mode: Variant, window_resolution: Variant) ->
 			window_resolution_changed.emit(pc_resolution)
 		else:
 			var resolution := [get_setting("video", "width"), get_setting("video", "height")]
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 			change_window_mode(window_mode)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 			change_window_resolution(resolution)
 			window_mode_changed.emit(window_mode)
 			window_resolution_changed.emit(resolution)
 	elif window_mode == null and window_resolution != null:
-		if DisplayServer.window_get_mode() == 0:
+		if DisplayServer.window_get_mode() < 3:
 			change_window_resolution(window_resolution)
 			window_resolution_changed.emit(window_resolution)
 		else:
 			if window_resolution != pc_resolution:
-				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 				change_window_mode(0)
+				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 				window_mode_changed.emit(0)
 				change_window_resolution(window_resolution)
 				window_resolution_changed.emit(window_resolution)
