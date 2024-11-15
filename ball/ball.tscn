@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://gchihnv3vpvw"]
+[gd_scene load_steps=9 format=3 uid="uid://gchihnv3vpvw"]
 
 [ext_resource type="Script" path="res://ball/ball.gd" id="1_og6ph"]
 [ext_resource type="Script" path="res://ball/contact_area.gd" id="2_62eaa"]
 [ext_resource type="Texture2D" uid="uid://d1m1sgplbbng6" path="res://assets/Ball.png" id="3_ae5up"]
 [ext_resource type="PackedScene" uid="uid://de8vseig5n84b" path="res://ball/heat.tscn" id="4_ieycs"]
 [ext_resource type="Script" path="res://entities/components/movement_top_down.gd" id="5_fhb1l"]
-[ext_resource type="Script" path="res://ball/container.gd" id="6_f3wg0"]
 [ext_resource type="Script" path="res://entities/components/mono_group.gd" id="7_j6ekb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njqvl"]
@@ -40,13 +39,6 @@ per_heat_bonus = 0.5
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("5_fhb1l")
-
-[node name="Container" type="Node" parent="."]
-script = ExtResource("6_f3wg0")
-limit_left = 0.0
-limit_right = 800.0
-limit_up = 0.0
-limit_down = 1080.0
 
 [node name="MonoGroup" type="Node" parent="."]
 script = ExtResource("7_j6ekb")
