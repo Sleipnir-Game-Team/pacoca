@@ -8,7 +8,7 @@ var _section_dict : Dictionary         # sessões da música mapeadas para int
 var _transition_type : int                # qual transição vai rolar
 var _corrected_transitions : Array              # as transições corrigidas do modo BAR de transição
 
-func _init(song_data,change_to_default_first) -> void:
+func _init(song_data:SongData,change_to_default_first:bool) -> void:
 	_section_dict.clear()
 	_corrected_transitions.clear()
 	_section_dict =  song_data.get_sections()\
@@ -52,7 +52,11 @@ func _init(song_data,change_to_default_first) -> void:
 					)
 			_corrected_transitions.append(corrected["from_to"]) # dá append na variavel de transições corrigidas pra check depois
 		Logger.info("corrected these transitions: "+str(_corrected_transitions))
-	self.set("parameters/switch_to_clip",current_section) # seta a sessão pra ela
+	
+	if song_data.MainClips.get_clip_name(song_data.MainClips.initial_clip) != current_section:
+		self.set("parameters/switch_to_clip",current_section)  # seta a sessão pra ela
+	else:
+		pass # do nothing
 	self.name = song_data.resource_path.get_file().get_basename()
 
 # Called when the node enters the scene tree for the first time.

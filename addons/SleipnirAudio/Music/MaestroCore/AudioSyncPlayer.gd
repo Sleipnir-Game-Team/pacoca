@@ -5,7 +5,7 @@ class_name AudioSyncPlayer
 ## streams de sync atuais [br](no momento somente válidas para [AudioStreamSynchronized] como MainClip)
 var sync_streams : Dictionary      
 
-func _init(song_data) -> void:
+func _init(song_data:SongData) -> void:
 	var clips = song_data.get_main_clips()
 	self.set_stream(clips)           # seta a stream pro MainPlayer
 	self.name = song_data.resource_path.get_file().get_basename()

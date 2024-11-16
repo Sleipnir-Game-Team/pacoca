@@ -2,7 +2,7 @@
 extends AudioStreamPlayer
 class_name AudioListPlayer
 
-func _init(song_data) -> void:
+func _init(song_data:SongData) -> void:
 	self.set_stream(song_data.get_main_clips())           # seta a stream pro MainPlayer
 	self.name = song_data.resource_path.get_file().get_basename()
 # Called when the node enters the scene tree for the first time.
