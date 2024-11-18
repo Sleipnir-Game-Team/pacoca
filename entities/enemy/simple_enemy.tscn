@@ -69,6 +69,12 @@ movement_length = 150.0
 [node name="ActionManagers" type="Node" parent="."]
 script = ExtResource("6_braof")
 
+[node name="Rotation" type="Node" parent="."]
+script = ExtResource("8_pud8v")
+min_angle = 10
+max_angle = 170
+rotation_speed = 1.0
+
 [node name="Kick" parent="." instance=ExtResource("7_g73fm")]
 unique_name_in_owner = true
 visible = false
@@ -77,12 +83,6 @@ rotation = -1.5708
 shape = SubResource("CircleShape2D_ktvbd")
 target_position = Vector2(114, 0)
 cooldown_seconds = 0.1
-
-[node name="Rotation" type="Node" parent="."]
-script = ExtResource("8_pud8v")
-min_angle = 10
-max_angle = 170
-rotation_speed = 1.0
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="area_entered" from="AttackArea" to="ActionManagers" method="_on_area_2d_area_entered"]
