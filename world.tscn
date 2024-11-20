@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmvk3h52rrel0"]
+[gd_scene load_steps=10 format=3 uid="uid://dmvk3h52rrel0"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_igby4"]
 [ext_resource type="PackedScene" uid="uid://q7r31yidg88g" path="res://entities/player/player.tscn" id="1_lklov"]
 [ext_resource type="PackedScene" uid="uid://c424f240qxo4m" path="res://game/waves_scene.tscn" id="1_vrmhi"]
 [ext_resource type="PackedScene" uid="uid://gchihnv3vpvw" path="res://ball/ball.tscn" id="2_y5g5q"]
 [ext_resource type="Texture2D" uid="uid://cploosi6yg5k" path="res://assets/Background.jpg" id="4_wi1h0"]
-[ext_resource type="PackedScene" uid="uid://c6ix8y662psn7" path="res://entities/enemy/simple_grab_enemy/simple_grab_enemy.tscn" id="6_82j5e"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1wdxc"]
 normal = Vector2(1, 0)
@@ -66,7 +65,7 @@ repeat_times = 4
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 texture = ExtResource("4_wi1h0")
 
-[node name="Enemy_grab" parent="." instance=ExtResource("6_82j5e")]
-position = Vector2(496, 628)
+[connection signal="move" from="Player/InputReader_Movement" to="Player/Movement" method="move"]
+[connection signal="rotate" from="Player/MouseReader_Rotation" to="Player/Rotation" method="rotate"]
 
 [editable path="Player"]
