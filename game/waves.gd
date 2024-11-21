@@ -3,6 +3,8 @@ extends Node
 var waves: Array[Array] = []
 var has_pass: bool = false
 
+signal changed_wave
+
 func add_list(wave: Array) -> void:
 	waves.append(wave)
 
@@ -18,6 +20,7 @@ func pop_enemy() -> void:
 
 func pass_list() -> void:
 	has_pass = true
+	changed_wave.emit()
 	if waves.size() > 0:
 		print("Wave derrotada")
 		print(waves[0])

@@ -1,9 +1,9 @@
 extends Node
 
-signal move(direction)
+signal move(direction: Vector2)
 
-func _process(delta):
-	var movement_direction = Vector2.ZERO
+func _process(_delta: float) -> void:
+	var movement_direction := Vector2.ZERO
 	if Input.is_action_pressed("player_right"):
 		movement_direction.x += 1
 	if Input.is_action_pressed("player_left"):

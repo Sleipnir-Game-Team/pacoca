@@ -15,10 +15,15 @@ var _currently_playing_size: int:          # NOTE nao sei se é o melhor lugar p
 		return _currently_playing_size
 	set(value):
 		if currently_playing_audiostreams.size() > max_audiostreams:
-			currently_playing_audiostreams.pop_front().stop()
+			if !is_instance_valid(currently_playing_audiostreams[0]): # se tiver sido deletado da memória
+				currently_playing_audiostreams.remove_at(0)
+			else: # caso não tenha sido deletado da memória
+				currently_playing_audiostreams.pop_front().stop()     
+			
 			Logger.warn("Number of AudioStreamPlayers playing at the same time passed the maximum of "+
 					str(max_audiostreams))
 			
+		_currently_playing_size = currently_playing_audiostreams.size()
 		_currently_playing_size = currently_playing_audiostreams.size()
 
 

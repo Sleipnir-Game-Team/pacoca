@@ -3,16 +3,15 @@ extends Node
 var stack: ScreenStack = ScreenStack.new()
 var pause_menu_on: bool = false
 
-signal wave_counter
-
 class ScreenStack:
 	var screens: Array[Node]  = []
 	
-	func add(scene: PackedScene, parent: Node) -> void:
+	func add(scene: PackedScene, parent: Node, attributes: Variant = null) -> void:
 		var screen: Node = scene.instantiate()
 		
 		screens.append(screen)
-		
+		if attributes != null:
+			screen.manage_attributes(attributes)
 		parent.add_child(screen)
 	
 	
@@ -27,16 +26,18 @@ class ScreenStack:
 		return screen
 
 
-func openScreen(screen_path: String, parent: Node) -> void:
+func openScreen(screen_path: String, parent: Node, attributes: Variant = null) -> void:
 	var newScreen: PackedScene
 	
 	if screen_path != null:
 		newScreen = load(screen_path)
-	
-	stack.add(newScreen, parent)
+	if attributes != null:
+		stack.add(newScreen, parent, attributes)
+	else:
+		stack.add(newScreen, parent)
 
 
-func changeScreen(screen_path: String, parent: Node) -> void:
+func changeScreen(screen_path: String, parent: Node, attributes: Variant = null) -> void:
 	var newScreen: PackedScene
 	
 	if screen_path != null:
@@ -44,8 +45,10 @@ func changeScreen(screen_path: String, parent: Node) -> void:
 	
 	while stack.screens != []:
 		stack.pop()
-	
-	stack.add(newScreen, parent)
+	if attributes != null:
+		stack.add(newScreen, parent, attributes)
+	else:
+		stack.add(newScreen, parent)
 
 func freeScreen() -> Node:
 	return stack.pop()

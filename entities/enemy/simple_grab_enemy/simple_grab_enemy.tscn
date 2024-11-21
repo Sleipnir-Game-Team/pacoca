@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6ix8y662psn7"]
+
+[ext_resource type="Script" path="res://entities/enemy/simple_grab_enemy/simple_grab_enemy.gd" id="1_jgvjd"]
+[ext_resource type="Texture2D" uid="uid://2j74uc8bvtrr" path="res://assets/alien A.png" id="2_dxgok"]
+[ext_resource type="Script" path="res://entities/components/life.gd" id="3_ilbjr"]
+[ext_resource type="PackedScene" uid="uid://um7g1axvk4nx" path="res://entities/actions/grab/grab.tscn" id="3_ty3o4"]
+[ext_resource type="Script" path="res://entities/components/movement_top_down.gd" id="4_7l45d"]
+[ext_resource type="Script" path="res://entities/enemy/behaviours/ia_movement_horizontal.gd" id="5_foqfl"]
+[ext_resource type="Script" path="res://entities/enemy/behaviours/grab_manager.gd" id="7_4r1tq"]
+[ext_resource type="Script" path="res://entities/components/rotation.gd" id="7_8uqce"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ww7nc"]
+radius = 44.1022
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fcc70"]
+radius = 74.0608
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_akjou"]
+radius = 87.023
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o02wi"]
+
+[node name="Enemy_grab" type="CharacterBody2D"]
+rotation = 1.5708
+script = ExtResource("1_jgvjd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_dxgok")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CircleShape2D_ww7nc")
+
+[node name="HurtBox" type="Area2D" parent="."]
+rotation = -1.5708
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_fcc70")
+debug_color = Color(0.941572, 0.209211, 0.319502, 0.42)
+
+[node name="Grabable_Area" type="Area2D" parent="."]
+position = Vector2(82, -3.58434e-06)
+rotation = -1.5708
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grabable_Area"]
+position = Vector2(-0.999707, -83)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_akjou")
+
+[node name="Grab" parent="." instance=ExtResource("3_ty3o4")]
+scale = Vector2(9.295, 9.295)
+shape = SubResource("CircleShape2D_o02wi")
+target_position = Vector2(0, 0)
+
+[node name="hold_time" type="Timer" parent="."]
+one_shot = true
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("4_7l45d")
+speed = 150.0
+
+[node name="IAMovementHorizontal" type="Node" parent="."]
+script = ExtResource("5_foqfl")
+
+[node name="Grab_manager" type="Node" parent="."]
+script = ExtResource("7_4r1tq")
+
+[node name="Rotation" type="Node" parent="."]
+script = ExtResource("7_8uqce")
+min_angle = 10
+max_angle = 170
+rotation_speed = 1.0
+
+[node name="Life" type="Node" parent="."]
+script = ExtResource("3_ilbjr")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_entered" from="Grabable_Area" to="Grab_manager" method="_on_grabable_area_body_entered"]
+[connection signal="timeout" from="hold_time" to="Grab_manager" method="_on_hold_time_timeout"]
+[connection signal="move" from="IAMovementHorizontal" to="Movement" method="move"]
+[connection signal="death" from="Life" to="." method="_on_life_death"]

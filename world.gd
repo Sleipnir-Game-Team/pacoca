@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
-	SleipnirMaestro.change_song("level_one",true,"CUT")
+	SleipnirMaestro.load_song("level_one",true,0,false)
 
 ## Pause game when action is pressed
 ## TODO Uncomment

@@ -2,21 +2,21 @@ extends Node2D
 
 @export_group('Limits', 'limit_')
 ## Até onde o mouse é capturado à esquerda
-@export var limit_left = -INF
+@export var limit_left := -INF
 ## Até onde o mouse é capturado à direita
-@export var limit_right = INF
+@export var limit_right := INF
 ## Até onde o mouse é capturado pra cima
-@export var limit_up = -INF
+@export var limit_up := -INF
 ## Até onde o mouse é capturado pra baixo
-@export var limit_down = INF
+@export var limit_down := INF
 
 ## Quando o mouse não for capturado ele deve retornar ao estado padrao?
 @export var reset_off_limits := false
 
 @export var default_aim_direction := Vector2.ZERO
-var last_aim_direction = default_aim_direction
+var last_aim_direction := default_aim_direction
 
-signal rotate(direction)
+signal rotate(direction: Vector2)
 
 func _physics_process(_delta: float) -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()

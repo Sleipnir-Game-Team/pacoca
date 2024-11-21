@@ -26,15 +26,18 @@ script = ExtResource("2_n58b4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="left_container" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="left_container" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(555, 0)
 layout_mode = 2
 mouse_filter = 2
@@ -43,11 +46,12 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="info_container" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/left_container"]
+[node name="info_container" type="VBoxContainer" parent="HBoxContainer/left_container"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="score_card" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/left_container/info_container"]
+[node name="score_card" type="NinePatchRect" parent="HBoxContainer/left_container/info_container"]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 texture = ExtResource("1_iedm3")
@@ -56,28 +60,31 @@ patch_margin_top = 44
 patch_margin_right = 44
 patch_margin_bottom = 44
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/left_container/info_container/score_card"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/left_container/info_container/score_card"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/left_container/info_container/score_card/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/left_container/info_container/score_card/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("3_tjkh5")
 
-[node name="score" type="Label" parent="CanvasLayer/HBoxContainer/left_container/info_container/score_card/VBoxContainer"]
+[node name="wave" type="Label" parent="HBoxContainer/left_container/info_container/score_card/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 100
 text = "1"
 
-[node name="life_card" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/left_container/info_container"]
+[node name="life_card" type="NinePatchRect" parent="HBoxContainer/left_container/info_container"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 texture = ExtResource("1_iedm3")
@@ -86,28 +93,29 @@ patch_margin_top = 44
 patch_margin_right = 44
 patch_margin_bottom = 44
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/left_container/info_container/life_card"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/left_container/info_container/life_card"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/left_container/info_container/life_card/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/left_container/info_container/life_card/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_3osbb")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
@@ -115,26 +123,27 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 texture = ExtResource("4_hf2f5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="pontuation_bg" type="TextureRect" parent="CanvasLayer/HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="pontuation_bg" type="TextureRect" parent="HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("5_h8ek8")
 
-[node name="health_bar" type="TextureProgressBar" parent="CanvasLayer/HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="health_bar" type="TextureProgressBar" parent="HBoxContainer/left_container/info_container/life_card/MarginContainer/VBoxContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -143,11 +152,12 @@ value = 3.0
 texture_progress = ExtResource("8_i0gjn")
 metadata/lifes = [null, null, null]
 
-[node name="gameplay_space" type="Control" parent="CanvasLayer/HBoxContainer"]
+[node name="gameplay_space" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(810, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="right_container" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="right_container" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(555, 0)
 layout_mode = 2
+mouse_filter = 2

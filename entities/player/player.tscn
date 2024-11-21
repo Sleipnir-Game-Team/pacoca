@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://q7r31yidg88g"]
+[gd_scene load_steps=30 format=3 uid="uid://q7r31yidg88g"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_s5awy"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="2_lqefg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://entities/components/movement_top_down.gd" id="4_weakb"]
 [ext_resource type="Script" path="res://entities/player/input_handlers/input_reader_bidirectional.gd" id="5_g7ux8"]
 [ext_resource type="Script" path="res://entities/components/animation_handler.gd" id="5_xbre0"]
+[ext_resource type="Script" path="res://entities/components/mono_group.gd" id="14_1wv4g"]
 [ext_resource type="Script" path="res://entities/components/rotation.gd" id="74_k4cfl"]
 [ext_resource type="Texture2D" uid="uid://dxdkfufp5levf" path="res://assets/dog animations/Head/Dog body_0000.png" id="75_2nyin"]
 [ext_resource type="Script" path="res://entities/player/input_handlers/mouse_reader_rotation.gd" id="75_e0o7d"]
@@ -133,50 +134,50 @@ length = 0.5333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+"values": [ExtResource("76_5tv3c")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:texture")
+tracks/1/path = NodePath(".:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("76_5tv3c")]
+"values": [3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:hframes")
+tracks/2/path = NodePath(".:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [6]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:vframes")
+tracks/3/path = NodePath(".:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [6]
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -343,7 +344,7 @@ _data = {
 "tail_wigle": SubResource("Animation_gp07a")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_s5awy")
 
@@ -427,6 +428,10 @@ libraries = {
 
 [node name="AnimationHandler" type="Node" parent="."]
 script = ExtResource("5_xbre0")
+
+[node name="MonoGroup" type="Node" parent="."]
+script = ExtResource("14_1wv4g")
+group_name = "Player"
 
 [connection signal="death" from="Life" to="." method="_on_death"]
 [connection signal="invecibility_end" from="Life" to="AnimationHandler" method="stop_named_animation" binds= ["Body", "hurt"]]

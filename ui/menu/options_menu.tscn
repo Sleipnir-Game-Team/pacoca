@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://53ka1brdqd3s"]
+[gd_scene load_steps=8 format=3 uid="uid://53ka1brdqd3s"]
 
 [ext_resource type="Script" path="res://ui/menu/options_menu.gd" id="1_flr5y"]
 [ext_resource type="Texture2D" uid="uid://bnxcaj66q3hnj" path="res://assets/Main Menu Background.jpg" id="2_hkspu"]
+[ext_resource type="Script" path="res://ui/menu/resolution_dropbox.gd" id="3_bvd68"]
+[ext_resource type="PackedScene" uid="uid://1hnco7yhjexd" path="res://ui/buttons/input_button.tscn" id="3_xo33c"]
+[ext_resource type="Script" path="res://ui/menu/input_settings.gd" id="4_5nt2n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4flhf"]
 font_size = 100
@@ -9,7 +12,7 @@ shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_n72c1"]
-font_size = 30
+font_size = 40
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 20
 shadow_color = Color(0, 0, 0, 0.329412)
@@ -62,7 +65,7 @@ layout_mode = 2
 [node name="TabContainer" type="TabContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 tab_alignment = 1
 current_tab = 0
 
@@ -94,9 +97,11 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
 text = "Resoluções"
 label_settings = SubResource("LabelSettings_n72c1")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control2" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/resolution/resolution_label"]
 layout_mode = 2
@@ -111,18 +116,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="resolution_dropbox" type="OptionButton" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/resolution/resolution_dropbox"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-selected = 0
+theme_override_font_sizes/font_size = 40
 allow_reselect = true
-item_count = 4
-popup/item_0/text = "1920x1080"
-popup/item_1/text = "1600x900"
-popup/item_1/id = 1
-popup/item_2/text = "1366x768"
-popup/item_2/id = 2
-popup/item_3/text = "1280x720"
-popup/item_3/id = 3
+script = ExtResource("3_bvd68")
 
 [node name="Control4" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/resolution/resolution_dropbox"]
 layout_mode = 2
@@ -161,14 +159,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="window_mode_dropbox" type="OptionButton" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/window_mode/window_mode_dropbox"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-selected = 0
+theme_override_font_sizes/font_size = 40
 allow_reselect = true
-item_count = 2
-popup/item_0/text = "Fullscreen"
-popup/item_1/text = "Windowed"
-popup/item_1/id = 1
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_1/text = "Borderless"
+popup/item_1/id = 3
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 4
 
 [node name="Control4" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/window_mode/window_mode_dropbox"]
 layout_mode = 2
@@ -186,50 +186,6 @@ metadata/_tab_index = 1
 [node name="audio_options" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio"]
 layout_mode = 2
 theme_override_constants/separation = 10
-
-[node name="volume_tester" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options"]
-layout_mode = 2
-
-[node name="volume_tester_label" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_tester"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="C" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_tester/volume_tester_label"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="volume_tester_label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_tester/volume_tester_label"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-tooltip_text = "Você acha que o seu som é bom?"
-mouse_filter = 0
-text = "Teste seu som"
-label_settings = SubResource("LabelSettings_n72c1")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="C2" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_tester/volume_tester_label"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="volume_master_slider" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_tester"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="C" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_tester/volume_master_slider"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="test_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_tester/volume_master_slider"]
-layout_mode = 2
-tooltip_text = "Sente a pressão neném"
-theme_override_font_sizes/font_size = 30
-text = "teste som"
-
-[node name="C2" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_tester/volume_master_slider"]
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="volume_master" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options"]
 layout_mode = 2
@@ -409,41 +365,33 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
+script = ExtResource("4_5nt2n")
 metadata/_tab_index = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer"]
 layout_mode = 2
 
-[node name="keybinding_list" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="input_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list/input_button"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list/input_button/MarginContainer"]
-layout_mode = 2
-
-[node name="action_label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list/input_button/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "action name"
-
-[node name="spacer" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list/input_button/MarginContainer/HBoxContainer"]
+[node name="keybinding_list" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="input_label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/ScrollContainer/keybinding_list/input_button/MarginContainer/HBoxContainer"]
+[node name="input_button" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/VBoxContainer/ScrollContainer/keybinding_list" instance=ExtResource("3_xo33c")]
 layout_mode = 2
-text = "input key"
+
+[node name="reset_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 40
+text = "Resetar Controles"
 
 [node name="back" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -453,11 +401,11 @@ alignment = 2
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 40
 text = "Voltar"
 
 [connection signal="item_selected" from="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/resolution/resolution_dropbox/resolution_dropbox" to="." method="_on_resolution_dropbox_item_selected"]
 [connection signal="item_selected" from="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Vídeo/VBoxContainer/window_mode/window_mode_dropbox/window_mode_dropbox" to="." method="_on_window_mode_dropbox_item_selected"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_tester/volume_master_slider/test_button" to="." method="_on_button_pressed"]
 [connection signal="drag_ended" from="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_master/volume_master_slider/volume_master_slider" to="." method="_on_volume_master_slider_drag_ended"]
 [connection signal="value_changed" from="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_master/volume_master_slider/volume_master_slider" to="." method="_on_volume_master_slider_value_changed"]
 [connection signal="drag_ended" from="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_music/volume_music_slider/volume_music_slider" to="." method="_on_volume_music_slider_drag_ended"]
@@ -465,4 +413,5 @@ text = "Voltar"
 [connection signal="drag_ended" from="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_sfx/volume_sfx_slider/volume_sfx_slider" to="." method="_on_volume_sfx_slider_drag_ended"]
 [connection signal="value_changed" from="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/volume_sfx/volume_sfx_slider/volume_sfx_slider" to="." method="_on_volume_sfx_slider_value_changed"]
 [connection signal="toggled" from="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Áudio/audio_options/mute/mute_check/mute_checkbox" to="." method="_on_mute_checkbox_toggled"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles/MarginContainer/VBoxContainer/reset_button" to="CanvasLayer/MarginContainer/VBoxContainer/TabContainer/Controles" method="_on_reset_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/back/back_button" to="." method="_on_back_button_pressed"]

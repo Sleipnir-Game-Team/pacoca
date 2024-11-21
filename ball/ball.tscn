@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://gchihnv3vpvw"]
+[gd_scene load_steps=9 format=3 uid="uid://gchihnv3vpvw"]
 
 [ext_resource type="Script" path="res://ball/ball.gd" id="1_og6ph"]
 [ext_resource type="Script" path="res://ball/contact_area.gd" id="2_62eaa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://entities/components/movement_top_down.gd" id="5_fhb1l"]
 [ext_resource type="Texture2D" uid="uid://c0pdr366b5dw" path="res://shaders/ball_trail_texture.png" id="6_r4qj0"]
 [ext_resource type="Script" path="res://shaders/trail2d.gd" id="6_viubt"]
+[ext_resource type="Script" path="res://entities/components/mono_group.gd" id="7_j6ekb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njqvl"]
 radius = 16.7835
@@ -53,5 +54,9 @@ point_duration = 0.2
 [node name="Movement" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_fhb1l")
+
+[node name="MonoGroup" type="Node" parent="."]
+script = ExtResource("7_j6ekb")
+group_name = "Ball"
 
 [connection signal="heat_changed" from="Heat" to="." method="_on_heat_changed"]

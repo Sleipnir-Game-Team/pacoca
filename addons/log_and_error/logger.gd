@@ -13,7 +13,7 @@ func _init():
 ## Por exemplo, se algo entrou ou saiu da cena, se algum recurso foi criado, não algo muito profundo
 func info(message: String) -> void:
 	print_rich("[color=cyan]INFO: [",
-	_get_script_name(get_stack()[1]["source"]),"][/color][color=blue] ",message,"[/color]")
+	_get_script_name(get_stack()[1]["source"]),"][/color][color=light_blue] ",message,"[/color]")
 
 ## Diagnóstico geral.[br]
 ## Por exemplo, se uma variável mudou de estado, se uma função foi chamada, com bastante detalhe geralmente
@@ -111,11 +111,16 @@ func _get_script_name(stack_info:String):
 ## @experimental
 ## cria uma tela de erro
 ## Ainda bem arcaica, se quiser usar está disponivel, porém mudanças serão feitas
-func load_error_screen(message:String="Unexpected Error Happened") -> void:
-	var errorscene = preload("error_screen/error_screen.tscn")
-	var Error = errorscene.instantiate() as ErrorScreen
-	get_tree().root.add_child(Error)
-	Error.ErrorMessage.text = message
+func load_error_screen(type: String="Error", message:String="Unexpected Error Happened") -> void:
+	#var errorscene = preload("error_screen/error_screen.tscn")
+	#var Error = errorscene.instantiate() as ErrorScreen
+	#get_tree().root.add_child(Error)
+	#Error.ErrorMessage.text = message
+	var attributes: Dictionary = {}
+	attributes["Tipo"] = type
+	attributes["Mensagem"] = message
+	UI_Controller.openScreen("res://ui/error/error_screen.tscn", get_tree().root, attributes)
+	
 
 ## @experimental
 ## Cria o arquivo de log com tudo dentro
