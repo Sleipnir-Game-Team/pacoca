@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://gchihnv3vpvw"]
+[gd_scene load_steps=12 format=3 uid="uid://gchihnv3vpvw"]
 
 [ext_resource type="Script" path="res://ball/ball.gd" id="1_og6ph"]
 [ext_resource type="Script" path="res://ball/contact_area.gd" id="2_62eaa"]
@@ -17,7 +17,7 @@ radius = 18.2088
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_w408c"]
 
-[node name="Ball" type="CharacterBody2D" groups=["Ball"]]
+[node name="Ball" type="CharacterBody2D"]
 rotation = 0.359538
 collision_layer = 2
 collision_mask = 2
