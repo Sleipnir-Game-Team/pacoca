@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpwie0h3vp0rj"]
 
-[ext_resource type="Script" path="res://entities/actions/area_trigger.gd" id="1_g7ait"]
+[ext_resource type="Script" path="res://entities/components/area_trigger/area_trigger.gd" id="1_g7ait"]
 
 [node name="AreaTrigger" type="ShapeCast2D"]
 enabled = false

@@ -207,7 +207,7 @@ target_position = Vector2(0, -0.5)
 cooldown_seconds = 0.1
 
 [node name="GrabPoint" parent="Grab" index="1"]
-position = Vector2(0.106383, 17.0213)
+position = Vector2(0, 17.021)
 
 [node name="hold_time" type="Timer" parent="."]
 one_shot = true

@@ -18,9 +18,9 @@ func _ready() -> void:
 	movement.speed = speed * heat.speed_bonus
 
 func _physics_process(delta: float) -> void:
-	movement.move(Vector2(cos(rotation),sin(rotation)))
+	movement.move(Vector2(cos(rotation), sin(rotation)))
 	
-	if grabber == null: #gira
+	if grabber == null: # Gira
 		sprite.rotation += velocity.length() * rotation_speed_factor * delta
 
 
@@ -51,8 +51,10 @@ func _on_kick(angle: float) -> void:
 	rotation_degrees = angle
 
 func _play_hit_sound() -> void:
-	if heat.is_burning == true: AudioManager.play_global("ball.hot.hit")
-	else: AudioManager.play_global("ball.cold.hit")
+	if heat.is_burning:
+		AudioManager.play_global("ball.hot.hit")
+	else:
+		AudioManager.play_global("ball.cold.hit")
 
 func _on_heat_changed(_new_heat: int) -> void:
 	movement.speed = speed * heat.speed_bonus

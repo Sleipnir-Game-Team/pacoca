@@ -1,5 +1,14 @@
 class_name Grab
 extends AreaTrigger
+## Um [b]Grab[/b] extende o [AreaTrigger] e adiciona a lógica necessária para agarrar e arremessar a bola.
+##
+## O método [method Grab._handler] segue dois fluxos:
+## - Caso [member Grab.held_object] seja nulo - Arremesar a bola com [method Ball._on_throw];
+## - Caso contrário - Agarrar a bola com [method Ball._on_grab] e [signal Grab.grabbed].
+## Os métodos de [Ball] afetam a lógica de rotação da bola (i.e. não rodar enquanto agarrada)
+## Já os sinais permitem que  o nó que realizou o Grab faça quaisquer tratamentos (e.g. a animação de mordida no [Player])
+##
+## [method Node._physics_process] é sobreescrito para manter a posição da bola no [Marker] [b]GrabPoint[\b].
 
 var held_object: Ball = null
 
@@ -14,7 +23,6 @@ func _physics_process(_delta: float) -> void:
 		held_object.global_position = pointer.global_position
 
 func _handler(direction: Vector2, data: Dictionary) -> void:
-	buffering = false
 	var ball: Ball = data.collider 
 	
 	Logger.info("Comando de grab/throw iniciando")
