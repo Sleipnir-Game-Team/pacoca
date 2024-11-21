@@ -8,10 +8,10 @@ var current_direction: Vector2
 @onready var cooldown_timer: Timer = %CooldownTimer
 
 @export var buffering_duration_seconds: float = 0.1
-var buffering := false
-var buffering_duration := 0.0
+var buffering: bool = false
+var buffering_duration: float = 0.0
 
-var avaible := true
+var available: bool = true
 
 ## The emmited object is a dictionary containing the following fields:
 ## [collider_id]: The colliding object's ID.
@@ -55,12 +55,12 @@ func reset_buffering() -> void:
 	buffering_duration = 0
 
 func start(direction: Vector2) -> void:
-	if avaible and can_trigger():
+	if available and can_trigger():
 		started.emit()
 		current_direction = direction
 		buffering = true
 	else:
-		Logger.debug("O trigger tentou ser iniciado com avaible "+str(avaible)+" e can_trigger() "+ str(can_trigger()))
+		Logger.debug("O trigger tentou ser iniciado com available %s e can_trigger() %s " % [available, can_trigger()])
 
 func _handler(_direction: Vector2, _data: Dictionary) -> void:
 	push_error("MUST OVERRIDE _HANDLER")
