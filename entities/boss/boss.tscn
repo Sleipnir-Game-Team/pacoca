@@ -175,7 +175,7 @@ stream_1/stream = ExtResource("32_pyx6h")
 stream_2/stream = ExtResource("33_tbgpt")
 stream_3/stream = ExtResource("34_80gbx")
 
-[node name="boss" type="CharacterBody2D"]
+[node name="boss" type="CharacterBody2D" groups=["Time_stoppable"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_n8o6t")
 

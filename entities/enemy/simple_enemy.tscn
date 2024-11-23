@@ -22,7 +22,7 @@ height = 138.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktvbd"]
 radius = 14.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["Time_stoppable"]]
 rotation = 1.5708
 script = ExtResource("1_g6d10")
 

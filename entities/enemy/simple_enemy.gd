@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var is_stopped := false
+
 var rng := RandomNumberGenerator.new()
 
 @onready var hurt_box: Area2D = $HurtBox
@@ -30,7 +32,8 @@ func _ready() -> void:
 	sprite.texture = load(random_enemy["sprite"])
 
 func _physics_process(_delta: float) -> void:
-	$Rotation.rotate(ball.global_position - global_position)
+	if !is_stopped:
+		$Rotation.rotate(ball.global_position - global_position)
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Ball:
@@ -44,5 +47,6 @@ func _on_death() -> void:
 	Waves.pop_enemy()
 
 func on_kick(_direction: float) -> void:
-	ball.heat.heat_up()
+	if !is_stopped:
+		ball.heat.heat_up()
 	

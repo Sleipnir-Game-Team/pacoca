@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var is_dizzy := false
+var is_stopped := false
 
 var rng_x := RandomNumberGenerator.new()
 var rng_y := RandomNumberGenerator.new()

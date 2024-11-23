@@ -9,10 +9,15 @@ class_name Player
 @onready var life: Life = $Life
 @onready var hurtbox: Area2D = $HurtBox
 @onready var animation_handler := $AnimationHandler
+@onready var time_stop_power := $TimeStop
 
 @onready var grabbing := false
 @export var ball_cool_time := 0.5
 @onready var time_until_cool := 0.0
+
+@export var power := Power
+
+var is_stopped := false
 
 func _ready() -> void:
 	animation_handler.play_animation("Tail", "tail_wigle")
@@ -22,20 +27,22 @@ func _ready() -> void:
 	kick.kicked.connect(on_kick)
 
 func _process(delta: float) -> void:
-	if grabbing:
-		time_until_cool += delta
-		if time_until_cool >= ball_cool_time:
-			time_until_cool = 0
-			ball.heat.cool_down()
-	else:
-		time_until_cool = 0 
+	if !is_stopped:
+		if grabbing:
+			time_until_cool += delta
+			if time_until_cool >= ball_cool_time:
+				time_until_cool = 0
+				ball.heat.cool_down()
+		else:
+			time_until_cool = 0 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("player_hit") and not grab.is_holding():
-		kick.start(global_position.direction_to(get_global_mouse_position()))
-	elif event.is_action_pressed("player_special") and grab.can_trigger():
-		grab.start(global_position.direction_to(get_global_mouse_position()))
-		AudioManager.play_global("player.attack")
+	if !is_stopped:
+		if event.is_action_pressed("player_hit") and not grab.is_holding():
+			kick.start(global_position.direction_to(get_global_mouse_position()))
+		elif event.is_action_pressed("player_special") and grab.can_trigger():
+			grab.start(global_position.direction_to(get_global_mouse_position()))
+			AudioManager.play_global("player.attack")
 
 func _on_death() -> void:
 	GameManager.game_over()

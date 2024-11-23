@@ -20,7 +20,7 @@ radius = 87.023
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o02wi"]
 
-[node name="Enemy_grab" type="CharacterBody2D"]
+[node name="Enemy_grab" type="CharacterBody2D" groups=["Time_stoppable"]]
 rotation = 1.5708
 script = ExtResource("1_jgvjd")
 

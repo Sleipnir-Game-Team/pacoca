@@ -8,6 +8,8 @@ extends CharacterBody2D
 
 var grabber: Node2D = null
 
+var is_stopped := false
+
 @export var rotation_speed_factor: float = 0.02
 
 @onready var movement:= $Movement
@@ -21,10 +23,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	movement.move(Vector2(cos(rotation),sin(rotation)))
-	
-	if grabber == null: #gira
-		sprite.rotation += velocity.length() * rotation_speed_factor * delta
+	if !is_stopped:
+		movement.move(Vector2(cos(rotation),sin(rotation)))
+		
+		if grabber == null: #gira
+			sprite.rotation += velocity.length() * rotation_speed_factor * delta
 
 
 func flip(normal: Vector2) -> void:

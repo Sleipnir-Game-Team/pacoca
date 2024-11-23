@@ -19,14 +19,15 @@ var last_aim_direction := default_aim_direction
 signal rotate(direction: Vector2)
 
 func _physics_process(_delta: float) -> void:
-	var mouse_position: Vector2 = get_global_mouse_position()
-	
-	if (mouse_position.x < limit_left or mouse_position.x > limit_right or mouse_position.y > limit_down or mouse_position.y < limit_up):
-		if reset_off_limits:
-			rotate.emit(default_aim_direction)
+	if !get_parent().is_stopped:
+		var mouse_position: Vector2 = get_global_mouse_position()
+		
+		if (mouse_position.x < limit_left or mouse_position.x > limit_right or mouse_position.y > limit_down or mouse_position.y < limit_up):
+			if reset_off_limits:
+				rotate.emit(default_aim_direction)
+			else:
+				rotate.emit(last_aim_direction)
 		else:
-			rotate.emit(last_aim_direction)
-	else:
-		var aim_direction: Vector2 = global_position.direction_to(mouse_position)
-		last_aim_direction = aim_direction
-		rotate.emit(aim_direction)
+			var aim_direction: Vector2 = global_position.direction_to(mouse_position)
+			last_aim_direction = aim_direction
+			rotate.emit(aim_direction)

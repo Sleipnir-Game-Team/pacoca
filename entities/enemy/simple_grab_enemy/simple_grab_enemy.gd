@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var is_stopped := false
+
 @onready var hurt_box: Area2D = $HurtBox
 @onready var life: Life = $Life
 @onready var ball: Ball = get_tree().get_first_node_in_group('Ball')
@@ -30,7 +32,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	$Rotation.rotate(ball.global_position - global_position)
+	if !is_stopped:
+		$Rotation.rotate(ball.global_position - global_position)
 
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:

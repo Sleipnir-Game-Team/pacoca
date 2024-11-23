@@ -344,7 +344,7 @@ _data = {
 "tail_wigle": SubResource("Animation_gp07a")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Time_stoppable"]]
 collision_layer = 4
 script = ExtResource("1_s5awy")
 

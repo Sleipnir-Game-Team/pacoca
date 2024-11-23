@@ -29,8 +29,9 @@ func _on_hold_time_timeout() -> void:
 
 # Função chamada quando algo entra na área de grab
 func _on_grabable_area_body_entered(body: Node2D) -> void:
-	if body is Ball:  # Verifica se o corpo que entrou é do tipo Ball
-		Logger.info("Bola detectada: " + str(body.name))
-		grab_ball(body)  # Chama a função para pegar a bola
-	else:
-		Logger.warn("Corpo detectado não é uma bola: " + str(body.name))
+	if !get_parent().is_stopped:
+		if body is Ball:  # Verifica se o corpo que entrou é do tipo Ball
+			Logger.info("Bola detectada: " + str(body.name))
+			grab_ball(body)  # Chama a função para pegar a bola
+		else:
+			Logger.warn("Corpo detectado não é uma bola: " + str(body.name))
