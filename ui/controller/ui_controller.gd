@@ -26,18 +26,20 @@ class ScreenStack:
 		return screen
 
 
-func openScreen(screen_path: String, parent: Node, attributes: Variant = null) -> void:
+func openScreen(screen_path: String, parent: Node = get_tree().root, attributes: Variant = null) -> void:
 	var newScreen: PackedScene
 	
 	if screen_path != null:
 		newScreen = load(screen_path)
+	else:
+		Logger.warn("Parâmetro de tela não informado")
 	if attributes != null:
 		stack.add(newScreen, parent, attributes)
 	else:
 		stack.add(newScreen, parent)
 
 
-func changeScreen(screen_path: String, parent: Node, attributes: Variant = null) -> void:
+func changeScreen(screen_path: String, parent: Node = get_tree().root, attributes: Variant = null) -> void:
 	var newScreen: PackedScene
 	
 	if screen_path != null:
