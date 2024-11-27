@@ -6,6 +6,7 @@ var is_stopped := false
 @onready var life: Life = $Life
 @onready var ball: Ball = get_tree().get_first_node_in_group('Ball')
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var grab_manager: Grab_manager = $Grab_manager
 
 
 var enemies : Dictionary = {
@@ -32,8 +33,14 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	
 	if !is_stopped:
 		$Rotation.rotate(ball.global_position - global_position)
+	if !grab_manager.grab.is_holding():
+		$Rotation.rotate(ball.global_position - global_position)
+	else:
+		$Rotation.rotate((grab_manager.target).normalized())
+
 
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
