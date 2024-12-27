@@ -9,7 +9,7 @@ class_name Player
 @onready var life: Life = $Life
 @onready var hurtbox: Area2D = $HurtBox
 @onready var animation_handler := $AnimationHandler
-@onready var time_stop_power := $TimeStop
+@onready var power_throw_power := $PowerThrow
 
 @onready var grabbing := false
 @export var ball_cool_time := 0.5
@@ -43,6 +43,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.is_action_pressed("player_special") and grab.can_trigger():
 			grab.start(global_position.direction_to(get_global_mouse_position()))
 			AudioManager.play_global("player.attack")
+		elif event.is_action_pressed("power"):
+			power_throw_power.activate_power()
 
 func _on_death() -> void:
 	GameManager.game_over()
