@@ -55,6 +55,9 @@ func _on_death() -> void:
 
 func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	AudioManager.play_global("player.hit")
+	power_list = get_tree().get_nodes_in_group("Powers")
+	if power_list.size() > 0:
+		get_tree().call_group("Powers", "queue_free")
 	life.damage(1)
 
 func check_grab() -> void:
