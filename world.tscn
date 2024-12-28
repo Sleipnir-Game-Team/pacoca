@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmvk3h52rrel0"]
+[gd_scene load_steps=11 format=3 uid="uid://dmvk3h52rrel0"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_igby4"]
 [ext_resource type="PackedScene" uid="uid://q7r31yidg88g" path="res://entities/player/player.tscn" id="1_lklov"]
 [ext_resource type="PackedScene" uid="uid://c424f240qxo4m" path="res://game/waves_scene.tscn" id="1_vrmhi"]
+[ext_resource type="PackedScene" uid="uid://ckcs1nli0uj1r" path="res://powers/scenes/power_drop_test.tscn" id="2_0asgl"]
 [ext_resource type="PackedScene" uid="uid://gchihnv3vpvw" path="res://ball/ball.tscn" id="2_y5g5q"]
 [ext_resource type="Texture2D" uid="uid://cploosi6yg5k" path="res://assets/Background.jpg" id="4_wi1h0"]
 
@@ -19,6 +20,8 @@ normal = Vector2(-1, 0)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_igby4")
+
+[node name="PowerDropTest" parent="." instance=ExtResource("2_0asgl")]
 
 [node name="WavesScene" parent="." instance=ExtResource("1_vrmhi")]
 waves_file_path = "res://json_files/level_1/waves_order.json"

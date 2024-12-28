@@ -53,6 +53,7 @@ enabled=PackedStringArray("res://addons/SleipnirAudio/plugin.cfg", "res://addons
 [global_group]
 
 Time_stoppable=""
+Powers="Grupo dos poderes que alguem possui"
 
 [gui]
 
@@ -98,6 +99,7 @@ power={
 2d_physics/layer_3="PLAYER"
 2d_physics/layer_4="ENEMIES"
 2d_physics/layer_5="BOSS"
+2d_physics/layer_6="DROPS"
 2d_physics/layer_7="GOLD_LIGHT"
 2d_physics/layer_8="RED_LIGHT"
 

@@ -2,5 +2,6 @@
 
 [ext_resource type="Script" path="res://powers/power_throw.gd" id="1_ct08y"]
 
-[node name="PowerThrow" type="Node"]
+[node name="PowerThrow" type="Node" groups=["Powers"]]
 script = ExtResource("1_ct08y")
+cooldown_time = 5

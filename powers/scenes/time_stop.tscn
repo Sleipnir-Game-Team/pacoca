@@ -2,5 +2,7 @@
 
 [ext_resource type="Script" path="res://powers/time_stop.gd" id="1_ulbeo"]
 
-[node name="TimeStop" type="Node"]
+[node name="TimeStop" type="Node" groups=["Powers"]]
 script = ExtResource("1_ulbeo")
+stopped_time = 5
+cooldown_time = 5

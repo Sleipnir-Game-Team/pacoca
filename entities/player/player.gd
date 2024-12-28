@@ -9,15 +9,14 @@ class_name Player
 @onready var life: Life = $Life
 @onready var hurtbox: Area2D = $HurtBox
 @onready var animation_handler := $AnimationHandler
-@onready var power_throw_power := $PowerThrow
 
 @onready var grabbing := false
 @export var ball_cool_time := 0.5
 @onready var time_until_cool := 0.0
 
-@export var power := Power
-
 var is_stopped := false
+var power_list
+var power
 
 func _ready() -> void:
 	animation_handler.play_animation("Tail", "tail_wigle")
@@ -25,7 +24,7 @@ func _ready() -> void:
 	grab.thrown.connect(on_trow)
 	grab.grabbed.connect(on_grab)
 	kick.kicked.connect(on_kick)
-
+	
 func _process(delta: float) -> void:
 	if !is_stopped:
 		if grabbing:
@@ -44,7 +43,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			grab.start(global_position.direction_to(get_global_mouse_position()))
 			AudioManager.play_global("player.attack")
 		elif event.is_action_pressed("power"):
-			power_throw_power.activate_power()
+			power_list = get_tree().get_nodes_in_group("Powers")
+			if power_list.size() == 0:
+				Logger.info("Não possui nenhum poder")
+			else:
+				power = power_list[0]
+				power.activate_power()
 
 func _on_death() -> void:
 	GameManager.game_over()

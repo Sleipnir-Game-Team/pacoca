@@ -16,8 +16,6 @@ func _process(_delta: float) -> void:
 	if Waves.has_pass == true:
 		var waves: Array = Waves.return_list()
 		if waves.size() > 0:
-			print("Nova wave")
-			print(waves[0])
 			run_wave(waves)
 		else:
 			UI_Controller.changeScreen("res://ui/menu/victory_menu.tscn", get_tree().root)

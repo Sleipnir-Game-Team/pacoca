@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckcs1nli0uj1r"]
+
+[ext_resource type="Script" path="res://powers/power_drop_test.gd" id="1_ol21j"]
+[ext_resource type="PackedScene" uid="uid://cnk0aibd26n1s" path="res://powers/scenes/time_stop.tscn" id="1_v0box"]
+[ext_resource type="PackedScene" uid="uid://cgak7cniqsxj8" path="res://powers/scenes/power_throw.tscn" id="3_6g2y3"]
+
+[node name="PowerDropTest" type="Node"]
+script = ExtResource("1_ol21j")
+
+[node name="TimeStop" parent="." instance=ExtResource("1_v0box")]
+
+[node name="PowerThrow" parent="." instance=ExtResource("3_6g2y3")]

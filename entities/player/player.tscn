@@ -1,8 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://q7r31yidg88g"]
+[gd_scene load_steps=30 format=3 uid="uid://q7r31yidg88g"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_s5awy"]
 [ext_resource type="PackedScene" uid="uid://fum0l3hil4ye" path="res://entities/actions/kick/kick.tscn" id="2_lqefg"]
-[ext_resource type="PackedScene" uid="uid://cgak7cniqsxj8" path="res://powers/scenes/power_throw.tscn" id="2_wxoyl"]
 [ext_resource type="PackedScene" uid="uid://um7g1axvk4nx" path="res://entities/actions/grab/grab.tscn" id="3_18o26"]
 [ext_resource type="Script" path="res://entities/components/life.gd" id="3_po3r7"]
 [ext_resource type="Script" path="res://entities/components/movement_top_down.gd" id="4_weakb"]
@@ -347,10 +346,8 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["Time_stoppable"]]
 collision_layer = 4
+collision_mask = 33
 script = ExtResource("1_s5awy")
-
-[node name="PowerThrow" parent="." instance=ExtResource("2_wxoyl")]
-cooldown_time = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
